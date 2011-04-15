@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="integer" format="integer" name="pricetowerblue">600</item>
+    <item type="integer" format="integer" name="pricetowerred">400</item>
+    <item type="integer" format="integer" name="pricetowergreen">200</item>
+</resources>
