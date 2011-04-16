@@ -1,5 +1,7 @@
 package com.example.testsurf;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -10,7 +12,7 @@ public class Tower extends Zone{
 	protected double angle; //angle of the barrel
 	/* Tower stats */
 	protected double rng; //range of the tower
-	protected double rof; //rate of fire
+	protected double cooldown; //rate of fire
 	protected long last_fire; //the time that the tower last fired
 	protected int dmg; //damge done by the tower
 	protected int pos_x; //x positon of the tower
@@ -51,39 +53,45 @@ public class Tower extends Zone{
 	public int getSalePrice(){
 		return saleprice; 
 	}
-	void findTarget(Creep[] creeps) 
+	protected void findTarget(ArrayList<Creep> creeplist) 
 	{
 		// Internal Vars
+		Creep creep;
 		double dist = 0.0;
-		float creep_x = 0;
-		float creep_y = 0;
-		float dx = 0;
-		float dy = 0;
+		double creep_x = 0;
+		double creep_y = 0;
+		double dx = 0;
+		double dy = 0;
 		// If we already have a target, return that
-		if(cur_target == null) 
+		for(int i=0;i<creeplist.size();++i) 
 		{
-			for (Creep creep : creeps) 
+			creep = creeplist.get(i);
+			creep_x = creep.getPosX();
+			creep_y = creep.getPosY();
+			dx = Math.abs(pos_x - creep_x);
+			dy = Math.abs(pos_y - creep_y);
+			dist = Math.sqrt( (dx*dx) + (dy*dy) );
+			if (dist < rng) 
 			{
-				creep_x = creep.getPosX();
-				creep_y = creep.getPosY();
-				dx = Math.abs(pos_x - creep_x);
-				dy = Math.abs(pos_y - creep_y);
-				dist = Math.sqrt( (dx*dx) + (dy*dy) );
-				if ( dist < rng ) 
-				{
-					cur_target = creep;
-				}
+				cur_target = creep;
+				break;
 			}
 		}
-		return;
 	} 
-	void fire(Creep[] creeps, long currenttime) 
+	public void fire(ArrayList<Creep> creeplist) 
 	{
-		float cooldown = (last_fire-currenttime)/1000;
-		if(cooldown >= rof) {
-			findTarget(creeps);
-			cur_target.decHealth(dmg);
+		long currenttime=System.currentTimeMillis();
+		if(cur_target == null){
+			findTarget(creeplist);
 		}
-		return;
+		if((cur_target != null)&&(cur_target.getAlive())){
+			if(((currenttime-last_fire)/1000)>=cooldown){
+				cur_target.decHealth(dmg);
+				last_fire = currenttime;
+			}
+		}
+		else if((cur_target != null)&&(cur_target.getAlive() == false)){
+			cur_target = null;
+		}
 	}
 }

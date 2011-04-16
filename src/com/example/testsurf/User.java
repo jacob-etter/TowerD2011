@@ -50,4 +50,7 @@ public class User {
 	public void incLives(int value){
 		lives += value;
 	}
+	public int getLives(){
+		return lives;
+	}
 }

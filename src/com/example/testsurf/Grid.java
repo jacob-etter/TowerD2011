@@ -20,12 +20,7 @@ public class Grid {
 				int bottom = (int) (((j+1)*ysize)/ynum);
 				if(bottom < 0)
 					bottom = 0;
-				if((int)j == 5){
-					grid[(int)i][(int)j] = new ZonePath(left,top,right,bottom,gamecontext);
-				}
-				else{
-					grid[(int)i][(int)j] = new ZoneEmpty(left,top,right,bottom,gamecontext);
-				}
+				grid[(int)i][(int)j] = new ZoneEmpty(left,top,right,bottom,gamecontext);
 			}
 		}
 		return;

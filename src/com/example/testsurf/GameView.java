@@ -15,22 +15,24 @@ import android.view.SurfaceView;
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	private GameThread _thread;
 	private Paint text;
-    private int xpress;
-    private int ypress;
-    private int xsize = 16;//size of grid in x
-    private int ysize= 10;//size of grid in y
+//    private int xpress;
+//    private int ypress;
+    public int xsize = 16;//size of grid in x
+    public int ysize= 10;//size of grid in y
     public Grid tiles; //grid of zones
     private int initiate=0;
-	private long click_time;
-	private User user;
+//	private long click_time;
+	public User user;
 	public ArrayList<Creep> creeplist = new ArrayList<Creep>();
+	public ArrayList<Tower> towerlist = new ArrayList<Tower>();
+	public ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
 
     public GameView(Context context) {
         super(context); 
         getHolder().addCallback(this);
         _thread = new GameThread(getHolder(), this);
         setFocusable(true);
-		user = new User(2000, 0, 10, "Sean");
+		user = new User(5000, 0, 10, "Sean");
 		text = new Paint();
 		text.setARGB(255, 0, 0, 0);
 		text.setTextSize(40);
@@ -40,57 +42,20 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int old_xpress;
-        int old_ypress;
-    	synchronized (_thread.getSurfaceHolder()) {
-    		if (event.getAction() == MotionEvent.ACTION_DOWN){
-    			ypress  = (int) event.getY();
-    			xpress = (int) event.getX();
-    			xpress = xpress/(getWidth()/xsize);
-    			ypress = ypress/(getHeight()/ysize);
-    			tiles.getGridZone(xpress,ypress).setHighlight();
-    			click_time = System.currentTimeMillis();
-    		} 
-    		else if (event.getAction() == MotionEvent.ACTION_MOVE){
-    			old_xpress = xpress;
-    			old_ypress = ypress;
-    			tiles.getGridZone(xpress,ypress).removeHighlight();
-    			ypress  = (int) event.getY();
-    			xpress = (int) event.getX();
-    			xpress = xpress/(getWidth()/xsize);
-    			ypress = ypress/(getHeight()/ysize);
-    			tiles.getGridZone(xpress,ypress).setHighlight();
-    			if((old_xpress != xpress)&&(old_ypress!=ypress)){
-    				click_time = System.currentTimeMillis();
-    			}
-    		}
-        	else if (event.getAction() == MotionEvent.ACTION_UP){
-    			tiles.getGridZone(xpress,ypress).removeHighlight();
-    			if((System.currentTimeMillis()-click_time )> 250){
-    				ypress  = (int) event.getY();
-    				xpress = (int) event.getX();
-    				xpress = xpress/(getWidth()/xsize);
-    				ypress = ypress/(getHeight()/ysize);
-    				if(tiles.getGridZone(xpress,ypress).getID()==2){
-    					CustomDialog customDialog = new CustomDialog(getContext(), this, xpress, ypress,user);
-    					customDialog.show();
-    				}
-    				else if(tiles.getGridZone(xpress,ypress).getID()>2){
-    					DialogSellTower dialogselltower = new DialogSellTower(getContext(), this,xpress,ypress,user);
-    					dialogselltower.show();
-    				}
-    			}
-    		}
-    		return true;
-        }
+    	return _thread.doTouchEvent(event);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
 		if(initiate == 0){
 			tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
+			for(int i=0;i<xsize;++i){
+				int[] sides = tiles.getGridZone(i, 5).getSides();
+				ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],getContext());
+				tiles.setGridZone(i, 5, path);
+				pathlist.add(path);
+			}
 			initiate = 1;
-			creeplist.add(new Creep(50, 50,user, getContext()));
 		}
 		Drawable background;
 		background = getContext().getResources().getDrawable(R.drawable.simplebackground);
@@ -102,7 +67,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 	protected void drawZones(Canvas canvas){
 
-		for(int i = 0;i<xsize;++i){
+		for(int i = 0;i<xsize;++i){ 
 			for(int j=0;j<ysize;++j){
 				tiles.getGridZone(i,j).drawSelf(canvas,getContext());
 			}
@@ -110,14 +75,22 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
 	}
 	protected void drawCreeps(Canvas canvas){
+//		Creep test = new Creep(400,200,user,this);
+//		test.drawSelf(canvas);
     	for(int i =0; i<creeplist.size();++i){
     		creeplist.get(i).drawSelf(canvas);
+    	}
+    	for(int i = 0;i<creeplist.size();++i){
+    		if(creeplist.get(i).getAlive()==false){
+    			creeplist.remove(i);
+    		}
     	}
 	}
 	protected void drawUserInfo(Canvas canvas){
 		String userscore = Integer.toString(user.getScore());
 		String money = Integer.toString(user.getMoney());
-		canvas.drawText("Score = " + userscore + " Money = " + money,0, getHeight()/ysize-15,text);
+		String lives = Integer.toString(user.getLives());
+		canvas.drawText("  Score = " + userscore + " Money = " + money+" Lives = "+lives,0, getHeight()/ysize-15,text);
 	}
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {

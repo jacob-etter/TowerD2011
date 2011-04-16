@@ -1,14 +1,15 @@
 package com.example.testsurf;
 
-import android.content.Context;
-
 public class SimpleCreep extends Creep{
-	public SimpleCreep(float xloc, float yloc, User gameuser,Context gamecontext) {
-		super(xloc, yloc, gameuser, gamecontext);
+	public SimpleCreep(float xloc, float yloc, User gameuser,GameView view) {
+		super(xloc, yloc, gameuser, view);
 		health = 100;
-		speed = 1;
+		speed = 25;
 		size = 1;
+		xscale = (float) (xsize/800.0 * size);
+		yscale = (float) (ysize/480.0 * size);
 		creepicon = context.getResources().getDrawable(R.drawable.icon);
+		moneyval = 100;
 	}
 
 }
