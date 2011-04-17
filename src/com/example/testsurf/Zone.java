@@ -3,6 +3,7 @@ package com.example.testsurf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 
 /*This is the class which is stored in the grid 
  * currently it just has the location of its 
@@ -21,6 +22,7 @@ public class Zone {
 	protected int saleprice;
 	protected int price;
 	protected Context context;
+	protected Drawable background;
 	
 	public Zone(int left,int top,int right,int bottom,Context gamecontext){
 		sides = new int[4];
@@ -42,11 +44,15 @@ public class Zone {
 	public int[] getSides(){
 		return sides;
 	}
-	public void drawSelf(Canvas canvas,Context context){
-
-	}
 	public void setHighlight(){
 		highlighted = true;
+	}
+	public void drawSelf(Canvas canvas){
+		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
+		background.draw(canvas);
+		if(highlighted == true){
+			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],shade);
+		}
 	}
 	public void removeHighlight(){
 		highlighted = false;

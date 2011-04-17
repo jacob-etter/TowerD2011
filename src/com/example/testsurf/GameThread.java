@@ -30,16 +30,18 @@ class GameThread extends Thread {
     	long current_time = System.currentTimeMillis();
     	for(int i =0; i<_view.creeplist.size();++i){
     		_view.creeplist.get(i).move(current_time);
-    		current_time = System.currentTimeMillis();
+    	}
+    	for(int i=0;i<_view.bulletlist.size();++i){
+    		_view.bulletlist.get(i).move(current_time);
     	}
     	for(int i=0;i<_view.towerlist.size();++i){
-    		_view.towerlist.get(i).fire(_view.creeplist);
+    		_view.towerlist.get(i).fire(_view.creeplist,_view.bulletlist,_view);
     	}
     	if((current_time - creep_timer)>5000){
     		if(_view.pathlist.size()>0){
 	    		int x = _view.pathlist.get(0).getSides()[0];
 	    		int y = (_view.pathlist.get(0).getSides()[1]+_view.pathlist.get(0).getSides()[3])/2;
-				_view.creeplist.add(new SimpleCreep(0, y,_view.user, _view));
+				_view.creeplist.add(new CreepSimple(x, y,_view.user, _view));
 				creep_timer = current_time; 
     		}
     	}

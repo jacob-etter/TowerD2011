@@ -19,7 +19,6 @@ public class Tower extends Zone{
 	protected int pos_y; //y position of the tower
 	/* Target */
 	protected Creep cur_target; //The creep we are targeting
-	protected Drawable background;
 	public Tower(int left, int top, int right, int bottom, Context gamecontext) {
 		super(left, top, right, bottom, gamecontext);
 		ID = 3; //tell gameview that this zone is a tower
@@ -32,7 +31,7 @@ public class Tower extends Zone{
 		barrel = null;
 	}
 	@Override
-	public void drawSelf(Canvas canvas,Context context){
+	public void drawSelf(Canvas canvas){
 		background.draw(canvas);
 		base.draw(canvas);
 		if(barrel != null){
@@ -68,8 +67,8 @@ public class Tower extends Zone{
 			creep = creeplist.get(i);
 			creep_x = creep.getPosX();
 			creep_y = creep.getPosY();
-			dx = Math.abs(pos_x - creep_x);
-			dy = Math.abs(pos_y - creep_y);
+			dx = (pos_x - creep_x);
+			dy = (pos_y - creep_y);
 			dist = Math.sqrt( (dx*dx) + (dy*dy) );
 			if (dist < rng) 
 			{
@@ -78,14 +77,15 @@ public class Tower extends Zone{
 			}
 		}
 	} 
-	public void fire(ArrayList<Creep> creeplist) 
+	public void fire(ArrayList<Creep> creeplist, ArrayList<Bullet> bulletlist, GameView view) 
 	{
 		long currenttime=System.currentTimeMillis();
 		if(cur_target == null){
 			findTarget(creeplist);
 		}
 		if((cur_target != null)&&(cur_target.getAlive())){
-			if(((currenttime-last_fire)/1000)>=cooldown){
+			if(((currenttime-last_fire))>=cooldown*1000){
+				bulletlist.add(new BulletSimple(pos_x, pos_y, cur_target,view));
 				cur_target.decHealth(dmg);
 				last_fire = currenttime;
 			}

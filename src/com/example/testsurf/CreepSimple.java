@@ -1,7 +1,7 @@
 package com.example.testsurf;
 
-public class SimpleCreep extends Creep{
-	public SimpleCreep(float xloc, float yloc, User gameuser,GameView view) {
+public class CreepSimple extends Creep{
+	public CreepSimple(float xloc, float yloc, User gameuser,GameView view) {
 		super(xloc, yloc, gameuser, view);
 		health = 100;
 		speed = 25;

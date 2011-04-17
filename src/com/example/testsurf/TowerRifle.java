@@ -8,8 +8,8 @@ public class TowerRifle extends Tower
 	{
 		super(left, top, right, bottom, gamecontext);
 		rng = 300;
-		cooldown = 1; // This is the number of seconds between shots
-		dmg = 100; 
+		cooldown = 1.5;
+		dmg = 50; 
 		base = gamecontext.getResources().getDrawable(R.drawable.riflebase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = gamecontext.getResources().getDrawable(R.drawable.riflebarrel);

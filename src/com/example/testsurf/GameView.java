@@ -15,17 +15,16 @@ import android.view.SurfaceView;
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	private GameThread _thread;
 	private Paint text;
-//    private int xpress;
-//    private int ypress;
+	private int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,10,11,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,2,2,2,2,2,2}};
     public int xsize = 16;//size of grid in x
     public int ysize= 10;//size of grid in y
     public Grid tiles; //grid of zones
     private int initiate=0;
-//	private long click_time;
 	public User user;
 	public ArrayList<Creep> creeplist = new ArrayList<Creep>();
 	public ArrayList<Tower> towerlist = new ArrayList<Tower>();
 	public ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
+	public ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
 
     public GameView(Context context) {
         super(context); 
@@ -48,35 +47,50 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void onDraw(Canvas canvas) {
 		if(initiate == 0){
-			tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
-			for(int i=0;i<xsize;++i){
-				int[] sides = tiles.getGridZone(i, 5).getSides();
-				ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],getContext());
-				tiles.setGridZone(i, 5, path);
-				pathlist.add(path);
-			}
-			initiate = 1;
+				initilize();
 		}
 		Drawable background;
 		background = getContext().getResources().getDrawable(R.drawable.simplebackground);
 		background.setBounds(0, 0, getWidth(), getHeight());
 		background.draw(canvas);
         drawZones(canvas);
+        drawBullets(canvas);
         drawCreeps(canvas);
         drawUserInfo(canvas);
     }
+    protected void initilize(){
+		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
+		for(int i=0;i<paths[0].length;++i){
+			int[] sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
+			ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],getContext());
+			tiles.setGridZone(paths[0][i], paths[1][i], path);
+			pathlist.add(path);
+		}
+		for(int i = 0; i<pathlist.size();++i){
+			if(i == 0){
+				pathlist.get(i).setPrev(null);
+				pathlist.get(i).setNext(pathlist.get(i+1));
+			}
+			else if (i==pathlist.size()-1){
+				pathlist.get(i).setPrev(pathlist.get(i-1));
+				pathlist.get(i).setNext(null);
+			}
+			else{
+				pathlist.get(i).setPrev(pathlist.get(i-1));
+				pathlist.get(i).setNext(pathlist.get(i+1));
+			}
+		}
+		initiate = 1;
+    }
 	protected void drawZones(Canvas canvas){
-
 		for(int i = 0;i<xsize;++i){ 
 			for(int j=0;j<ysize;++j){
-				tiles.getGridZone(i,j).drawSelf(canvas,getContext());
+				tiles.getGridZone(i,j).drawSelf(canvas);
 			}
 		}
 
 	}
 	protected void drawCreeps(Canvas canvas){
-//		Creep test = new Creep(400,200,user,this);
-//		test.drawSelf(canvas);
     	for(int i =0; i<creeplist.size();++i){
     		creeplist.get(i).drawSelf(canvas);
     	}
@@ -85,6 +99,16 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     			creeplist.remove(i);
     		}
     	}
+	}
+	protected void drawBullets(Canvas canvas){
+		for(int i=0; i<bulletlist.size();++i){
+			bulletlist.get(i).drawSelf(canvas);
+		}
+		for(int i=0; i<bulletlist.size();++i){
+			if(bulletlist.get(i).getAlive()==false){
+				bulletlist.remove(i);
+			}
+		}
 	}
 	protected void drawUserInfo(Canvas canvas){
 		String userscore = Integer.toString(user.getScore());
@@ -118,6 +142,17 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 // we will try it again and again...
             }
         }
+    }
+    
+    public GameThread getThread(){
+    	return _thread;
+    }
+    public Grid getGrid(){
+    	return tiles;
+    }
+    public int[] getGridSize(){
+    	int[] size = {xsize,ysize};
+    	return size;
     }
 }
 
