@@ -80,13 +80,28 @@ public class Tower extends Zone{
 	public void fire(ArrayList<Creep> creeplist, ArrayList<Bullet> bulletlist, GameView view) 
 	{
 		long currenttime=System.currentTimeMillis();
+		if(cur_target != null){
+			double dist = 0.0;
+			double creep_x = 0;
+			double creep_y = 0;
+			double dx = 0;
+			double dy = 0;
+			creep_x = cur_target.getPosX();
+			creep_y = cur_target.getPosY();
+			dx = (pos_x - creep_x);
+			dy = (pos_y - creep_y);
+			dist = Math.sqrt( (dx*dx) + (dy*dy) );
+			if (dist > rng) 
+			{
+				cur_target = null;
+			}
+		}
 		if(cur_target == null){
 			findTarget(creeplist);
 		}
 		if((cur_target != null)&&(cur_target.getAlive())){
 			if(((currenttime-last_fire))>=cooldown*1000){
-				bulletlist.add(new BulletSimple(pos_x, pos_y, cur_target,view));
-				cur_target.decHealth(dmg);
+				bulletlist.add(new BulletSimple(pos_x, pos_y, cur_target,view, dmg));
 				last_fire = currenttime;
 			}
 		}

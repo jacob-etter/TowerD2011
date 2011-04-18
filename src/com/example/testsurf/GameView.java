@@ -14,6 +14,7 @@ import android.view.SurfaceView;
 
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	private GameThread _thread;
+	private Paint text_background;
 	private Paint text;
 	private int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,10,11,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,2,2,2,2,2,2}};
     public int xsize = 16;//size of grid in x
@@ -36,12 +37,20 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text.setARGB(255, 0, 0, 0);
 		text.setTextSize(40);
 		text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-		
+		text_background = new Paint();
+		text.setARGB(255, 255, 255, 255);
     }
 
-    @Override
+	@Override
     public boolean onTouchEvent(MotionEvent event) {
-    	return _thread.doTouchEvent(event);
+		boolean touch = false;
+		try {
+    		Thread.sleep(16);
+    		touch = _thread.doTouchEvent(event);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return touch;
     }
 
     @Override
@@ -114,6 +123,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		String userscore = Integer.toString(user.getScore());
 		String money = Integer.toString(user.getMoney());
 		String lives = Integer.toString(user.getLives());
+		canvas.drawRect(0,0,getWidth(),getHeight()/ysize, text_background);
 		canvas.drawText("  Score = " + userscore + " Money = " + money+" Lives = "+lives,0, getHeight()/ysize-15,text);
 	}
     @Override
@@ -153,6 +163,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public int[] getGridSize(){
     	int[] size = {xsize,ysize};
     	return size;
+    }
+    public User getUser(){
+    	return user;
     }
 }
 

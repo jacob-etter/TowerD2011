@@ -6,6 +6,9 @@ import android.graphics.drawable.Drawable;
 
 public class Bullet {
 	protected Creep target;
+	protected boolean t_alive;
+	protected double dead_x;
+	protected double dead_y;
 	protected double pos_x;
 	protected double pos_y;
 	protected double speed;
@@ -20,8 +23,10 @@ public class Bullet {
 	protected int ysize;
 	protected boolean x_side = false;
 	protected boolean y_side = false;
-	public Bullet(int x, int y, Creep creep_target,GameView view){
+	protected int damage;
+	public Bullet(int x, int y, Creep creep_target,GameView view,int dmg){
 		context = view.getContext();
+		damage = dmg;
 		xsize = view.getWidth();
 		ysize = view.getHeight();
 		pos_x = x;
@@ -33,36 +38,77 @@ public class Bullet {
 		if(pos_y>target.getPosY())
 			y_side = true;
 		alive = true;
+		t_alive = true;
 	}
 	public void move(long currenttime){ 
-		if(alive){
+		if((alive)&&(t_alive)){
 			double tar_x;
 			double tar_y;
 			long diff = currenttime-old_time;
 			tar_x = target.getPosX();
 			tar_y = target.getPosY();
-			if(((pos_x<tar_x)==x_side)||((pos_y<tar_y)==y_side)){
+			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
 				alive = false;
+				target.decHealth(damage);
 				return;
 			}
 			else if(target.getAlive()==false){
-				alive = false;
+				dead_x = tar_x;
+				dead_y = tar_y;
+				t_alive = false;
 				return;
 			}
 			tar_x = (tar_x-pos_x);
 			tar_y = (tar_y-pos_y);
 			pos_x += speed*diff/1000*(tar_x/(Math.abs(tar_y)+Math.abs(tar_x)));
 			pos_y += speed*diff/1000*(tar_y/(Math.abs(tar_y)+Math.abs(tar_x)));
+			old_time = currenttime; 
 		}
+		else if(alive){
+			double tar_x;
+			double tar_y;
+			long diff = currenttime-old_time;
+			tar_x = dead_x;
+			tar_y = dead_y;
+			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+				alive = false;
+				target.decHealth(damage);
+				return;
+			}
+			tar_x = (tar_x-pos_x);
+			tar_y = (tar_y-pos_y);
+			pos_x += speed*diff/1000*(tar_x/(Math.abs(tar_y)+Math.abs(tar_x)));
+			pos_y += speed*diff/1000*(tar_y/(Math.abs(tar_y)+Math.abs(tar_x)));
+			old_time = currenttime; 
+		}
+		
 	}
 	public void drawSelf(Canvas canvas){
-		if(alive){
+		if((alive)&&(t_alive)){
 			double tar_x;
 			double tar_y;
 			tar_x = target.getPosX();
 			tar_y = target.getPosY();
-			if(((pos_x<tar_x)==x_side)||((pos_y<tar_y)==y_side)){
+			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
 				alive = false;
+				target.decHealth(damage);
+				return;
+			}
+			int top = (int) (pos_y-yscale);
+			int bottom = (int) (pos_y+yscale);
+			int right = (int) (pos_x+xscale);
+			int left = (int) (pos_x-xscale);
+			bullet.setBounds(left, top, right, bottom);
+			bullet.draw(canvas);
+		}
+		else if(alive){
+			double tar_x;
+			double tar_y;
+			tar_x = dead_x;
+			tar_y = dead_y;
+			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+				alive = false;
+				target.decHealth(damage);
 				return;
 			}
 			int top = (int) (pos_y-yscale);

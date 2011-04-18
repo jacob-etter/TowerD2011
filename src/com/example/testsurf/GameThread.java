@@ -37,7 +37,15 @@ class GameThread extends Thread {
     	for(int i=0;i<_view.towerlist.size();++i){
     		_view.towerlist.get(i).fire(_view.creeplist,_view.bulletlist,_view);
     	}
-    	if((current_time - creep_timer)>5000){
+    	if((_view.getUser().getScore()<25)&&(current_time - creep_timer)>5000){
+    		if(_view.pathlist.size()>0){
+	    		int x = _view.pathlist.get(0).getSides()[0];
+	    		int y = (_view.pathlist.get(0).getSides()[1]+_view.pathlist.get(0).getSides()[3])/2;
+				_view.creeplist.add(new CreepSimple(x, y,_view.user, _view));
+				creep_timer = current_time; 
+    		}
+    	}
+    	else if((_view.getUser().getScore()>=25)&&(current_time - creep_timer)>1000){
     		if(_view.pathlist.size()>0){
 	    		int x = _view.pathlist.get(0).getSides()[0];
 	    		int y = (_view.pathlist.get(0).getSides()[1]+_view.pathlist.get(0).getSides()[3])/2;
