@@ -6,7 +6,11 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
- 
+/**
+ * The Main activity which will start the view
+ * @author Sean
+ *
+ */
 public class Main extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

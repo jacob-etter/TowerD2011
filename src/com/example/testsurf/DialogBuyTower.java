@@ -1,23 +1,30 @@
 package com.example.testsurf;
 
-import java.util.ArrayList;
-import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-/*This is the customDialog that will pop up when 
- * a user clicks on a zone. This dialog will then ask
- * for a tower selection and call the view to update
+/**
+ * This is a dialog that is used to buy a tower
+ * 
+ * @author Sean
+ *
  */
 public class DialogBuyTower extends DialogTower implements OnClickListener{
 	private Button ButtonRed;
 	private Button ButtonBlue;
 	private Button ButtonGreen;
 	private Button ButtonCancel;
-	public DialogBuyTower(Context gamecontext, GameView g, int xloc, int yloc, User gameuser,ArrayList<Tower> towers){
-		super(gamecontext, g, xloc, yloc, gameuser, towers);
+	/**
+	 * Constructor for the DialogBuyTower
+	 * 
+	 * @param gameview
+	 * @param xloc
+	 * @param yloc
+	 */
+	public DialogBuyTower(GameView gameview, int xloc, int yloc){
+		super(gameview,xloc,yloc);
 		/** Design the dialog in main.xml file */
 		setContentView(R.layout.dialogbuytower);
 		ButtonRed = (Button) findViewById(R.id.ButtonRed);

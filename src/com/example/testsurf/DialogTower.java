@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Window;
-
+/**
+ * This is the superclass of dialog 
+ * 
+ * @author Sean
+ *
+ */
 public class DialogTower extends Dialog{
 	protected GameView view;
 	protected int x_pos;
@@ -13,15 +18,20 @@ public class DialogTower extends Dialog{
 	protected User user;
 	protected Context context;
 	protected ArrayList<Tower> towerlist;
-	public DialogTower(Context gamecontext, GameView g, int xloc, int yloc, User gameuser,ArrayList<Tower> towers){
-		super(gamecontext);
-		towerlist = towers;
-		context = gamecontext;
-		user = gameuser;
+	/**
+	 * 
+	 * @param gameview
+	 * @param xloc
+	 * @param yloc
+	 */
+	public DialogTower(GameView gameview, int xloc, int yloc){
+		super(gameview.getContext());
+		towerlist = gameview.getTowerlist();
+		context = gameview.getContext();
+		user = gameview.getUser();
 		x_pos = xloc;
 		y_pos = yloc;
-		view = g;
-		user = gameuser;
+		view = gameview;
 		/** 'Window.FEATURE_NO_TITLE' - Used to hide the title */
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		/** Design the dialog in main.xml file */

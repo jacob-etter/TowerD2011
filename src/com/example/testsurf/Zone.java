@@ -5,9 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
-/*This is the class which is stored in the grid 
- * currently it just has the location of its 
- * boundaries and its color
+/**
+ * A super class for Towers, Paths, and Empty zones
+ * @author Sean
+ *
  */
 public class Zone {
 	protected int[] sides;//left top right bottom

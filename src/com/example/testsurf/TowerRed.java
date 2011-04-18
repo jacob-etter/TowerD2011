@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import android.content.Context;
-
+/**
+ * A Test tower
+ * @author Sean
+ *
+ */
 public class TowerRed extends Tower{
 
 	public TowerRed(int left, int top, int right, int bottom, Context gamecontext) {

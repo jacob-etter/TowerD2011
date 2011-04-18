@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import android.content.Context;
-
+/**
+ * A zone that creeps follow and cannot be built on
+ * @author Sean
+ *
+ */
 public class ZonePath extends Zone{
 	protected ZonePath previous;
 	protected ZonePath next;

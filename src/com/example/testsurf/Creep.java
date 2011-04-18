@@ -3,7 +3,13 @@ package com.example.testsurf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-
+/**
+ * This is the creep superclass
+ * The creep will follow a path until is reaches the end or is killed by a tower
+ * 
+ * @author Sean
+ *
+ */
 public class Creep {
 	protected double pos_x;
 	protected double pos_y;
@@ -22,7 +28,14 @@ public class Creep {
 	protected int health;
 	protected GameView gameview;
 	protected int moneyval;
-	public Creep(float xloc, float yloc,User gameuser, GameView view){
+	/**
+	 * Constructor for Creep
+	 * 
+	 * @param xloc the starting location of the creep
+	 * @param yloc the starting location of the creep
+	 * @param view the gameview that created the creep
+	 */
+	public Creep(float xloc, float yloc, GameView view){
 		gameview= view;
 		context = view.getContext();
 		xsize = view.getWidth();
@@ -31,9 +44,14 @@ public class Creep {
 		alive = true;
 		pos_x = xloc;
 		pos_y = yloc;
-		user = gameuser;
+		user = view.getUser();
 		old_time = System.currentTimeMillis();
 	}
+	/**
+	 * updates the position of the creep
+	 * 
+	 * @param current_time
+	 */
 	public void move(long current_time){
 		if(alive){
 			int x= (int) (pos_x/(xsize/gameview.getGridSize()[0]));
@@ -64,6 +82,11 @@ public class Creep {
 			old_time = current_time;
 		}
 	}
+	/**
+	 * draws the creep on the canvas
+	 * 
+	 * @param canvas
+	 */
 	public void drawSelf(Canvas canvas){
 		if(alive){
 			int top = (int) (pos_y-10*yscale);
@@ -79,6 +102,11 @@ public class Creep {
 			creepicon.draw(canvas);
 		}
 	}
+	/**
+	 * Decreases the health of the creep
+	 * 
+	 * @param value amount to decrement the health of the creep by
+	 */
 	public void decHealth(int value){
 		health -= value;
 		if(health < 0){
@@ -87,12 +115,27 @@ public class Creep {
 			user.incScore(1);
 		}
 	}
+	/**
+	 * gets the current x postion of the creep
+	 * 
+	 * @return
+	 */
 	public double getPosX(){
 		return pos_x;
 	}
+	/**
+	 * gets the current y position of the creep
+	 * 
+	 * @return
+	 */
 	public double getPosY(){
 		return pos_y;
 	}
+	/**
+	 * gets the current alive state of the creep
+	 * 
+	 * @return
+	 */
 	public boolean getAlive(){
 		return alive;
 	}

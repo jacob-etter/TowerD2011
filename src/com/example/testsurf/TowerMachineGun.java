@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import android.content.Context;
-
+/**
+ * A simple tower that has  high rate of fire but small damage
+ * @author Sean
+ *
+ */
 public class TowerMachineGun extends Tower 
 {
 	public TowerMachineGun(int left, int top, int right, int bottom, Context gamecontext) 

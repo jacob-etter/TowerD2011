@@ -11,22 +11,30 @@ import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
+/**
+ * The main view for the game
+ * @author Sean
+ *
+ */
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
-	private GameThread _thread;
-	private Paint text_background;
-	private Paint text;
-	private int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,10,11,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,2,2,2,2,2,2}};
-    public int xsize = 16;//size of grid in x
-    public int ysize= 10;//size of grid in y
-    public Grid tiles; //grid of zones
+	protected GameThread _thread;
+	protected Paint text_background;
+	protected Paint text;
+	protected int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,10,11,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,2,2,2,2,2,2}};
+    protected int xsize = 16;//size of grid in x
+    protected int ysize= 10;//size of grid in y
+    protected Grid tiles; //grid of zones
     private int initiate=0;
-	public User user;
-	public ArrayList<Creep> creeplist = new ArrayList<Creep>();
-	public ArrayList<Tower> towerlist = new ArrayList<Tower>();
-	public ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
-	public ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
-
+    protected User user;
+    protected ArrayList<Creep> creeplist = new ArrayList<Creep>();
+    protected ArrayList<Tower> towerlist = new ArrayList<Tower>();
+    protected ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
+    protected ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
+	/**
+	 * Constructor for the gameview
+	 * 
+	 * @param context
+	 */
     public GameView(Context context) {
         super(context); 
         getHolder().addCallback(this);
@@ -40,7 +48,6 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text_background = new Paint();
 		text.setARGB(255, 255, 255, 255);
     }
-
 	@Override
     public boolean onTouchEvent(MotionEvent event) {
 		boolean touch = false;
@@ -67,6 +74,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
         drawCreeps(canvas);
         drawUserInfo(canvas);
     }
+    /**
+     * on the first draw we setup our grid
+     */
     protected void initilize(){
 		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
 		for(int i=0;i<paths[0].length;++i){
@@ -91,6 +101,10 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		}
 		initiate = 1;
     }
+    /**
+     * Will draw all zones which include Towers, ZoneEmpties, and ZonePaths
+     * @param canvas
+     */
 	protected void drawZones(Canvas canvas){
 		for(int i = 0;i<xsize;++i){ 
 			for(int j=0;j<ysize;++j){
@@ -99,6 +113,10 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		}
 
 	}
+	/**
+	 * Will draw all of the creeps and delete them if they are dead
+	 * @param canvas
+	 */
 	protected void drawCreeps(Canvas canvas){
     	for(int i =0; i<creeplist.size();++i){
     		creeplist.get(i).drawSelf(canvas);
@@ -109,6 +127,10 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     		}
     	}
 	}
+	/**
+	 * Will draw all of the bullets in play and will delete them if they are dead
+	 * @param canvas
+	 */
 	protected void drawBullets(Canvas canvas){
 		for(int i=0; i<bulletlist.size();++i){
 			bulletlist.get(i).drawSelf(canvas);
@@ -119,6 +141,10 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 		}
 	}
+	/**
+	 * Will draw the user stats at the top of the view
+	 * @param canvas
+	 */
 	protected void drawUserInfo(Canvas canvas){
 		String userscore = Integer.toString(user.getScore());
 		String money = Integer.toString(user.getMoney());
@@ -166,6 +192,18 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
     public User getUser(){
     	return user;
+    }
+    public ArrayList<Tower> getTowerlist(){
+    	return towerlist;
+    }
+    public ArrayList<Bullet> getBulletlist(){
+    	return bulletlist;
+    }
+    public ArrayList<Creep> getCreeplist(){
+    	return creeplist;
+    }
+    public ArrayList<ZonePath> getPathlist(){
+    	return pathlist;
     }
 }
 

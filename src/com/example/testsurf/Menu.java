@@ -9,7 +9,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-
+/**
+ * Displays the startup menu
+ * @author Marina
+ *
+ */
 public class Menu extends Activity {
     /** Called when the activity is first created. */
     @Override

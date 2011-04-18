@@ -1,8 +1,20 @@
 package com.example.testsurf;
-
+/**
+ * This is a simple creep used for testing purposes
+ * 
+ * @author Sean
+ *
+ */
 public class CreepSimple extends Creep{
-	public CreepSimple(float xloc, float yloc, User gameuser,GameView view) {
-		super(xloc, yloc, gameuser, view);
+	/**
+	 * Constructor for Creep
+	 * 
+	 * @param xloc the starting location of the creep
+	 * @param yloc the starting location of the creep
+	 * @param view the gameview that created the creep
+	 */
+	public CreepSimple(float xloc, float yloc, GameView view) {
+		super(xloc, yloc, view);
 		health = 100;
 		speed = 25;
 		size = 1;

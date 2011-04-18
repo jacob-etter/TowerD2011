@@ -1,7 +1,9 @@
 package com.example.testsurf;
 
-/*This is the user class 
- * need I say more?
+/**
+ * The class that stores information about the user
+ * @author Sean
+ *
  */
 public class User {
 	private int money;

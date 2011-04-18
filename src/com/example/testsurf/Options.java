@@ -5,7 +5,11 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-
+/**
+ * Displays the options menu
+ * @author Marina
+ *
+ */
 public class Options extends Menu {
 
     /** Called when the activity is first created. */

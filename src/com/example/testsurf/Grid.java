@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import android.content.Context;
-
+/**
+ * Generates the grid used to store towers, Empty Zones, and Path Zones
+ * @author Sean
+ *
+ */
 public class Grid {
 	private Zone[][] grid;
 	public Grid(int xnum,int ynum,int xsize, int ysize,Context gamecontext){

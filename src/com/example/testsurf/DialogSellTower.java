@@ -1,22 +1,28 @@
 package com.example.testsurf;
 
-import java.util.ArrayList;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-/*This is the customDialog that will pop up when 
- * a user clicks on a zone. This dialog will then ask
- * for a tower selection and call the view to update
+/**
+ * This is a dialog used to sell a tower
+ * 
+ * @author Sean
+ *
  */
 public class DialogSellTower extends DialogTower implements OnClickListener{
 	private Button ButtonYes;
 	private Button ButtonNo;
 	private TextView tx;
-	public DialogSellTower(Context gamecontext, GameView g, int xloc, int yloc, User gameuser, ArrayList<Tower> towers) {
-		super(gamecontext, g, xloc, yloc, gameuser, towers);
+	/**
+	 * This is the constructor for DialogSellTower
+	 * @param gameview
+	 * @param xloc
+	 * @param yloc
+	 */
+	public DialogSellTower(GameView gameview, int xloc, int yloc){
+		super(gameview,xloc,yloc);
 		setContentView(R.layout.dialogselltower);
 		ButtonYes = (Button) findViewById(R.id.ButtonSellYes);
 		ButtonYes.setOnClickListener(this);
@@ -27,7 +33,6 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 		String text = Integer.toString(saleprice);
 		tx.setText(text);
 	}
-
 	@Override
 	public void onClick(View v) {
 		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();

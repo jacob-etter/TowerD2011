@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import android.content.Context;
-
+/**
+ * A tower that has a long range and damage but long cooldown
+ * @author Sean
+ *
+ */
 public class TowerRifle extends Tower 
 {
 	public TowerRifle(int left, int top, int right, int bottom,	Context gamecontext) 

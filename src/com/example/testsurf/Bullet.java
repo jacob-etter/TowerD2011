@@ -3,7 +3,13 @@ package com.example.testsurf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-
+/**
+ * This is the bullet superclass
+ * The bullet will be fired from a tower and target a creep to do damage
+ * 
+ * @author Sean
+ *
+ */
 public class Bullet {
 	protected Creep target;
 	protected boolean t_alive;
@@ -24,6 +30,15 @@ public class Bullet {
 	protected boolean x_side = false;
 	protected boolean y_side = false;
 	protected int damage;
+	/**
+	 * Constructor for Bullet
+	 * 
+	 * @param x the starting location of the bullet
+	 * @param y the starting location of the bullet
+	 * @param creep_target the target for the bullet
+	 * @param view the gamview for the bullet
+	 * @param dmg the damage to be dealt to the target
+	 */
 	public Bullet(int x, int y, Creep creep_target,GameView view,int dmg){
 		context = view.getContext();
 		damage = dmg;
@@ -40,6 +55,11 @@ public class Bullet {
 		alive = true;
 		t_alive = true;
 	}
+	/**
+	 * When called updates the position of the bullet
+	 * 
+	 * @param currenttime
+	 */
 	public void move(long currenttime){ 
 		if((alive)&&(t_alive)){
 			double tar_x;
@@ -72,7 +92,6 @@ public class Bullet {
 			tar_y = dead_y;
 			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
 				alive = false;
-				target.decHealth(damage);
 				return;
 			}
 			tar_x = (tar_x-pos_x);
@@ -83,6 +102,11 @@ public class Bullet {
 		}
 		
 	}
+	/**
+	 * Draws the bullet on the canvas
+	 * 
+	 * @param canvas
+	 */
 	public void drawSelf(Canvas canvas){
 		if((alive)&&(t_alive)){
 			double tar_x;
@@ -108,7 +132,6 @@ public class Bullet {
 			tar_y = dead_y;
 			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
 				alive = false;
-				target.decHealth(damage);
 				return;
 			}
 			int top = (int) (pos_y-yscale);
@@ -119,6 +142,11 @@ public class Bullet {
 			bullet.draw(canvas);
 		}
 	}
+	/**
+	 * returns the alive status of the bullet
+	 * 
+	 * @return
+	 */
 	public boolean getAlive(){
 		return alive;
 	}

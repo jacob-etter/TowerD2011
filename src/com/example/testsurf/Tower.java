@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-
+/**
+ * The Superclass for towers
+ * @author Sean
+ *
+ */
 public class Tower extends Zone{
 	protected Drawable base; //base png of the tower
 	protected Drawable barrel; //barrel png of the tower
@@ -52,6 +56,10 @@ public class Tower extends Zone{
 	public int getSalePrice(){
 		return saleprice; 
 	}
+	/**
+	 * Finds the next target to fire at if target was null
+	 * @param creeplist
+	 */
 	protected void findTarget(ArrayList<Creep> creeplist) 
 	{
 		// Internal Vars
@@ -77,8 +85,16 @@ public class Tower extends Zone{
 			}
 		}
 	} 
-	public void fire(ArrayList<Creep> creeplist, ArrayList<Bullet> bulletlist, GameView view) 
+	/** 
+	 * Executes the firing of the tower
+	 * @param creeplist
+	 * @param bulletlist
+	 * @param view
+	 */
+	public void fire(GameView view) 
 	{
+		ArrayList<Creep> creeplist = view.getCreeplist();
+		ArrayList<Bullet> bulletlist = view.getBulletlist();
 		long currenttime=System.currentTimeMillis();
 		if(cur_target != null){
 			double dist = 0.0;
