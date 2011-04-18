@@ -90,7 +90,7 @@ public class Bullet {
 			long diff = currenttime-old_time;
 			tar_x = dead_x;
 			tar_y = dead_y;
-			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+			if(((pos_x<tar_x)==x_side)||((pos_y<tar_y)==y_side)){
 				alive = false;
 				return;
 			}
@@ -130,7 +130,7 @@ public class Bullet {
 			double tar_y;
 			tar_x = dead_x;
 			tar_y = dead_y;
-			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+			if(((pos_x<tar_x)==x_side)||((pos_y<tar_y)==y_side)){
 				alive = false;
 				return;
 			}
