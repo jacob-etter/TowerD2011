@@ -16,6 +16,7 @@ public class CreepSimple extends Creep{
 	public CreepSimple(float xloc, float yloc, GameView view) {
 		super(xloc, yloc, view);
 		health = 100;
+		health2 = health;
 		speed = 25;
 		size = 1;
 		xscale = (float) (xsize/800.0 * size);

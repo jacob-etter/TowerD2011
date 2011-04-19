@@ -25,7 +25,7 @@ public class Tower extends Zone{
 	protected Creep cur_target; //The creep we are targeting
 	public Tower(int left, int top, int right, int bottom, Context gamecontext) {
 		super(left, top, right, bottom, gamecontext);
-		ID = 3; //tell gameview that this zone is a tower
+		ID = 4; //tell gameview that this zone is a tower
 		angle = 0;
 		pos_x = (sides[0] + sides[2])/2;
 		pos_y = (sides[1] + sides[3])/2;
@@ -117,13 +117,14 @@ public class Tower extends Zone{
 		if(cur_target == null){
 			findTarget(creeplist);
 		}
-		if((cur_target != null)&&(cur_target.getAlive())){
+		if((cur_target != null)&&(cur_target.getAlive2())){
 			if(((currenttime-last_fire))>=cooldown*1000){
 				bulletlist.add(new BulletSimple(pos_x, pos_y, cur_target,view, dmg));
+				cur_target.decHealth2(dmg);
 				last_fire = currenttime;
 			}
 		}
-		else if((cur_target != null)&&(cur_target.getAlive() == false)){
+		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
 			cur_target = null;
 		}
 	}

@@ -25,7 +25,9 @@ public class Creep {
 	protected Drawable creepicon;
 	protected User user;
 	protected boolean alive = true;
+	protected boolean alive2 = true;
 	protected int health;
+	protected int health2;
 	protected GameView gameview;
 	protected int moneyval;
 	/**
@@ -109,10 +111,16 @@ public class Creep {
 	 */
 	public void decHealth(int value){
 		health -= value;
-		if(health < 0){
+		if((health <= 0)&&(alive)){
 			alive = false;
 			user.incMoney(moneyval);
 			user.incScore(1);
+		}
+	}
+	public void decHealth2(int value){
+		health2 -= value;
+		if((health2 <= 0)&&(alive2)){
+			alive2 = false;
 		}
 	}
 	/**
@@ -138,5 +146,8 @@ public class Creep {
 	 */
 	public boolean getAlive(){
 		return alive;
+	}
+	protected boolean getAlive2(){
+		return alive2;
 	}
 }

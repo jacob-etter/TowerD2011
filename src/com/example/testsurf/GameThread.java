@@ -10,14 +10,18 @@ import android.view.SurfaceHolder;
  *
  */
 class GameThread extends Thread {
-    private SurfaceHolder _surfaceHolder;
-    private GameView _view;
-    private boolean _run = false;
-    private boolean paused = false;
-    private int xpress;
-    private int ypress;
-    public long click_time;
-    private long creep_timer=0;
+	protected SurfaceHolder _surfaceHolder;
+    protected GameView _view;
+    protected boolean _run = false;
+    protected boolean paused = true;
+    protected boolean in_round = false;
+    protected int xpress;
+    protected int ypress;
+    protected long click_time;
+    protected long creep_timer=0;
+    protected int spawn_count = 0;
+    protected int old_spawn_count = 5;
+    protected long spawn_timer = 10000;
     /**
      * Constructor for GameThread
      * 
@@ -34,6 +38,7 @@ class GameThread extends Thread {
      */
     public void setRunning(boolean run) {
         _run = run;
+        paused = false;
     }
     /**
      * Get the surfaceholder
@@ -47,6 +52,9 @@ class GameThread extends Thread {
      */
     public void updateGame(){
     	long current_time = System.currentTimeMillis();
+    	if((spawn_count < 1)&&(_view.getCreeplist().size()==0)){
+    		in_round = false;
+    	}
     	for(int i =0; i<_view.getCreeplist().size();++i){
     		_view.getCreeplist().get(i).move(current_time);
     	}
@@ -56,20 +64,13 @@ class GameThread extends Thread {
     	for(int i=0;i<_view.towerlist.size();++i){
     		_view.getTowerlist().get(i).fire(_view);
     	}
-    	if((_view.getUser().getScore()<25)&&(current_time - creep_timer)>5000){
-    		if(_view.getPathlist().size()>0){
+    	if((current_time - creep_timer)>spawn_timer){
+    		if((_view.getPathlist().size()>0)&&(spawn_count > 0)){
 	    		int x = _view.getPathlist().get(0).getSides()[0];
 	    		int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
 				_view.getCreeplist().add(new CreepSimple(x, y,_view));
 				creep_timer = current_time; 
-    		}
-    	}
-    	else if((_view.getUser().getScore()>=25)&&(current_time - creep_timer)>1000){
-    		if(_view.getPathlist().size()>0){
-	    		int x = _view.getPathlist().get(0).getSides()[0];
-	    		int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
-				_view.getCreeplist().add(new CreepSimple(x, y,_view));
-				creep_timer = current_time; 
+				spawn_count -= 1;
     		}
     	}
     }
@@ -79,6 +80,7 @@ class GameThread extends Thread {
      * @return
      */
     public boolean doTouchEvent(MotionEvent event) {
+    	boolean handled = false;
         int old_xpress;
         int old_ypress;
     	synchronized (_surfaceHolder) {
@@ -89,6 +91,7 @@ class GameThread extends Thread {
     			ypress = ypress/(_view.getHeight()/_view.ysize);
     			_view.tiles.getGridZone(xpress,ypress).setHighlight();
     			click_time = System.currentTimeMillis();
+    			handled = true;
     		} 
     		else if (event.getAction() == MotionEvent.ACTION_MOVE){
     			old_xpress = xpress;
@@ -102,6 +105,7 @@ class GameThread extends Thread {
     			if((old_xpress != xpress)&&(old_ypress!=ypress)){
     				click_time = System.currentTimeMillis();
     			}
+    			handled = true;
     		}
         	else if (event.getAction() == MotionEvent.ACTION_UP){
     			_view.tiles.getGridZone(xpress,ypress).removeHighlight();
@@ -118,9 +122,13 @@ class GameThread extends Thread {
     					DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
     					dialogselltower.show();
     				}
+    				else if((_view.tiles.getGridZone(xpress,ypress).getID()==0)&&(in_round == false)){
+        				startround();
+    				}
     			}
+    			handled = true;
     		}
-    		return true;
+    		return handled;
         }
     }
     /**
@@ -148,5 +156,11 @@ class GameThread extends Thread {
                 }
             }
         }
+    }
+    protected void startround(){
+    	in_round = true;
+    	spawn_count = old_spawn_count;
+    	old_spawn_count = 2*old_spawn_count;
+    	spawn_timer = spawn_timer/2;
     }
 }
