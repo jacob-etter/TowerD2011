@@ -43,7 +43,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		user = new User(5000, 0, 10, "Sean");
 		text = new Paint();
 		text.setARGB(255, 0, 0, 0);
-		text.setTextSize(40);
+		text.setTextSize(30);
 		text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 		text_background = new Paint();
 		text.setARGB(255, 255, 255, 255);
@@ -151,8 +151,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		String userscore = Integer.toString(user.getScore());
 		String money = Integer.toString(user.getMoney());
 		String lives = Integer.toString(user.getLives());
+		String wave = Integer.toString(_thread.getWave());
 		canvas.drawRect(0,0,getWidth(),getHeight()/ysize, text_background);
-		canvas.drawText("  Score = " + userscore + " Money = " + money+" Lives = "+lives,0, getHeight()/ysize-15,text);
+		canvas.drawText("  Wave = "+wave+" Score = "+userscore+" Money = "+money+" Lives = "+lives,0, getHeight()/ysize-15,text);
 	}
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {

@@ -44,11 +44,11 @@ public class Tower extends Zone{
 				angle = Math.atan2((pos_y - cur_target.pos_y),(pos_x - cur_target.pos_x));
 				angle = angle * 180/Math.PI;
 				angle -= 90;
-				}
-				canvas.save();
-				canvas.rotate((float)(angle), (float)pos_x, (float)pos_y);
-				barrel.draw(canvas);
-				canvas.restore();
+			}
+			canvas.save();
+			canvas.rotate((float)(angle), (float)pos_x, (float)pos_y);
+			barrel.draw(canvas);
+			canvas.restore();
 		}
 		if(highlighted == true){
 			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],shade);
@@ -75,15 +75,17 @@ public class Tower extends Zone{
 		for(int i=0;i<creeplist.size();++i) 
 		{
 			creep = creeplist.get(i);
-			creep_x = creep.getPosX();
-			creep_y = creep.getPosY();
-			dx = (pos_x - creep_x);
-			dy = (pos_y - creep_y);
-			dist = Math.sqrt( (dx*dx) + (dy*dy) );
-			if (dist < rng) 
-			{
-				cur_target = creep;
-				break;
+			if(creep.getAlive2()){
+				creep_x = creep.getPosX();
+				creep_y = creep.getPosY();
+				dx = (pos_x - creep_x);
+				dy = (pos_y - creep_y);
+				dist = Math.sqrt( (dx*dx) + (dy*dy) );
+				if (dist < rng) 
+				{
+					cur_target = creep;
+					break;
+				}
 			}
 		}
 	} 

@@ -60,7 +60,8 @@ public class Creep {
 			int y = (int) (pos_y/(ysize/gameview.getGridSize()[1]));
 			if(x > gameview.xsize){
 				alive = false;
-				user.decLives(1);
+				if(alive2 )
+					user.decLives(1);
 				return;
 			}
 			ZonePath path = (ZonePath) gameview.getGrid().getGridZone(x, y);
@@ -97,7 +98,8 @@ public class Creep {
 			int left = (int) (pos_x-10*xscale);
 			if(left > xsize){
 				alive = false;
-				user.decLives(1);
+				if(alive2)
+					user.decLives(1);
 				return;
 			}
 			creepicon.setBounds(left, top, right, bottom);

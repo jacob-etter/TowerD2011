@@ -22,6 +22,7 @@ class GameThread extends Thread {
     protected int spawn_count = 0;
     protected int old_spawn_count = 5;
     protected long spawn_timer = 10000;
+    protected int wave = 0;
     /**
      * Constructor for GameThread
      * 
@@ -52,7 +53,7 @@ class GameThread extends Thread {
      */
     public void updateGame(){
     	long current_time = System.currentTimeMillis();
-    	if((spawn_count < 1)&&(_view.getCreeplist().size()==0)){
+    	if((spawn_count < 1)&&(_view.getCreeplist().size()<1)){
     		in_round = false;
     	}
     	for(int i =0; i<_view.getCreeplist().size();++i){
@@ -162,5 +163,9 @@ class GameThread extends Thread {
     	spawn_count = old_spawn_count;
     	old_spawn_count = 2*old_spawn_count;
     	spawn_timer = spawn_timer/2;
+    	wave += 1;
+    }
+    public int getWave(){
+    	return wave;
     }
 }
