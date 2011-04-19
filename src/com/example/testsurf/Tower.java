@@ -39,14 +39,16 @@ public class Tower extends Zone{
 		background.draw(canvas);
 		base.draw(canvas);
 		if(barrel != null){
-			if(cur_target == null)
-				angle = 0;
-			else
-				angle = Math.pow(Math.tan(Math.abs(pos_y - cur_target.pos_y)/Math.abs(pos_x - cur_target.pos_x)), -1.0);
-			barrel.draw(canvas);
-		}
-		else{
-
+			if(cur_target != null)
+			{
+				angle = Math.atan2((pos_y - cur_target.pos_y),(pos_x - cur_target.pos_x));
+				angle = angle * 180/Math.PI;
+				angle -= 90;
+				}
+				canvas.save();
+				canvas.rotate((float)(angle), (float)pos_x, (float)pos_y);
+				barrel.draw(canvas);
+				canvas.restore();
 		}
 		if(highlighted == true){
 			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],shade);
