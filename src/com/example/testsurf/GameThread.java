@@ -1,5 +1,6 @@
 package com.example.testsurf;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -23,6 +24,7 @@ class GameThread extends Thread {
     protected int old_spawn_count = 5;
     protected long spawn_timer = 10000;
     protected int wave = 0;
+    protected boolean gameover = false;
     /**
      * Constructor for GameThread
      * 
@@ -73,6 +75,11 @@ class GameThread extends Thread {
 				creep_timer = current_time; 
 				spawn_count -= 1;
     		}
+    	}
+    	if(_view.getUser().getLives() <= 0){
+    		_run = false;
+            Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
+            _view.getContext().startActivity(myIntent);
     	}
     }
     /**
