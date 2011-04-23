@@ -18,10 +18,10 @@ public class CreepSimple extends Creep{
 		health = 100;
 		health2 = health;
 		speed = 25;
-		size = 1;
+		size = 2;
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);
-		creepicon = context.getResources().getDrawable(R.drawable.icon);
+		creepicon = context.getResources().getDrawable(R.drawable.creep_ghost);
 		moneyval = 100;
 	}
 
