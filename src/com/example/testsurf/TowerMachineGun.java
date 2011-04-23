@@ -13,7 +13,7 @@ public class TowerMachineGun extends Tower
 		super(left, top, right, bottom, gamecontext);
 		rng = 150;
 		cooldown = 0.2; // This is the number of seconds between shots
-		dmg = 5;
+		dmg = 10;
 		base = gamecontext.getResources().getDrawable(R.drawable.machinegunbase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = gamecontext.getResources().getDrawable(R.drawable.machinegunbarrel);
