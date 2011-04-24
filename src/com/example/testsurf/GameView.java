@@ -21,25 +21,25 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	protected Paint text_background;
 	protected Paint text;
 	protected int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,9,9,9,9,9,9,10,11,12,12,12,12,12,12,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,2,2,2}};
-    protected int xsize = 16;//size of grid in x
-    protected int ysize= 10;//size of grid in y
-    protected Grid tiles; //grid of zones
-    private int initiate=0;
-    protected User user;
-    protected ArrayList<Creep> creeplist = new ArrayList<Creep>();
-    protected ArrayList<Tower> towerlist = new ArrayList<Tower>();
-    protected ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
-    protected ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
+	protected int xsize = 16;//size of grid in x
+	protected int ysize= 10;//size of grid in y
+	protected Grid tiles; //grid of zones
+	private int initiate=0;
+	protected User user;
+	protected ArrayList<Creep> creeplist = new ArrayList<Creep>();
+	protected ArrayList<Tower> towerlist = new ArrayList<Tower>();
+	protected ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
+	protected ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
 	/**
 	 * Constructor for the gameview
 	 * 
 	 * @param context
 	 */
-    public GameView(Context context) {
-        super(context); 
-        getHolder().addCallback(this);
-        _thread = new GameThread(getHolder(), this);
-        setFocusable(true);
+	public GameView(Context context) {
+		super(context); 
+		getHolder().addCallback(this);
+		_thread = new GameThread(getHolder(), this);
+		setFocusable(true);
 		user = new User(5000, 0, 10, "Sean");
 		text = new Paint();
 		text.setARGB(255, 0, 0, 0);
@@ -47,37 +47,37 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 		text_background = new Paint();
 		text.setARGB(255, 255, 255, 255);
-    }
+	}
 	@Override
-    public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event) {
 		boolean touch = false;
 		try {
-    		Thread.sleep(16);
-    		touch = _thread.doTouchEvent(event);
+			Thread.sleep(16);
+			touch = _thread.doTouchEvent(event);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		return touch;
-    }
+	}
 
-    @Override
-    public void onDraw(Canvas canvas) {
+	@Override
+	public void onDraw(Canvas canvas) {
 		if(initiate == 0){
-				initilize();
+			initilize();
 		}
 		Drawable background;
 		background = getContext().getResources().getDrawable(R.drawable.simplebackground);
 		background.setBounds(0, 0, getWidth(), getHeight());
 		background.draw(canvas);
-        drawZones(canvas);
-        drawBullets(canvas);
-        drawCreeps(canvas);
-        drawUserInfo(canvas);
-    }
-    /**
-     * on the first draw we setup our grid
-     */
-    protected void initilize(){
+		drawZones(canvas);
+		drawBullets(canvas);
+		drawCreeps(canvas);
+		drawUserInfo(canvas);
+	}
+	/**
+	 * on the first draw we setup our grid
+	 */
+	protected void initilize(){
 		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
 		for(int i=0;i<paths[0].length;++i){
 			int[] sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
@@ -102,11 +102,11 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		int[] sides = tiles.getGridZone(0,1).getSides();
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],getContext()));
 		initiate = 1;
-    }
-    /**
-     * Will draw all zones which include Towers, ZoneEmpties, and ZonePaths
-     * @param canvas
-     */
+	}
+	/**
+	 * Will draw all zones which include Towers, ZoneEmpties, and ZonePaths
+	 * @param canvas
+	 */
 	protected void drawZones(Canvas canvas){
 		for(int i = 0;i<xsize;++i){ 
 			for(int j=0;j<ysize;++j){
@@ -120,14 +120,14 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	 * @param canvas
 	 */
 	protected void drawCreeps(Canvas canvas){
-    	for(int i =0; i<creeplist.size();++i){
-    		creeplist.get(i).drawSelf(canvas);
-    	}
-    	for(int i = 0;i<creeplist.size();++i){
-    		if(creeplist.get(i).getAlive()==false){
-    			creeplist.remove(i);
-    		}
-    	}
+		for(int i =0; i<creeplist.size();++i){
+			creeplist.get(i).drawSelf(canvas);
+		}
+		for(int i = 0;i<creeplist.size();++i){
+			if(creeplist.get(i).getAlive()==false){
+				creeplist.remove(i);
+			}
+		}
 	}
 	/**
 	 * Will draw all of the bullets in play and will delete them if they are dead
@@ -155,58 +155,58 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		canvas.drawRect(0,0,getWidth(),getHeight()/ysize, text_background);
 		canvas.drawText("  Wave = "+wave+" Score = "+userscore+" Money = "+money+" Lives = "+lives,0, getHeight()/ysize-15,text);
 	}
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        // TODO Auto-generated method stub
-    }
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+		// TODO Auto-generated method stub
+	}
 
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        _thread.setRunning(true);
-        _thread.start();
-    }
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		_thread.setRunning(true);
+		_thread.start();
+	}
 
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        // simply copied from sample application LunarLander:
-        // we have to tell thread to shut down & wait for it to finish, or else
-        // it might touch the Surface after we return and explode
-        boolean retry = true;
-        _thread.setRunning(false);
-        while (retry) {
-            try {
-                _thread.join();
-                retry = false;
-            } catch (InterruptedException e) {
-                // we will try it again and again...
-            }
-        }
-    }
-    
-    public GameThread getThread(){
-    	return _thread;
-    }
-    public Grid getGrid(){
-    	return tiles;
-    }
-    public int[] getGridSize(){
-    	int[] size = {xsize,ysize};
-    	return size;
-    }
-    public User getUser(){
-    	return user;
-    }
-    public ArrayList<Tower> getTowerlist(){
-    	return towerlist;
-    }
-    public ArrayList<Bullet> getBulletlist(){
-    	return bulletlist;
-    }
-    public ArrayList<Creep> getCreeplist(){
-    	return creeplist;
-    }
-    public ArrayList<ZonePath> getPathlist(){
-    	return pathlist;
-    }
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// simply copied from sample application LunarLander:
+		// we have to tell thread to shut down & wait for it to finish, or else
+		// it might touch the Surface after we return and explode
+		boolean retry = true;
+		_thread.setRunning(false);
+		while (retry) {
+			try {
+				_thread.join();
+				retry = false;
+			} catch (InterruptedException e) {
+				// we will try it again and again...
+			}
+		}
+	}
+
+	public GameThread getThread(){
+		return _thread;
+	}
+	public Grid getGrid(){
+		return tiles;
+	}
+	public int[] getGridSize(){
+		int[] size = {xsize,ysize};
+		return size;
+	}
+	public User getUser(){
+		return user;
+	}
+	public ArrayList<Tower> getTowerlist(){
+		return towerlist;
+	}
+	public ArrayList<Bullet> getBulletlist(){
+		return bulletlist;
+	}
+	public ArrayList<Creep> getCreeplist(){
+		return creeplist;
+	}
+	public ArrayList<ZonePath> getPathlist(){
+		return pathlist;
+	}
 }
 

@@ -106,7 +106,7 @@ public class Bullet {
 			pos_y += speed*diff/1000*(tar_y/(Math.abs(tar_y)+Math.abs(tar_x)));
 			old_time = currenttime; 
 		}
-		
+
 	}
 	/**
 	 * Draws the bullet on the canvas

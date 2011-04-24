@@ -24,7 +24,7 @@ public class Zone {
 	protected int price;
 	protected Context context;
 	protected Drawable background;
-	
+
 	public Zone(int left,int top,int right,int bottom,Context gamecontext){
 		sides = new int[4];
 		highlighted = false;
