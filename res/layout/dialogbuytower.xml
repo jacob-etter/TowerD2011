@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/LinearLayout01"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:gravity="center" android:orientation="vertical" android:background="@drawable/buybackground" android:layout_width="match_parent" android:layout_height="wrap_content">
+	android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:gravity="center" android:layout_width="300dip"
+	android:background="@drawable/menuwallpaper">
 	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
 		android:textColor="#fff" android:textStyle="bold"
 		android:layout_width="wrap_content" android:text="Choose Your Tower" android:textSize="20dip"></TextView>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow3">
-		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_weight="1" android:text="This is the Rifle tower, firing high calibur projectiles at a decent range. This is a good all around tower. " android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="match_parent"></TextView>
-		<TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:text="This is the Machinegun tower. It fires quickly but does less damage than the rifle tower. " android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal"></TextView>
-		<TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:text="This is the Tesla tower, it can fire at multiple targets simultaneously. " android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" ></TextView>
+		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Rifle tower, firing high calibur projectiles at a decent range. This is a good all around tower. "></TextView>
+		<TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Machinegun tower. It fires quickly but does less damage than the rifle tower. "></TextView>
+		<TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Tesla tower, it can fire at multiple targets simultaneously."></TextView>
 	</TableRow>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow1">
-		<Button android:gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="  Rifle  " android:textSize="15dip" android:layout_weight="1" android:id="@+id/ButtonRed"></Button>
-		<Button android:gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Machinegun" android:textSize="15dip" android:layout_weight="1" android:id="@+id/ButtonBlue"></Button>
-		<Button android:gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="  Tesla  " android:textSize="15dip" android:layout_weight="1" android:id="@+id/ButtonGreen"></Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/ButtonRed" android:text="Rifle" android:layout_weight="1" android:layout_width="100dip"></Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/ButtonBlue" android:text="MachineGun" android:layout_weight="1" android:layout_width="100dip"></Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/ButtonGreen" android:text="Tesla" android:layout_weight="1" android:layout_width="100dip"></Button>
 	</TableRow>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow2">
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView1" android:layout_weight="1" android:src="@drawable/riflefull" android:layout_width="wrap_content"></ImageView>
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView2" android:layout_width="wrap_content" android:layout_weight="1" android:src="@drawable/machinegunfull"></ImageView>
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_weight="1" android:src="@drawable/teslafull"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView1" android:layout_weight="1" android:src="@drawable/riflefull" android:layout_width="100dip"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView2" android:layout_weight="1" android:src="@drawable/machinegunfull" android:layout_width="100dip"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView3" android:layout_weight="1" android:src="@drawable/teslafull" android:layout_width="100dip"></ImageView>
 	</TableRow>
-	<Button android:gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:layout_weight="1" android:text="Cancel" android:textSize="30dip" android:id="@+id/ButtonCancel" android:layout_width="match_parent"></Button>
+	<Button android:gravity="center_horizontal" android:layout_height="wrap_content" android:text="Cancel" android:id="@+id/ButtonCancel" android:layout_width="100dip"></Button>
 </LinearLayout>

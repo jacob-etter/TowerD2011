@@ -30,6 +30,8 @@ public class Bullet {
 	protected boolean x_side = false;
 	protected boolean y_side = false;
 	protected int damage;
+	protected boolean hit_x = false;
+	protected boolean hit_y = false;
 	/**
 	 * Constructor for Bullet
 	 * 
@@ -67,7 +69,11 @@ public class Bullet {
 			long diff = currenttime-old_time;
 			tar_x = target.getPosX();
 			tar_y = target.getPosY();
-			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+			if((pos_x<tar_x)==x_side)
+				hit_x = true;
+			if((pos_y<tar_y)==y_side)
+				hit_y = true;
+			if((hit_x)&&(hit_y)){
 				alive = false;
 				target.decHealth(damage);
 				return;
@@ -113,7 +119,11 @@ public class Bullet {
 			double tar_y;
 			tar_x = target.getPosX();
 			tar_y = target.getPosY();
-			if(((pos_x<tar_x)==x_side)&&((pos_y<tar_y)==y_side)){
+			if((pos_x<tar_x)==x_side)
+				hit_x = true;
+			if((pos_y<tar_y)==y_side)
+				hit_y = true;
+			if((hit_x)&&(hit_y)){
 				alive = false;
 				target.decHealth(damage);
 				return;
