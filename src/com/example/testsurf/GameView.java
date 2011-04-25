@@ -79,8 +79,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	 */
 	protected void initilize(){
 		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
+		int[] sides;
 		for(int i=0;i<paths[0].length;++i){
-			int[] sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
+			sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
 			ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],getContext());
 			tiles.setGridZone(paths[0][i], paths[1][i], path);
 			pathlist.add(path);
@@ -99,7 +100,12 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 				pathlist.get(i).setNext(pathlist.get(i+1));
 			}
 		}
-		int[] sides = tiles.getGridZone(0,1).getSides();
+		
+		for(int i = 0; i<xsize; ++i){
+			sides = tiles.getGridZone(i,0).getSides();
+			tiles.setGridZone(i, 0, new ZoneNull(sides[0],sides[1],sides[2],sides[3],getContext()));
+		}
+		sides = tiles.getGridZone(0,1).getSides();
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],getContext()));
 		initiate = 1;
 	}

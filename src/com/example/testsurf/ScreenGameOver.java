@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Displays the startup menu
+ * Displays the Game Over Sreen
  * @author Sean
  *
  */

@@ -126,7 +126,7 @@ class GameThread extends Thread {
 						DialogBuyTower customDialog = new DialogBuyTower(_view,xpress, ypress);
 						customDialog.show();
 					}
-					else if(_view.tiles.getGridZone(xpress,ypress).getID()>2){
+					else if(_view.tiles.getGridZone(xpress,ypress).getID()>3){
 						DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 						dialogselltower.show();
 					}

@@ -30,6 +30,7 @@ public class Tower extends Zone{
 	protected int cd_price = 0;
 	protected int rng_price = 0;
 	protected int dmg_price = 0;
+	
 	public Tower(int left, int top, int right, int bottom, Context gamecontext) {
 		super(left, top, right, bottom, gamecontext);
 		saleprice = 0;
