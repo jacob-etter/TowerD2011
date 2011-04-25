@@ -23,6 +23,7 @@ public class ScreenGameOver extends Activity {
 	SharedPreferences prefs;
 	int score;
 	int wave;
+	int num_scores;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		//force landscape
@@ -35,7 +36,8 @@ public class ScreenGameOver extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gameover);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		score = prefs.getInt("Score",1); 
+		score = prefs.getInt("Score",1);
+		num_scores = prefs.getInt("NumOfScores", 0);
 		wave = prefs.getInt("RoundsCompleted",1); 
 		String final_score = Integer.toString(score);
 		String rounds = Integer.toString(wave);
@@ -46,12 +48,16 @@ public class ScreenGameOver extends Activity {
 		Button mainmenu = (Button) findViewById(R.id.ButtonMainMenu);
 		mainmenu.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				num_scores += 1;
+				SharedPreferences.Editor editor = prefs.edit();
+				editor.putInt("NumOfScores", num_scores);
+				editor.commit();
 				EditText name = (EditText) findViewById(R.id.EditTextName);
 				String username = name.getText().toString();
-				for(int i = 0; i<10;++i){
-					String temp_score = prefs.getString("ScoreString"+Integer.toBinaryString(i), "0");
-					if(Integer.parseInt(temp_score)>= score){
-						insertScore(i,Integer.toBinaryString(score),username);
+				for(int i = 0; i<num_scores;++i){
+					String temp_score = prefs.getString("ScoreString"+Integer.toString(i), "0");
+					if(Integer.parseInt(temp_score)<= score){
+						insertScore(i,Integer.toString(score),username);
 						break;
 					}
 				}
@@ -67,13 +73,13 @@ public class ScreenGameOver extends Activity {
 		String score_string1 = score_string;
 		String name_string2;
 		String name_string1 = username;
-		for(int i=index;i<10;++i){
+		for(int i=index;i<num_scores;++i){
 			name_string2 = name_string1;
 			score_string2 = score_string1;
-			name_string1 = prefs.getString("NameString"+Integer.toBinaryString(i), "None");
-			score_string1 = prefs.getString("ScoreString"+Integer.toBinaryString(i), "0");
-			editor.putString("ScoreString"+Integer.toBinaryString(i), score_string2);
-			editor.putString("NameString"+Integer.toBinaryString(i), name_string2);
+			name_string1 = prefs.getString("NameString"+Integer.toString(i), "None");
+			score_string1 = prefs.getString("ScoreString"+Integer.toString(i), "0");
+			editor.putString("ScoreString"+Integer.toString(i), score_string2);
+			editor.putString("NameString"+Integer.toString(i), name_string2);
 			editor.commit();
 		}
 	}
