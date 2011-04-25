@@ -11,6 +11,9 @@ import android.graphics.drawable.Drawable;
  *
  */
 public class Tower extends Zone{
+	/*price*/
+	protected int saleprice;
+	protected int price;
 	protected Drawable base; //base png of the tower
 	protected Drawable barrel; //barrel png of the tower
 	protected double angle; //angle of the barrel
@@ -23,8 +26,13 @@ public class Tower extends Zone{
 	protected int pos_y; //y position of the tower
 	/* Target */
 	protected Creep cur_target; //The creep we are targeting
+	/* Upgrades */
+	protected int cd_price = 0;
+	protected int rng_price = 0;
+	protected int dmg_price = 0;
 	public Tower(int left, int top, int right, int bottom, Context gamecontext) {
 		super(left, top, right, bottom, gamecontext);
+		saleprice = 0;
 		ID = 4; //tell gameview that this zone is a tower
 		angle = 0;
 		pos_x = (sides[0] + sides[2])/2;
@@ -53,10 +61,6 @@ public class Tower extends Zone{
 		if(highlighted == true){
 			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],shade);
 		}
-	}
-	@Override
-	public int getSalePrice(){
-		return saleprice; 
 	}
 	/**
 	 * Finds the next target to fire at if target was null
@@ -129,5 +133,41 @@ public class Tower extends Zone{
 		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
 			cur_target = null;
 		}
+	}
+	public int getSalePrice(){
+		return saleprice;
+	}
+	public int getCooldownPrice(){
+		if(cd_price == 0){
+			cd_price = (int) (saleprice*.5);
+		}
+		return cd_price;
+	}
+	public int getDamagePrice(){
+		if(dmg_price == 0){
+			dmg_price = (int) (saleprice*.5);
+		}
+		return dmg_price;
+	}
+	public int getRangePrice(){
+		if(rng_price == 0){
+			rng_price = (int) (saleprice*.5);
+		}
+		return rng_price;
+	}
+	public void upCooldown(){
+		cooldown *= .5; 
+		saleprice += .6*cd_price;
+		cd_price *= 1.5;
+	}
+	public void upDamage(){
+		dmg *= 1.5;
+		saleprice += .6*dmg_price;
+		dmg_price *= 1.5;
+	}
+	public void upRange(){
+		rng *= 1.5;
+		saleprice += .6*rng_price;
+		rng_price *= 1.5;
 	}
 }

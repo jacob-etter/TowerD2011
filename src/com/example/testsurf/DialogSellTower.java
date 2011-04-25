@@ -12,9 +12,16 @@ import android.widget.TextView;
  *
  */
 public class DialogSellTower extends DialogTower implements OnClickListener{
-	private Button ButtonYes;
-	private Button ButtonNo;
-	private TextView tx;
+	private Button ButtonSell;
+	private Button ButtonCancel;
+	private Button ButtonUpDmg ;
+	private Button ButtonUpCooldown;
+	private Button ButtonUpRange;
+	private TextView sell_value;
+	private TextView up_range;
+	private TextView up_dmg;
+	private TextView up_cooldown;
+	Tower tower;
 	/**
 	 * This is the constructor for DialogSellTower
 	 * @param gameview
@@ -24,23 +31,43 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 	public DialogSellTower(GameView gameview, int xloc, int yloc){
 		super(gameview,xloc,yloc);
 		setContentView(R.layout.dialogselltower);
-		ButtonYes = (Button) findViewById(R.id.ButtonSellYes);
-		ButtonYes.setOnClickListener(this);
-		ButtonNo = (Button) findViewById(R.id.ButtonSellNo);
-		ButtonNo.setOnClickListener(this);
-		tx = (TextView) findViewById(R.id.saleprice);
-		int saleprice = view.tiles.getGridZone(x_pos,y_pos).getSalePrice();
-		String text = Integer.toString(saleprice);
-		tx.setText(text);
+		ButtonSell = (Button) findViewById(R.id.ButtonSell);
+		ButtonSell.setOnClickListener(this);
+		ButtonCancel = (Button) findViewById(R.id.ButtonCancel);
+		ButtonCancel.setOnClickListener(this);
+		ButtonUpDmg = (Button) findViewById(R.id.ButtonUpDmg);
+		ButtonUpDmg.setOnClickListener(this);
+		ButtonUpCooldown = (Button) findViewById(R.id.ButtonUpCooldown);
+		ButtonUpCooldown.setOnClickListener(this);
+		ButtonUpRange = (Button) findViewById(R.id.ButtonUpRng);
+		ButtonUpRange.setOnClickListener(this);
+		tower = (Tower) view.tiles.getGridZone(x_pos,y_pos);
+		int sale_price = tower.getSalePrice();
+		int cd_price = tower.getCooldownPrice();
+		int dmg_price = tower.getDamagePrice();
+		int rng_price = tower.getRangePrice();
+		String s_price = Integer.toString(sale_price);
+		String c_price = Integer.toString(cd_price);
+		String d_price = Integer.toString(dmg_price);
+		String r_price = Integer.toString(rng_price);
+		sell_value = (TextView) findViewById(R.id.saleprice);
+		up_range = (TextView) findViewById(R.id.RngCost);
+		up_dmg = (TextView) findViewById(R.id.DmgCost);
+		up_cooldown = (TextView) findViewById(R.id.CoolCost);
+		sell_value.setText(s_price);
+		up_range.setText(r_price);
+		up_dmg.setText(d_price);
+		up_cooldown.setText(c_price);
 	}
 	@Override
 	public void onClick(View v) {
 		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();
 		Zone empty;
 		int saleprice;
-		if (v == ButtonYes){
+		int usermoney = user.getMoney();
+		if (v == ButtonSell){
 			empty = new ZoneEmpty(sides[0],sides[1],sides[2],sides[3],context);
-			saleprice = view.tiles.getGridZone(x_pos,y_pos).getSalePrice();
+			saleprice = tower.getSalePrice();
 			user.incMoney(saleprice);
 			view.tiles.setGridZone(x_pos,y_pos,empty);
 			dismiss();
@@ -50,7 +77,22 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 				}
 			}
 		}
-		else if (v == ButtonNo){
+		else if ((v == ButtonUpDmg)&&(usermoney >= tower.getDamagePrice())){
+			user.decMoney(tower.getDamagePrice());
+			tower.upDamage();
+			dismiss();
+		}
+		else if ((v == ButtonUpRange)&&(usermoney >= tower.getRangePrice())){
+			user.decMoney(tower.getRangePrice());
+			tower.upRange();
+			dismiss();
+		}
+		else if ((v == ButtonUpCooldown)&&(usermoney >= tower.getCooldownPrice())){
+			user.decMoney(tower.getCooldownPrice());
+			tower.upCooldown();
+			dismiss();
+		}
+		else if (v == ButtonCancel){
 			dismiss();
 		}
 	}

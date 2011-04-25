@@ -1,17 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/LinearLayout01"
 	android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:gravity="center" android:layout_width="200dip">
-	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
-		android:textColor="#fff" android:textStyle="bold"
-		android:layout_width="wrap_content" android:textSize="20dip" android:text="Do You Want to Sell This Tower?" android:gravity="center_horizontal"></TextView>
-	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow3">
-		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#fff" android:text="Value = " android:layout_weight="1" android:gravity="right|center_vertical" android:textSize="15dip"></TextView>
-		<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#fff" android:layout_weight="1" android:gravity="left|center_vertical" android:textSize="15dip" android:id="@+id/saleprice" android:text="$Value"></TextView>
+	android:orientation="vertical" android:gravity="center"
+	android:layout_width="300dip" android:background="@drawable/simplebackground">
+	<TextView android:layout_width="wrap_content"
+		android:textSize="20dip" android:textStyle="bold"
+		android:layout_height="wrap_content" android:text="Upgrade"
+		android:gravity="center_horizontal" android:id="@+id/TextViewUpgrade"
+		android:textColor="#000000"></TextView>
+	<TableRow android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/tableRowUpgradeDmg">
+		<LinearLayout android:orientation="vertical"
+			android:layout_height="wrap_content" android:id="@+id/linearLayout1"
+			android:layout_width="fill_parent" android:layout_weight="1">
+			<TextView android:layout_weight="1" android:layout_width="fill_parent"
+				android:id="@+id/textView2" android:layout_height="wrap_content"
+				android:gravity="center_horizontal" android:text="Increase Damage 50%"
+				android:textSize="13dip" android:textColor="#000000"></TextView>
+			<TableRow android:id="@+id/tableRow2" android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<TextView android:layout_height="wrap_content"
+					android:layout_width="fill_parent" android:layout_weight="1"
+					android:gravity="right" android:text="Cost = " android:id="@+id/DmgCostText"
+					android:textSize="13dip" android:textColor="#000000"></TextView>
+				<TextView android:layout_weight="1" android:layout_height="wrap_content"
+					android:layout_width="fill_parent" android:gravity="left"
+					android:id="@+id/DmgCost" android:text="$Cost" android:textSize="13dip"
+					android:textColor="#000000"></TextView>
+			</TableRow>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3" android:layout_weight="1">
+			<Button android:background="@drawable/rectbutton"
+				android:text="Buy" android:id="@+id/ButtonUpDmg" android:textColor="#ffffff"
+				android:layout_width="wrap_content" android:layout_gravity="center"
+				android:layout_height="35dip" android:layout_marginLeft="35dip"></Button>
+		</LinearLayout>
 	</TableRow>
-	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow1">
-		<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:text="Yes" android:id="@+id/ButtonSellYes"></Button>
-		<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:text="No" android:id="@+id/ButtonSellNo"></Button>
+	<TableRow android:id="@+id/tableRowUpgradeRange"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+		<LinearLayout android:layout_width="fill_parent"
+			android:orientation="vertical" android:layout_height="wrap_content"
+			android:id="@+id/LinearLayout02" android:layout_weight="1">
+			<TextView android:layout_width="fill_parent"
+				android:layout_weight="1" android:id="@+id/TextView01"
+				android:layout_height="wrap_content" android:gravity="center_horizontal"
+				android:text="Increase Range 50%" android:textSize="13dip"
+				android:textColor="#000000"></TextView>
+			<TableRow android:id="@+id/TableRow02" android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<TextView android:layout_weight="1" android:layout_width="fill_parent"
+					android:text="Cost = " android:layout_height="wrap_content"
+					android:gravity="right" android:textSize="13dip" android:textColor="#000000"
+					android:id="@+id/RngCostText"></TextView>
+				<TextView android:layout_weight="1" android:layout_width="fill_parent"
+					android:text="$Cost" android:layout_height="wrap_content"
+					android:gravity="left" android:textSize="13dip" android:textColor="#000000"
+					android:id="@+id/RngCost"></TextView>
+			</TableRow>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/LinearLayout04"
+			android:layout_weight="1">
+			<Button android:layout_width="wrap_content"
+				android:background="@drawable/rectbutton" android:layout_marginLeft="35dip"
+				android:layout_gravity="center" android:layout_height="35dip"
+				android:text="Buy" android:textColor="#ffffff" android:id="@+id/ButtonUpRng"></Button>
+		</LinearLayout>
 	</TableRow>
+	<TableRow android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/tableRowUpgradeSpeed">
+		<LinearLayout android:layout_width="fill_parent"
+			android:orientation="vertical" android:layout_height="wrap_content"
+			android:id="@+id/LinearLayout03" android:layout_weight="1">
+			<TextView android:layout_width="fill_parent"
+				android:layout_weight="1" android:id="@+id/TextView04"
+				android:layout_height="wrap_content" android:gravity="center_horizontal"
+				android:text="Decrease Cooldown 50%" android:textSize="13dip"
+				android:textColor="#000000"></TextView>
+			<TableRow android:id="@+id/TableRow03" android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<TextView android:layout_weight="1" android:layout_width="fill_parent"
+					android:text="Cost = " android:layout_height="wrap_content"
+					android:gravity="right" android:textSize="13dip" android:textColor="#000000"
+					android:id="@+id/CoolCostText"></TextView>
+				<TextView android:layout_weight="1" android:layout_width="fill_parent"
+					android:text="$Cost" android:layout_height="wrap_content"
+					android:gravity="left" android:textSize="13dip" android:textColor="#000000"
+					android:id="@+id/CoolCost"></TextView>
+			</TableRow>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/LinearLayout05"
+			android:layout_weight="1">
+			<Button android:layout_width="wrap_content" android:background="@drawable/rectbutton" android:layout_marginLeft="35dip" android:layout_gravity="center" android:layout_height="35dip" android:text="Buy" android:id="@+id/ButtonUpCooldown" android:textColor="#ffffff"></Button>
+		</LinearLayout>
+	</TableRow>
+	<TextView android:layout_height="wrap_content"
+		android:textStyle="bold" android:layout_width="wrap_content"
+		android:textSize="20dip" android:gravity="center_horizontal"
+		android:text="Sell" android:id="@+id/TextViewSell" android:textColor="#000000"></TextView>
+	<TableRow android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/tableRow3">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/linearLayout2"
+			android:layout_weight="1" android:orientation="vertical">
+			<TextView android:layout_width="fill_parent"
+				android:textSize="13dip" android:layout_weight="1" android:id="@+id/TextView07"
+				android:layout_height="wrap_content" android:textColor="#000000"
+				android:gravity="center_horizontal" android:text="Do You Want to Sell?"></TextView>
+			<TableRow android:id="@+id/tableRow4" android:layout_height="match_parent"
+				android:layout_width="fill_parent">
+				<TextView android:layout_width="wrap_content"
+					android:textSize="13dip" android:layout_weight="1" android:id="@+id/salepricetext"
+					android:layout_height="wrap_content" android:text="Value = "
+					android:textColor="#000000" android:gravity="right|center_vertical"></TextView>
+				<TextView android:layout_width="wrap_content"
+					android:textSize="13dip" android:layout_weight="1" android:id="@+id/saleprice"
+					android:layout_height="wrap_content" android:text="$Value"
+					android:textColor="#000000" android:gravity="left|center_vertical"></TextView>
+			</TableRow>
+		</LinearLayout>
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/LinearLayout06"
+			android:layout_weight="1">
+			<Button android:layout_width="wrap_content"
+				android:background="@drawable/rectbutton" android:layout_marginLeft="35dip"
+				android:layout_gravity="center" android:layout_height="35dip"
+				android:textColor="#ffffff" android:id="@+id/ButtonSell"
+				android:text="Sell"></Button>
+		</LinearLayout>
+	</TableRow>
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/tableRow1" android:orientation="vertical">
+		<Button android:layout_height="wrap_content"
+			android:background="@drawable/rectbutton" android:textColor="#ffffff"
+			android:text="Cancel" android:id="@+id/ButtonCancel"
+			android:layout_width="wrap_content" android:layout_gravity="center_horizontal"></Button>
+	</LinearLayout>
 </LinearLayout>

@@ -20,15 +20,12 @@ public class Zone {
 	protected Paint white = new Paint();
 	protected Paint shade = new Paint();
 	protected boolean highlighted;
-	protected int saleprice;
-	protected int price;
 	protected Context context;
 	protected Drawable background;
 
 	public Zone(int left,int top,int right,int bottom,Context gamecontext){
 		sides = new int[4];
 		highlighted = false;
-		saleprice = 0;
 		sides[0] = left;
 		sides[1] = top;
 		sides[2] = right;
@@ -60,8 +57,5 @@ public class Zone {
 	}
 	public int getID(){
 		return ID;
-	}
-	public int getSalePrice(){
-		return saleprice;
 	}
 }
