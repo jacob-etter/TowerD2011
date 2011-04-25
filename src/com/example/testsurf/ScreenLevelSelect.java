@@ -2,8 +2,10 @@ package com.example.testsurf;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +22,7 @@ public class ScreenLevelSelect extends Activity {
 	/** Called when the activity is first created. */
 	protected int theme = 0;
 	protected int level = 0;
+	public SharedPreferences prefs;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		//force landscape
@@ -32,7 +35,7 @@ public class ScreenLevelSelect extends Activity {
 		super.onCreate(savedInstanceState);
 		//need to implement shared preferences
 		setContentView(R.layout.levelselect);
-		
+		prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		RadioGroup RadioGroupLevel = (RadioGroup) findViewById(R.id.RadioGroupLevel);
 		RadioGroupLevel.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
@@ -69,6 +72,10 @@ public class ScreenLevelSelect extends Activity {
 		mainmenu.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				if((theme!=0)&&(level!=0)){
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putInt("theme", theme);
+					editor.putInt("level", level);
+					editor.commit();
 					Intent myIntent = new Intent(view.getContext(), Main.class);
 					startActivity(myIntent);
 				}

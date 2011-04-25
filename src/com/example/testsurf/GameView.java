@@ -4,10 +4,12 @@ package com.example.testsurf;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,8 +19,8 @@ import android.view.SurfaceView;
  *
  */
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
-	protected int theme = 2;
-	protected int level = 3;
+	protected int theme = 1;
+	protected int level = 1;
 	protected GameThread _thread;
 	protected Paint text_background;
 	protected Paint text;
@@ -57,6 +59,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text_background = new Paint();
 		text_background.setARGB(100, 0, 0, 0);
 		text.setARGB(255, 255, 255, 255);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		theme = prefs.getInt("theme",1); 
+		level = prefs.getInt("level",1); 
 		if(level == 1)
 			paths = paths_level_1;
 		else if(level == 2)

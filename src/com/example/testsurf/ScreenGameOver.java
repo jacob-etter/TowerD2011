@@ -2,8 +2,10 @@ package com.example.testsurf;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,13 +29,15 @@ public class ScreenGameOver extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		super.onCreate(savedInstanceState);
-		//need to implement shared preferences
 		setContentView(R.layout.gameover);
-		String score = this.getString(R.string.FinalScore);
-		String rounds = this.getString(R.string.RoundsComp);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		int score = prefs.getInt("Score",1); 
+		int wave = prefs.getInt("RoundsCompleted",1); 
+		String final_score = Integer.toString(score);
+		String rounds = Integer.toString(wave);
 		TextView txscore = (TextView) findViewById(R.id.TextViewScore);
 		TextView txrounds = (TextView) findViewById(R.id.TextViewRComp);
-		txscore.setText(score);
+		txscore.setText(final_score);
 		txrounds.setText(rounds);
 		Button mainmenu = (Button) findViewById(R.id.ButtonMainMenu);
 		mainmenu.setOnClickListener(new View.OnClickListener() {

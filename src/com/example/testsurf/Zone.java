@@ -23,6 +23,7 @@ public class Zone {
 	protected Context context;
 	protected Drawable background;
 	protected GameView view;
+	protected int theme;
 
 	public Zone(int left,int top,int right,int bottom,GameView gameview){
 		sides = new int[4];
@@ -40,6 +41,7 @@ public class Zone {
 		ID = 0;
 		view = gameview;
 		context = gameview.getContext();
+		theme = view.getTheme();
 	}
 	public int[] getSides(){
 		return sides;

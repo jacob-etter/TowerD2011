@@ -1,7 +1,9 @@
 package com.example.testsurf;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -78,6 +80,11 @@ class GameThread extends Thread {
 		}
 		if(_view.getUser().getLives() <= 0){
 			_run = false;
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getContext());
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putInt("Score", _view.getUser().getScore());
+			editor.putInt("RoundsCompleted", wave);
+			editor.commit();
 			Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
 			_view.getContext().startActivity(myIntent);
 		}

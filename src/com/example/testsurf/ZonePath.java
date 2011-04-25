@@ -12,10 +12,10 @@ public class ZonePath extends Zone{
 	public ZonePath(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);
 		ID = 1;
-		if(view.getTheme() == 1){
+		if(theme == 1){
 			background = context.getResources().getDrawable(R.drawable.dirt);
 		}
-		else if(view.getTheme() == 2){
+		else if(theme == 2){
 			background = context.getResources().getDrawable(R.drawable.pathzone);
 		}
 	}

@@ -37,7 +37,12 @@ public class Tower extends Zone{
 		pos_x = (sides[0] + sides[2])/2;
 		pos_y = (sides[1] + sides[3])/2;
 		cur_target = null;
-		background = context.getResources().getDrawable(R.drawable.emptyzone);
+		if(theme == 1){
+			background = context.getResources().getDrawable(R.drawable.grass);
+		}
+		else if(theme == 2){
+			background = context.getResources().getDrawable(R.drawable.emptyzone);
+		}
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = null;
 	}
