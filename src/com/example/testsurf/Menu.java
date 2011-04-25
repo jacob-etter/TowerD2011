@@ -39,7 +39,7 @@ public class Menu extends Activity {
 		Button play = (Button) findViewById(R.id.playButton);
 		play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent myIntent = new Intent(view.getContext(), Main.class);
+				Intent myIntent = new Intent(view.getContext(), ScreenLevelSelect.class);
 				startActivityForResult(myIntent, 0);
 			}
 		});
