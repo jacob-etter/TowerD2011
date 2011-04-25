@@ -14,7 +14,7 @@ import android.widget.Button;
  * @author Marina
  *
  */
-public class Menu extends Activity {
+public class ScreenMainMenu extends Activity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class Menu extends Activity {
 		Button options = (Button) findViewById(R.id.optionsButton);
 		options.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Intent myIntent = new Intent(view.getContext(), Options.class);
+				Intent myIntent = new Intent(view.getContext(), ScreenOptions.class);
 				startActivityForResult(myIntent, 0);
 			}
 		});

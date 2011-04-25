@@ -19,6 +19,7 @@ import android.widget.TextView;
  */
 public class ScreenGameOver extends Activity {
 	/** Called when the activity is first created. */
+	SharedPreferences prefs;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		//force landscape
@@ -30,7 +31,7 @@ public class ScreenGameOver extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gameover);
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		int score = prefs.getInt("Score",1); 
 		int wave = prefs.getInt("RoundsCompleted",1); 
 		String final_score = Integer.toString(score);
@@ -42,11 +43,13 @@ public class ScreenGameOver extends Activity {
 		Button mainmenu = (Button) findViewById(R.id.ButtonMainMenu);
 		mainmenu.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				//add to high scores list needs be done marina
-				Intent myIntent = new Intent(view.getContext(), Menu.class);
+				Intent myIntent = new Intent(view.getContext(), ScreenMainMenu.class);
 				myIntent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
 				startActivity(myIntent);
 			}
 		});
+	}
+	public void updateHighScore(){
+		
 	}
 }

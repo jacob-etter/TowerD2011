@@ -119,30 +119,7 @@
       	 	android:text="Off"></RadioButton>
       </RadioGroup>
       </TableRow>
-      <FrameLayout
-      		android:layout_height="wrap_content">
-      		<TableRow
-         		android:id="@+id/highscoresRow"  
-         		android:layout_height="wrap_content"  
-         		android:layout_width="match_parent"  
-         		android:gravity="center"> 
-      		<Button 
-      	  		android:text="High Scores" 
-      	  		android:id="@+id/highscoresButton" 
-      	  		android:layout_height="75dip" 
-      	  		android:layout_width="wrap_content"
-      	  		android:paddingLeft="150dip"
-      	  		android:paddingRight="150dip">
-      	    </Button> 
-      	    </TableRow>
-      	    </FrameLayout>
-	<FrameLayout
-   		android:layout_height="wrap_content">
-      			<TableRow
-         			android:id="@+id/highscoresRow"  
-         			android:layout_height="wrap_content"  
-         			android:layout_width="match_parent"  
-         			android:gravity="center"> 
-      	  	</TableRow>
-      </FrameLayout>
+      <LinearLayout android:id="@+id/linearLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+          <Button android:layout_width="wrap_content" android:text="High Scores" android:id="@+id/highscoresButton" android:layout_gravity="center" android:layout_height="wrap_content"></Button>
+      </LinearLayout>
   </TableLayout>  

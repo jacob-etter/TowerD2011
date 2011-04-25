@@ -10,7 +10,7 @@ import android.view.WindowManager;
  * @author Marina
  *
  */
-public class Options extends Menu {
+public class ScreenOptions extends ScreenMainMenu {
 
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
