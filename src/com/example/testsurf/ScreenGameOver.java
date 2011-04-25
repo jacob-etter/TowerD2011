@@ -51,7 +51,7 @@ public class ScreenGameOver extends Activity {
 				for(int i = 0; i<10;++i){
 					String temp_score = prefs.getString("ScoreString"+Integer.toBinaryString(i), "0");
 					if(Integer.parseInt(temp_score)>= score){
-						insertScore(i,temp_score,username);
+						insertScore(i,Integer.toBinaryString(score),username);
 						break;
 					}
 				}

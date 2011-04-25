@@ -29,8 +29,9 @@
 					android:textColor="#000000"></TextView>
 			</TableRow>
 		</LinearLayout>
-		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:id="@+id/linearLayout3" android:layout_weight="1">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/linearLayout3"
+			android:layout_weight="1">
 			<Button android:background="@drawable/rectbutton"
 				android:text="Buy" android:id="@+id/ButtonUpDmg" android:textColor="#ffffff"
 				android:layout_width="wrap_content" android:layout_gravity="center"
@@ -93,7 +94,11 @@
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:id="@+id/LinearLayout05"
 			android:layout_weight="1">
-			<Button android:layout_width="wrap_content" android:background="@drawable/rectbutton" android:layout_marginLeft="35dip" android:layout_gravity="center" android:layout_height="35dip" android:text="Buy" android:id="@+id/ButtonUpCooldown" android:textColor="#ffffff"></Button>
+			<Button android:layout_width="wrap_content"
+				android:background="@drawable/rectbutton" android:layout_marginLeft="35dip"
+				android:layout_gravity="center" android:layout_height="35dip"
+				android:text="Buy" android:id="@+id/ButtonUpCooldown"
+				android:textColor="#ffffff"></Button>
 		</LinearLayout>
 	</TableRow>
 	<TextView android:layout_height="wrap_content"
@@ -132,7 +137,8 @@
 		</LinearLayout>
 	</TableRow>
 	<LinearLayout android:layout_width="match_parent"
-		android:layout_height="wrap_content" android:id="@+id/tableRow1" android:orientation="vertical">
+		android:layout_height="wrap_content" android:id="@+id/tableRow1"
+		android:orientation="vertical">
 		<Button android:layout_height="wrap_content"
 			android:background="@drawable/rectbutton" android:textColor="#ffffff"
 			android:text="Cancel" android:id="@+id/ButtonCancel"
