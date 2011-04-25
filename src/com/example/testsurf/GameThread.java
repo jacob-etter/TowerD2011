@@ -71,7 +71,7 @@ class GameThread extends Thread {
 			if((_view.getPathlist().size()>0)&&(spawn_count > 0)){
 				int x = _view.getPathlist().get(0).getSides()[0];
 				int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
-				_view.getCreeplist().add(new CreepSimple(x, y,_view));
+				_view.getCreeplist().add(new CreepQuick(x, y,_view));
 				creep_timer = current_time; 
 				spawn_count -= 1;
 			}

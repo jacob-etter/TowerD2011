@@ -1,8 +1,6 @@
 package com.example.testsurf;
 
 import java.util.ArrayList;
-
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 /**
@@ -31,8 +29,8 @@ public class Tower extends Zone{
 	protected int rng_price = 0;
 	protected int dmg_price = 0;
 	
-	public Tower(int left, int top, int right, int bottom, Context gamecontext) {
-		super(left, top, right, bottom, gamecontext);
+	public Tower(int left, int top, int right, int bottom, GameView gameview) {
+		super(left, top, right, bottom, gameview);
 		saleprice = 0;
 		ID = 4; //tell gameview that this zone is a tower
 		angle = 0;

@@ -17,10 +17,19 @@ import android.view.SurfaceView;
  *
  */
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
+	protected int theme = 2;
+	protected int level = 3;
 	protected GameThread _thread;
 	protected Paint text_background;
 	protected Paint text;
-	protected int[][] paths = {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,9,9,9,9,9,9,10,11,12,12,12,12,12,12,12,13,14,15},{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,2,2,2}};
+	protected int[][] paths;
+	protected int[][] paths_level_1= {{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},{5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5}};
+	protected int[][] paths_level_2= {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,9,9,9,9,9,9,10,11,12,12,12,12,12,12,12,13,14,15}
+		,{5,5,5,5,6,7,7,7,6,5,5,5,4,3,2,2,2,2,3,4,5,6,7,8,8,8,8,7,6,5,4,3,2,2,2,2}};
+	protected int[][] paths_level_3= {{0,1,2,3,4,5,6,7,8,9,10,10,10,9,8,7,6,5,4,3,2,1,0,0,0,1,2,3,4,5,6,7,8,9,10,11,12,12,
+		12,11,10,9,8,7,6,5,4,3,2,1,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,14,14,14,14,14,14,13,12,12,12,13,14,15}
+		,{9,9,9,9,9,9,9,9,9,9,9,8,7,7,7,7,7,7,7,7,7,7,7,6,5,5,5,5,5,5,5,5,5,5,5,5,5,4,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,2,3,4,5,6,7,7,7,8,9,9,9,9}};
 	protected int xsize = 16;//size of grid in x
 	protected int ysize= 10;//size of grid in y
 	protected Grid tiles; //grid of zones
@@ -31,7 +40,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	protected ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
 	protected ArrayList<Bullet> bulletlist = new ArrayList<Bullet>();
 	/**
-	 * Constructor for the gameview
+	 * Constructor for the gameview 
 	 * 
 	 * @param context
 	 */
@@ -46,7 +55,14 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text.setTextSize(30);
 		text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 		text_background = new Paint();
+		text_background.setARGB(100, 0, 0, 0);
 		text.setARGB(255, 255, 255, 255);
+		if(level == 1)
+			paths = paths_level_1;
+		else if(level == 2)
+			paths = paths_level_2;
+		else if(level == 3)
+			paths = paths_level_3;
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -78,11 +94,11 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	 * on the first draw we setup our grid
 	 */
 	protected void initilize(){
-		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),getContext());
+		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),this);
 		int[] sides;
 		for(int i=0;i<paths[0].length;++i){
 			sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
-			ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],getContext());
+			ZonePath path = new ZonePath(sides[0],sides[1],sides[2],sides[3],this);
 			tiles.setGridZone(paths[0][i], paths[1][i], path);
 			pathlist.add(path);
 		}
@@ -103,10 +119,10 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		
 		for(int i = 0; i<xsize; ++i){
 			sides = tiles.getGridZone(i,0).getSides();
-			tiles.setGridZone(i, 0, new ZoneNull(sides[0],sides[1],sides[2],sides[3],getContext()));
+			tiles.setGridZone(i, 0, new ZoneNull(sides[0],sides[1],sides[2],sides[3],this));
 		}
 		sides = tiles.getGridZone(0,1).getSides();
-		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],getContext()));
+		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],this));
 		initiate = 1;
 	}
 	/**
@@ -213,6 +229,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	public ArrayList<ZonePath> getPathlist(){
 		return pathlist;
+	}
+	public int getTheme(){
+		return theme;
 	}
 }
 

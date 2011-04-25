@@ -3,7 +3,6 @@ package com.example.testsurf;
 import java.util.ArrayList;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.view.Window;
 /**
  * This is the superclass of dialog 
@@ -16,7 +15,6 @@ public class DialogTower extends Dialog{
 	protected int x_pos;
 	protected int y_pos;
 	protected User user;
-	protected Context context;
 	protected ArrayList<Tower> towerlist;
 	/**
 	 * 
@@ -27,7 +25,6 @@ public class DialogTower extends Dialog{
 	public DialogTower(GameView gameview, int xloc, int yloc){
 		super(gameview.getContext());
 		towerlist = gameview.getTowerlist();
-		context = gameview.getContext();
 		user = gameview.getUser();
 		x_pos = xloc;
 		y_pos = yloc;

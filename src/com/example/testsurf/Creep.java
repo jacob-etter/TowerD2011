@@ -73,8 +73,8 @@ public class Creep {
 			long diff = current_time - old_time;
 			double tar_x = (tar[0]-pos_x);
 			double tar_y = (tar[1]-pos_y);
-			double pos_x1 = speed*diff/1000*(tar_x/(Math.abs(tar_y)+Math.abs(tar_x)));
-			double pos_y1 = speed*diff/1000*(tar_y/(Math.abs(tar_y)+Math.abs(tar_x)));
+			double pos_x1 = speed*diff/1000*(tar_x/(Math.abs(tar_y)+Math.abs(tar_x)))*(xsize/800.0);
+			double pos_y1 = speed*diff/1000*(tar_y/(Math.abs(tar_y)+Math.abs(tar_x)))*(ysize/480.0);
 			pos_x += pos_x1;
 			pos_y += pos_y1;
 			if(pos_x > xsize){

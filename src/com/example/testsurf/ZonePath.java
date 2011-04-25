@@ -1,6 +1,5 @@
 package com.example.testsurf;
 
-import android.content.Context;
 /**
  * A zone that creeps follow and cannot be built on
  * @author Sean
@@ -10,10 +9,15 @@ public class ZonePath extends Zone{
 	protected ZonePath previous;
 	protected ZonePath next;
 	protected double d_next[] = {-1,-1};
-	public ZonePath(int left, int top, int right, int bottom, Context gamecontext) {
-		super(left, top, right, bottom, gamecontext);
+	public ZonePath(int left, int top, int right, int bottom, GameView gameview) {
+		super(left, top, right, bottom, gameview);
 		ID = 1;
-		background = context.getResources().getDrawable(R.drawable.pathzone);
+		if(view.getTheme() == 1){
+			background = context.getResources().getDrawable(R.drawable.dirt);
+		}
+		else if(view.getTheme() == 2){
+			background = context.getResources().getDrawable(R.drawable.pathzone);
+		}
 	}
 	public void setPrev(ZonePath path){
 		previous = path;

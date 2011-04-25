@@ -22,8 +22,9 @@ public class Zone {
 	protected boolean highlighted;
 	protected Context context;
 	protected Drawable background;
+	protected GameView view;
 
-	public Zone(int left,int top,int right,int bottom,Context gamecontext){
+	public Zone(int left,int top,int right,int bottom,GameView gameview){
 		sides = new int[4];
 		highlighted = false;
 		sides[0] = left;
@@ -37,7 +38,8 @@ public class Zone {
 		white.setARGB(255, 255, 255, 255);
 		shade.setARGB(100, 0, 0, 0);
 		ID = 0;
-		context = gamecontext;
+		view = gameview;
+		context = gameview.getContext();
 	}
 	public int[] getSides(){
 		return sides;

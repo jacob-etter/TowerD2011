@@ -1,6 +1,5 @@
 package com.example.testsurf;
 
-import android.content.Context;
 /**
  * A Test tower
  * @author Sean
@@ -8,8 +7,8 @@ import android.content.Context;
  */
 public class TowerRed extends Tower{
 
-	public TowerRed(int left, int top, int right, int bottom, Context gamecontext) {
-		super(left, top, right, bottom, gamecontext);
+	public TowerRed(int left, int top, int right, int bottom, GameView gameview) {
+		super(left, top, right, bottom, gameview);
 		price = context.getResources().getInteger(R.integer.pricetowerred);
 		base = context.getResources().getDrawable(R.drawable.red2);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);

@@ -1,13 +1,17 @@
 package com.example.testsurf;
 
-import android.content.Context;
 
 public class ZoneNull extends Zone{
 
-	public ZoneNull(int left, int top, int right, int bottom,Context gamecontext) {
-		super(left, top, right, bottom, gamecontext);
+	public ZoneNull(int left, int top, int right, int bottom,GameView gameview) {
+		super(left, top, right, bottom, gameview);
 		ID = 3;
-		background = context.getResources().getDrawable(R.drawable.emptyzone);
+		if(view.getTheme() == 1){
+			background = context.getResources().getDrawable(R.drawable.grass);
+		}
+		else if(view.getTheme() == 2){
+			background = context.getResources().getDrawable(R.drawable.emptyzone);
+		}
 	}
 
 }

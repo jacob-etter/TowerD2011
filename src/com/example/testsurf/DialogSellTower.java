@@ -66,7 +66,7 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 		int saleprice;
 		int usermoney = user.getMoney();
 		if (v == ButtonSell){
-			empty = new ZoneEmpty(sides[0],sides[1],sides[2],sides[3],context);
+			empty = new ZoneEmpty(sides[0],sides[1],sides[2],sides[3],view);
 			saleprice = tower.getSalePrice();
 			user.incMoney(saleprice);
 			view.tiles.setGridZone(x_pos,y_pos,empty);
