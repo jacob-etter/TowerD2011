@@ -9,8 +9,8 @@ import android.view.SurfaceHolder;
 
 /**
  * The game thread that will update the state of objects and draw them
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 class GameThread extends Thread {
 	protected SurfaceHolder _surfaceHolder;

@@ -7,8 +7,8 @@ import android.view.Window;
 /**
  * This is the superclass of dialog 
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class DialogTower extends Dialog{
 	protected GameView view;

@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
 
 /**
  * A super class for Towers, Paths, and Empty zones
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Zone {
 	protected int[] sides;//left top right bottom

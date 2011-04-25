@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 /**
  * Displays the Game Over Sreen
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class ScreenGameOver extends Activity {
 	/** Called when the activity is first created. */

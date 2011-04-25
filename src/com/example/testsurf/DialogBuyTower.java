@@ -8,8 +8,8 @@ import android.widget.Button;
 /**
  * This is a dialog that is used to buy a tower
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class DialogBuyTower extends DialogTower implements OnClickListener{
 	private Button ButtonRed;

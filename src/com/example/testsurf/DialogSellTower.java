@@ -8,8 +8,8 @@ import android.widget.TextView;
 /**
  * This is a dialog used to sell a tower
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class DialogSellTower extends DialogTower implements OnClickListener{
 	private Button ButtonSell;

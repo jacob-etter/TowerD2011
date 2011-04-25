@@ -2,8 +2,8 @@ package com.example.testsurf;
 
 /**
  * A simple test tower
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class TowerBlue extends Tower{
 

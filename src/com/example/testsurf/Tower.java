@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 /**
  * The Superclass for towers
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Tower extends Zone{
 	/*price*/

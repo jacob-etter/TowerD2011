@@ -15,8 +15,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * Displays the Select Level Screen
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class ScreenLevelSelect extends Activity {
 	/** Called when the activity is first created. */

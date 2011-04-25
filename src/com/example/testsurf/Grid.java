@@ -2,8 +2,8 @@ package com.example.testsurf;
 
 /**
  * Generates the grid used to store towers, Empty Zones, and Path Zones
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Grid {
 	private Zone[][] grid;

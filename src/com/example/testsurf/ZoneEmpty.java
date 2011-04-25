@@ -3,8 +3,8 @@ package com.example.testsurf;
 
 /**
  * A zone that can be turned into a tower
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class ZoneEmpty extends Zone{
 	public ZoneEmpty(int left, int top, int right, int bottom, GameView gameview) {

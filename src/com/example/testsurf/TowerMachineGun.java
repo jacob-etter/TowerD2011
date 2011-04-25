@@ -2,8 +2,8 @@ package com.example.testsurf;
 
 /**
  * A simple tower that has  high rate of fire but small damage
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class TowerMachineGun extends Tower 
 {

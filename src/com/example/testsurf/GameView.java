@@ -15,8 +15,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 /**
  * The main view for the game
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	protected int theme = 1;

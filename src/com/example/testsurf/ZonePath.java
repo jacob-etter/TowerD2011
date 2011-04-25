@@ -2,8 +2,8 @@ package com.example.testsurf;
 
 /**
  * A zone that creeps follow and cannot be built on
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class ZonePath extends Zone{
 	protected ZonePath previous;

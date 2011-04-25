@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
  * This is the creep superclass
  * The creep will follow a path until is reaches the end or is killed by a tower
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Creep {
 	protected double pos_x;

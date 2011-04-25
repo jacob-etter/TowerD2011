@@ -8,8 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 /**
  * The Main activity which will start the view
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Main extends Activity {
 	@Override

@@ -3,8 +3,8 @@ package com.example.testsurf;
 /**
  * This is a simple bullet used for testing purposes
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class BulletSimple extends Bullet{
 	/**

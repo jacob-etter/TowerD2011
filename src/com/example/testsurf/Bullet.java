@@ -7,8 +7,8 @@ import android.graphics.drawable.Drawable;
  * This is the bullet superclass
  * The bullet will be fired from a tower and target a creep to do damage
  * 
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class Bullet {
 	protected Creep target;

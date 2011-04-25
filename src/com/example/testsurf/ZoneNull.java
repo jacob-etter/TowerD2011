@@ -1,5 +1,9 @@
 package com.example.testsurf;
-
+/**
+ * 
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 
 public class ZoneNull extends Zone{
 

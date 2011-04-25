@@ -2,8 +2,8 @@ package com.example.testsurf;
 
 /**
  * A tower that has a long range and damage but long cooldown
- * @author Sean
- *
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
  */
 public class TowerRifle extends Tower 
 {
