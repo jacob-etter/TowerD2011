@@ -17,5 +17,6 @@
         <activity android:name=".Main"></activity>
         <activity android:name=".ScreenGameOver"></activity>
         <activity android:name=".ScreenLevelSelect"></activity>
+        <activity android:name="ScreenHighScores"></activity>
     </application>
 </manifest>
