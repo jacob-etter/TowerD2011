@@ -3,6 +3,7 @@ package com.example.testsurf;
 import java.util.ArrayList;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 /**
  * The Superclass for towers
  * @author Sean Wiese sean.wiese@colorado.edu
@@ -28,6 +29,8 @@ public class Tower extends Zone{
 	protected int cd_price = 0;
 	protected int rng_price = 0;
 	protected int dmg_price = 0;
+	/* Sound */
+	protected MediaPlayer mp;
 	
 	public Tower(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);
@@ -45,6 +48,7 @@ public class Tower extends Zone{
 		}
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = null;
+		mp = MediaPlayer.create(context, R.raw.pewpew);
 	}
 	@Override
 	public void drawSelf(Canvas canvas)
@@ -138,6 +142,7 @@ public class Tower extends Zone{
 		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
 			cur_target = null;
 		}
+		mp.start();
 	}
 	protected Bullet newBullet(int pox_x,int pox_y,Creep cur_target,GameView view,int dmg){
 		return new BulletCannon(pos_x, pos_y, cur_target,view, dmg);
