@@ -47,7 +47,8 @@ public class Tower extends Zone{
 		barrel = null;
 	}
 	@Override
-	public void drawSelf(Canvas canvas){
+	public void drawSelf(Canvas canvas)
+	{
 		background.draw(canvas);
 		base.draw(canvas);
 		if(barrel != null){
