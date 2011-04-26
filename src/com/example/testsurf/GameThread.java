@@ -147,12 +147,21 @@ class GameThread extends Thread {
 		}
 	}
 	/**
-	 * run the game
+	 * Main run program
 	 */
 	@Override
 	public void run() {
 		Canvas c;
 		while (_run) {
+			/**
+			 * sleep thread making it easier for toucheventhandler
+			 * to grab _surfaceholder
+			 */
+			try {
+				sleep(2);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			c = null;
 			try {
 				c = _surfaceHolder.lockCanvas(null);
@@ -172,6 +181,10 @@ class GameThread extends Thread {
 			}
 		}
 	}
+	/**
+	 * This function is responsible for starting each 
+	 * round after the user pressed the start round button
+	 */
 	protected void startround(){
 		in_round = true;
 		spawn_count = old_spawn_count;
@@ -179,6 +192,10 @@ class GameThread extends Thread {
 		spawn_timer = spawn_timer/2;
 		wave += 1;
 	}
+	/**
+	 * return the current wave that game is on
+	 * @return
+	 */
 	public int getWave(){
 		return wave;
 	}
