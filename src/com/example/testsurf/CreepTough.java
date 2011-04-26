@@ -14,16 +14,16 @@ public class CreepTough extends Creep {
 	 * @param yloc
 	 * @param view
 	 */
-	public CreepTough(float xloc, float yloc, GameView view) {
-		super(xloc, yloc, view);
-		health = 250;
+	public CreepTough(float xloc, float yloc, GameView view,double difficulty) {
+		super(xloc, yloc, view,difficulty);
+		health = (int) (250*difficulty);
 		health2 = health;
 		speed = 15;
 		size = 2;
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);
 		creepicon = context.getResources().getDrawable(R.drawable.creep_box);
-		moneyval = 175;
+		moneyval = (int) (175*difficulty);
 	}
 
 }

@@ -1,5 +1,10 @@
 package com.example.testsurf;
-
+/**
+ * This is a bullet for use by the Tesla Tower
+ * 
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 public class BulletTesla extends Bullet{
 
 	public BulletTesla(int x, int y, Creep creep_target, GameView view, int dmg) {

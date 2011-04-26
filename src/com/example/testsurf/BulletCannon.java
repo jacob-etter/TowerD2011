@@ -1,5 +1,10 @@
 package com.example.testsurf;
-
+/**
+ * This is a cannon bullet used as the default bullet
+ * 
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 public class BulletCannon extends Bullet{
 
 	public BulletCannon(int x, int y, Creep creep_target, GameView view, int dmg) {

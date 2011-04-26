@@ -37,7 +37,7 @@ public class Creep {
 	 * @param yloc the starting location of the creep
 	 * @param view the gameview that created the creep
 	 */
-	public Creep(float xloc, float yloc, GameView view){
+	public Creep(float xloc, float yloc, GameView view, double difficulty){
 		gameview= view;
 		context = view.getContext();
 		xsize = view.getWidth();

@@ -241,5 +241,14 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	public int getTheme(){
 		return theme;
 	}
+	public int getSound(){
+		return sound;
+	}
+	public int getMusic(){
+		return music;
+	}
+	public int getDifficulty(){
+		return difficulty;
+	}
 }
 

@@ -24,8 +24,9 @@ class GameThread extends Thread {
 	protected long creep_timer=0;
 	protected int spawn_count = 0;
 	protected int old_spawn_count = 5;
-	protected long spawn_timer = 10000;
+	protected long spawn_timer = 3000;
 	protected int wave = 0;
+	protected double difficulty = 1;
 	protected boolean gameover = false;
 	/**
 	 * Constructor for GameThread
@@ -36,6 +37,12 @@ class GameThread extends Thread {
 	public GameThread(SurfaceHolder surfaceHolder, GameView panel) {
 		_surfaceHolder = surfaceHolder;
 		_view = panel;
+		int dif = _view.getDifficulty();
+		switch(dif){
+		case 1:difficulty = 1;break;
+		case 2:difficulty = 1.5;break;
+		case 3:difficulty = 2;break;
+		}
 	}
 	/**
 	 * Start the game
@@ -180,8 +187,9 @@ class GameThread extends Thread {
 	protected void startround(){
 		in_round = true;
 		spawn_count = old_spawn_count;
-		old_spawn_count = 2*old_spawn_count;
-		spawn_timer = spawn_timer/2;
+		old_spawn_count = old_spawn_count+2;
+		spawn_timer = (long) (spawn_timer*0.95);
+		difficulty = difficulty*1.1;
 		wave += 1;
 	}
 	protected void spawnCreeps(long current_time){
@@ -202,19 +210,19 @@ class GameThread extends Thread {
 		}
 	}
 	protected void roundZero(int x, int y){
-		_view.getCreeplist().add(new CreepSimple(x, y,_view));
+		_view.getCreeplist().add(new CreepSimple(x, y,_view, difficulty));
 	}
 	protected void roundOne(int x, int y){
-		_view.getCreeplist().add(new CreepQuick(x, y,_view));
+		_view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty));
 	}
 	protected void roundTwo(int x, int y){
-		_view.getCreeplist().add(new CreepTough(x, y,_view));
+		_view.getCreeplist().add(new CreepTough(x, y,_view,difficulty));
 	}
 	protected void roundThree(int x, int y){
 		switch(spawn_count%3){
-		case 0: _view.getCreeplist().add(new CreepSimple(x, y,_view)); break;
-		case 1: _view.getCreeplist().add(new CreepTough(x, y,_view)); break;
-		case 2: _view.getCreeplist().add(new CreepQuick(x, y,_view)); break;
+		case 0: _view.getCreeplist().add(new CreepSimple(x, y,_view,difficulty)); break;
+		case 1: _view.getCreeplist().add(new CreepTough(x, y,_view,difficulty)); break;
+		case 2: _view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty)); break;
 		}
 	}
 	/**
