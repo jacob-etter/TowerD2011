@@ -64,6 +64,13 @@
       </RadioGroup>
       </TableRow>
       <LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/linearLayout1">
-          <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:background="@drawable/rectbutton" android:textColor="#ffffff" android:text="Start" android:id="@+id/ButtonStart"></Button>
+          <Button 
+          	android:layout_width="wrap_content" 
+          	android:layout_height="wrap_content" 
+          	android:layout_gravity="center_horizontal" 
+          	android:background="@drawable/rectbutton" 
+          	android:textColor="#ffffff" 
+          	android:text="Start" 
+          	android:id="@+id/ButtonStart"></Button>
       </LinearLayout>
   </TableLayout>  

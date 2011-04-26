@@ -74,7 +74,7 @@
          	android:id="@+id/musicText"></TextView>
         <RadioGroup 
           	  android:layout_height="wrap_content" 
-          	  android:id="@+id/difficultyRadioGroup"
+          	  android:id="@+id/musicRadioGroup"
           	  android:layout_width="match_parent"
           	  android:orientation="horizontal">
       	<RadioButton 
@@ -104,7 +104,7 @@
          android:gravity="left"></TextView>
          <RadioGroup 
           	  android:layout_height="wrap_content" 
-          	  android:id="@+id/difficultyRadioGroup"
+          	  android:id="@+id/soundRadioGroup"
           	  android:layout_width="match_parent"
           	  android:orientation="horizontal">
       	 <RadioButton 
