@@ -11,8 +11,8 @@ public class TowerTesla extends Tower
 	public TowerTesla(int left, int top, int right, int bottom,	Context gamecontext) 
 	{
 		super(left, top, right, bottom, gamecontext);
-		rng = 400;
-		cooldown = 0.2;
+		rng = 150;
+		cooldown = 2.0;
 		dmg = 60;
 		angle = 0;
 		base = gamecontext.getResources().getDrawable(R.drawable.teslabase);
@@ -21,7 +21,8 @@ public class TowerTesla extends Tower
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		price = context.getResources().getInteger(R.integer.pricetowertesla);
 		saleprice = (int) (price*.6);
-		targets.clear();
+		targets = new ArrayList<Creep>();
+		targets.ensureCapacity(3);
 	}
 	
 	/**
@@ -50,7 +51,8 @@ public class TowerTesla extends Tower
 				{
 					if(!targets.contains(creep))
 					{
-						targets.set(index, creep);
+						targets.add(creep);
+						
 						break;
 					}
 				}
@@ -68,7 +70,12 @@ public class TowerTesla extends Tower
 		ArrayList<Creep> creeplist = view.getCreeplist();
 		ArrayList<Bullet> bulletlist = view.getBulletlist();
 		long currenttime=System.currentTimeMillis();
-		if(targets.isEmpty() == false)
+		targets.clear();
+		for(int i = 0; i < 3; i++)
+		{
+			findTarget(creeplist, i);
+		}
+		/*if(targets.isEmpty() == false)
 		{
 			for(int i = 0; i < targets.size(); i++)
 			{
@@ -82,7 +89,7 @@ public class TowerTesla extends Tower
 				findTarget(creeplist, i);
 			}
 		}
-		
+		*/
 		if((currenttime-last_fire) >= cooldown*1000)
 		{
 			/*if(target1 != null && target1.getAlive2())
@@ -105,8 +112,9 @@ public class TowerTesla extends Tower
 				if(targets.get(i) != null && targets.get(i).getAlive2())
 				{
 					bulletlist.add(new BulletSimple(pos_x, pos_y, targets.get(i), view, dmg));
+					targets.get(i).decHealth2(dmg);
 				}
-				if(!targets.get(i).getAlive2())
+				if(targets.get(i) != null && !targets.get(i).getAlive2())
 				{
 					targets.set(i, null);
 				}
@@ -116,7 +124,8 @@ public class TowerTesla extends Tower
 		}
 	}
 
-	private Creep inRange(Creep target) {
+	private Creep inRange(Creep target) 
+	{
 		if(target != null)
 		{
 			double dist = 0.0;
