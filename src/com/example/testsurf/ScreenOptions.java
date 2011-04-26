@@ -22,6 +22,7 @@ import android.content.SharedPreferences.Editor;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+//This is my different code to delete bins
 public class ScreenOptions extends ScreenMainMenu {
 
     private SharedPreferences prefs;
