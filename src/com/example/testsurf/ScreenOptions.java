@@ -96,10 +96,10 @@ public class ScreenOptions extends ScreenMainMenu {
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			switch (checkedId) {
 				case R.id.musiconRadio:
-					musicInt=0;
+					musicInt=1;
 					break;
 				case R.id.musicoffRadio:
-					musicInt=1;
+					musicInt=0;
 					break;
 			}//switch
 			Editor editor = prefs.edit();
