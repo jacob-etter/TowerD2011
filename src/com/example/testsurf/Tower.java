@@ -130,7 +130,7 @@ public class Tower extends Zone{
 		}
 		if((cur_target != null)&&(cur_target.getAlive2())){
 			if(((currenttime-last_fire))>=cooldown*1000){
-				bulletlist.add(new BulletSimple(pos_x, pos_y, cur_target,view, dmg));
+				bulletlist.add(new BulletCannon(pos_x, pos_y, cur_target,view, dmg));
 				cur_target.decHealth2(dmg);
 				last_fire = currenttime;
 			}

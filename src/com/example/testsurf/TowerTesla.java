@@ -1,7 +1,11 @@
 package com.example.testsurf;
 
 import java.util.ArrayList;
-
+/**
+ * A tower that can shoot at 3 different targets
+ * @author Jacob
+ * 
+ */
 public class TowerTesla extends Tower 
 {
 	public ArrayList<Creep> targets;
@@ -80,7 +84,7 @@ public class TowerTesla extends Tower
 			{
 				if(targets.get(i) != null && targets.get(i).getAlive2())
 				{
-					bulletlist.add(new BulletSimple(pos_x, pos_y, targets.get(i), view, dmg));
+					bulletlist.add(new BulletTesla(pos_x, pos_y, targets.get(i), view, dmg));
 					targets.get(i).decHealth2(dmg);
 				}
 				if(targets.get(i) != null && !targets.get(i).getAlive2())

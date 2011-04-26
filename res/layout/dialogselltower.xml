@@ -2,12 +2,11 @@
 <LinearLayout android:id="@+id/LinearLayout01"
 	android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:gravity="center"
-	android:layout_width="300dip" android:background="@drawable/simplebackground">
+	android:layout_width="300dip" android:background="@drawable/buybackground">
 	<TextView android:layout_width="wrap_content"
 		android:textSize="20dip" android:textStyle="bold"
 		android:layout_height="wrap_content" android:text="Upgrade"
-		android:gravity="center_horizontal" android:id="@+id/TextViewUpgrade"
-		android:textColor="#000000"></TextView>
+		android:gravity="center_horizontal" android:id="@+id/TextViewUpgrade" android:textColor="#ffffff"></TextView>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRowUpgradeDmg">
 		<LinearLayout android:orientation="vertical"
@@ -16,17 +15,16 @@
 			<TextView android:layout_weight="1" android:layout_width="fill_parent"
 				android:id="@+id/textView2" android:layout_height="wrap_content"
 				android:gravity="center_horizontal" android:text="Increase Damage 50%"
-				android:textSize="13dip" android:textColor="#000000"></TextView>
+				android:textSize="13dip" android:textColor="#ffffff"></TextView>
 			<TableRow android:id="@+id/tableRow2" android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 				<TextView android:layout_height="wrap_content"
 					android:layout_width="fill_parent" android:layout_weight="1"
 					android:gravity="right" android:text="Cost = " android:id="@+id/DmgCostText"
-					android:textSize="13dip" android:textColor="#000000"></TextView>
+					android:textSize="13dip" android:textColor="#ffffff"></TextView>
 				<TextView android:layout_weight="1" android:layout_height="wrap_content"
 					android:layout_width="fill_parent" android:gravity="left"
-					android:id="@+id/DmgCost" android:text="$Cost" android:textSize="13dip"
-					android:textColor="#000000"></TextView>
+					android:id="@+id/DmgCost" android:text="$Cost" android:textSize="13dip" android:textColor="#ffffff"></TextView>
 			</TableRow>
 		</LinearLayout>
 		<LinearLayout android:layout_width="fill_parent"
@@ -46,18 +44,15 @@
 			<TextView android:layout_width="fill_parent"
 				android:layout_weight="1" android:id="@+id/TextView01"
 				android:layout_height="wrap_content" android:gravity="center_horizontal"
-				android:text="Increase Range 50%" android:textSize="13dip"
-				android:textColor="#000000"></TextView>
+				android:text="Increase Range 50%" android:textSize="13dip" android:textColor="#ffffff"></TextView>
 			<TableRow android:id="@+id/TableRow02" android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 				<TextView android:layout_weight="1" android:layout_width="fill_parent"
 					android:text="Cost = " android:layout_height="wrap_content"
-					android:gravity="right" android:textSize="13dip" android:textColor="#000000"
-					android:id="@+id/RngCostText"></TextView>
+					android:gravity="right" android:textSize="13dip" android:id="@+id/RngCostText" android:textColor="#ffffff"></TextView>
 				<TextView android:layout_weight="1" android:layout_width="fill_parent"
 					android:text="$Cost" android:layout_height="wrap_content"
-					android:gravity="left" android:textSize="13dip" android:textColor="#000000"
-					android:id="@+id/RngCost"></TextView>
+					android:gravity="left" android:textSize="13dip" android:id="@+id/RngCost" android:textColor="#ffffff"></TextView>
 			</TableRow>
 		</LinearLayout>
 		<LinearLayout android:layout_width="fill_parent"
@@ -77,18 +72,15 @@
 			<TextView android:layout_width="fill_parent"
 				android:layout_weight="1" android:id="@+id/TextView04"
 				android:layout_height="wrap_content" android:gravity="center_horizontal"
-				android:text="Decrease Cooldown 50%" android:textSize="13dip"
-				android:textColor="#000000"></TextView>
+				android:text="Decrease Cooldown 50%" android:textSize="13dip" android:textColor="#ffffff"></TextView>
 			<TableRow android:id="@+id/TableRow03" android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 				<TextView android:layout_weight="1" android:layout_width="fill_parent"
 					android:text="Cost = " android:layout_height="wrap_content"
-					android:gravity="right" android:textSize="13dip" android:textColor="#000000"
-					android:id="@+id/CoolCostText"></TextView>
+					android:gravity="right" android:textSize="13dip" android:id="@+id/CoolCostText" android:textColor="#ffffff"></TextView>
 				<TextView android:layout_weight="1" android:layout_width="fill_parent"
 					android:text="$Cost" android:layout_height="wrap_content"
-					android:gravity="left" android:textSize="13dip" android:textColor="#000000"
-					android:id="@+id/CoolCost"></TextView>
+					android:gravity="left" android:textSize="13dip" android:id="@+id/CoolCost" android:textColor="#ffffff"></TextView>
 			</TableRow>
 		</LinearLayout>
 		<LinearLayout android:layout_width="fill_parent"
@@ -104,7 +96,7 @@
 	<TextView android:layout_height="wrap_content"
 		android:textStyle="bold" android:layout_width="wrap_content"
 		android:textSize="20dip" android:gravity="center_horizontal"
-		android:text="Sell" android:id="@+id/TextViewSell" android:textColor="#000000"></TextView>
+		android:text="Sell" android:id="@+id/TextViewSell" android:textColor="#ffffff"></TextView>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow3">
 		<LinearLayout android:layout_width="fill_parent"
@@ -112,18 +104,17 @@
 			android:layout_weight="1" android:orientation="vertical">
 			<TextView android:layout_width="fill_parent"
 				android:textSize="13dip" android:layout_weight="1" android:id="@+id/TextView07"
-				android:layout_height="wrap_content" android:textColor="#000000"
-				android:gravity="center_horizontal" android:text="Do You Want to Sell?"></TextView>
+				android:layout_height="wrap_content" android:gravity="center_horizontal" android:text="Do You Want to Sell?" android:textColor="#ffffff"></TextView>
 			<TableRow android:id="@+id/tableRow4" android:layout_height="match_parent"
 				android:layout_width="fill_parent">
 				<TextView android:layout_width="wrap_content"
 					android:textSize="13dip" android:layout_weight="1" android:id="@+id/salepricetext"
 					android:layout_height="wrap_content" android:text="Value = "
-					android:textColor="#000000" android:gravity="right|center_vertical"></TextView>
+					android:gravity="right|center_vertical" android:textColor="#ffffff"></TextView>
 				<TextView android:layout_width="wrap_content"
 					android:textSize="13dip" android:layout_weight="1" android:id="@+id/saleprice"
 					android:layout_height="wrap_content" android:text="$Value"
-					android:textColor="#000000" android:gravity="left|center_vertical"></TextView>
+					android:gravity="left|center_vertical" android:textColor="#ffffff"></TextView>
 			</TableRow>
 		</LinearLayout>
 		<LinearLayout android:layout_width="fill_parent"
