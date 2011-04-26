@@ -43,15 +43,15 @@ public class DialogBuyTower extends DialogTower implements OnClickListener{
 		Resources res = view.getContext().getResources();
 		Tower tower;
 		/** When OK Button is clicked, dismiss the dialog */
-		if ((v == ButtonRed)&&(usermoney >= res.getInteger(R.integer.pricetowerred))){
-			user.decMoney(res.getInteger(R.integer.pricetowerred));
+		if ((v == ButtonRed)&&(usermoney >= res.getInteger(R.integer.pricetowerrifle))){
+			user.decMoney(res.getInteger(R.integer.pricetowerrifle));
 			tower = new TowerRifle(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);
 			dismiss();
 		}
-		else if ((v == ButtonBlue)&&(usermoney >= res.getInteger(R.integer.pricetowerblue))){
-			user.decMoney(res.getInteger(R.integer.pricetowerblue));
+		else if ((v == ButtonBlue)&&(usermoney >= res.getInteger(R.integer.pricetowermachinegun))){
+			user.decMoney(res.getInteger(R.integer.pricetowermachinegun));
 			tower = new TowerMachineGun(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);

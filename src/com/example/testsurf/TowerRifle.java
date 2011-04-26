@@ -10,9 +10,9 @@ public class TowerRifle extends Tower
 	public TowerRifle(int left, int top, int right, int bottom,	GameView gameview) 
 	{
 		super(left, top, right, bottom, gameview);
-		rng = 300;
+		rng = 225;
 		cooldown = 1.5;
-		dmg = 50; 
+		dmg = 35; 
 		base = context.getResources().getDrawable(R.drawable.riflebase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = context.getResources().getDrawable(R.drawable.riflebarrel);

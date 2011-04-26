@@ -54,7 +54,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		getHolder().addCallback(this);
 		_thread = new GameThread(getHolder(), this);
 		setFocusable(true);
-		user = new User(5000, 0, 10, "Sean");
+		user = new User(500, 0, 10, "Sean");
 		text = new Paint();
 		text.setARGB(255, 0, 0, 0);
 		text.setTextSize(30);

@@ -13,9 +13,9 @@ public class TowerTesla extends Tower
 	public TowerTesla(int left, int top, int right, int bottom,	GameView view) 
 	{
 		super(left, top, right, bottom, view);
-		rng = 150;
+		rng = 125;
 		cooldown = 2.0;
-		dmg = 60;
+		dmg = 50;
 		angle = 0;
 		base = context.getResources().getDrawable(R.drawable.teslabase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
