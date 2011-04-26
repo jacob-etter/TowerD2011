@@ -74,38 +74,8 @@ public class TowerTesla extends Tower
 		{
 			findTarget(creeplist, i);
 		}
-		/*if(targets.isEmpty() == false)
-		{
-			for(int i = 0; i < targets.size(); i++)
-			{
-				targets.set(i, inRange(targets.get(i)));
-			}
-		}
-		if(targets.size() < 3)
-		{
-			for(int i = 2; i > targets.size(); i--)
-			{
-				findTarget(creeplist, i);
-			}
-		}
-		*/
 		if((currenttime-last_fire) >= cooldown*1000)
 		{
-			/*if(target1 != null && target1.getAlive2())
-			{
-				bulletlist.add(new BulletSimple(pos_x, pos_y, target1,view, dmg));
-				target1.decHealth2(dmg);
-			}
-			if(target2 != null && target2.getAlive2())
-			{
-				bulletlist.add(new BulletSimple(pos_x, pos_y, target2,view, dmg));
-				target2.decHealth2(dmg);
-			}
-			if(target3 != null && target3.getAlive2())
-			{
-				bulletlist.add(new BulletSimple(pos_x, pos_y, target3,view, dmg));
-				target3.decHealth2(dmg);
-			}*/
 			for(int i = 0; i < targets.size(); i++)
 			{
 				if(targets.get(i) != null && targets.get(i).getAlive2())
@@ -122,27 +92,4 @@ public class TowerTesla extends Tower
 			last_fire = currenttime;
 		}
 	}
-
-	private Creep inRange(Creep target) 
-	{
-		if(target != null)
-		{
-			double dist = 0.0;
-			double creep_x = 0;
-			double creep_y = 0;
-			double dx = 0;
-			double dy = 0;
-			creep_x = target.getPosX();
-			creep_y = target.getPosY();
-			dx = (pos_x - creep_x);
-			dy = (pos_y - creep_y);
-			dist = Math.sqrt( (dx*dx) + (dy*dy) );
-			if (dist > rng) 
-			{
-				target = null;
-			}
-		}
-		return target;
-	}
-
 }

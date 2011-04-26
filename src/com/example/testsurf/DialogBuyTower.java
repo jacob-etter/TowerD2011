@@ -57,8 +57,8 @@ public class DialogBuyTower extends DialogTower implements OnClickListener{
 			view.tiles.setGridZone(x_pos,y_pos,tower);
 			dismiss();
 		}
-		else if ((v == ButtonGreen)&&(usermoney >= res.getInteger(R.integer.pricetowergreen))){
-			user.decMoney(res.getInteger(R.integer.pricetowergreen));
+		else if ((v == ButtonGreen)&&(usermoney >= res.getInteger(R.integer.pricetowertesla))){
+			user.decMoney(res.getInteger(R.integer.pricetowertesla));
 			tower = new TowerTesla(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);
