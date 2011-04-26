@@ -5,5 +5,5 @@
     <item type="integer" format="integer" name="pricetowergreen">200</item>
     <item type="integer" name="pricetowerrifle" format="integer">500</item>
     <item type="integer" name="pricetowermachinegun" format="integer">500</item>
-    <item format="integer" name="pricetowertesla" type="integer">550</item>
+    <item format="integer" name="pricetowertesla" type="integer">500</item>
 </resources>

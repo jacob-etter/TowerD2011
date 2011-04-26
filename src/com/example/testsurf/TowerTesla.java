@@ -10,7 +10,6 @@ public class TowerTesla extends Tower
 
 	public TowerTesla(int left, int top, int right, int bottom,	GameView view) 
 	{
-		
 		super(left, top, right, bottom, view);
 		rng = 150;
 		cooldown = 2.0;
@@ -29,6 +28,7 @@ public class TowerTesla extends Tower
 	/**
 	 * Finds the next target to fire at if target was null
 	 * @param creeplist
+	 * @Override
 	 */
 	protected void findTarget(ArrayList<Creep> creeplist, int index) 
 	{
@@ -65,6 +65,7 @@ public class TowerTesla extends Tower
 	 * @param creeplist
 	 * @param bulletlist
 	 * @param view
+	 * @Override
 	 */
 	public void fire(GameView view) 
 	{
