@@ -59,7 +59,6 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 		up_dmg.setText(d_price);
 		up_cooldown.setText(c_price);
 	}
-	@Override
 	public void onClick(View v) {
 		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();
 		Zone empty;

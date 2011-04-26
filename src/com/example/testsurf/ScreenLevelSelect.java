@@ -38,7 +38,6 @@ public class ScreenLevelSelect extends Activity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		RadioGroup RadioGroupLevel = (RadioGroup) findViewById(R.id.RadioGroupLevel);
 		RadioGroupLevel.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.RadioOne:
@@ -55,7 +54,6 @@ public class ScreenLevelSelect extends Activity {
 		});
 		RadioGroup RadioGroupTheme = (RadioGroup) findViewById(R.id.RadioGroupTheme);
 		RadioGroupTheme.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.RadioClassic:

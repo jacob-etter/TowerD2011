@@ -5,7 +5,7 @@ package com.example.testsurf;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class TowerGreen extends Tower{
+public class TowerGreen extends Tower{ 
 
 	public TowerGreen(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);

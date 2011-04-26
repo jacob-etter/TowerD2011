@@ -1,13 +1,10 @@
 package com.example.testsurf;
 
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,14 +12,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-
-//This is my different code to delete bins
+/**
+ * Displays the startup menu
+ * @author Marina
+ *
+ */
 public class ScreenOptions extends ScreenMainMenu {
 
     private SharedPreferences prefs;
@@ -58,7 +54,6 @@ public class ScreenOptions extends ScreenMainMenu {
    //Save difficulty preferences
    difficulty.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             
-		@Override
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			switch (checkedId) {
 				case R.id.easyRadio:
@@ -80,7 +75,6 @@ public class ScreenOptions extends ScreenMainMenu {
    //Save sound preferences
    sound.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-		@Override
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			switch (checkedId) {
 				case R.id.soundonRadio:
@@ -99,7 +93,6 @@ public class ScreenOptions extends ScreenMainMenu {
    //Save music preferences
    music.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-		@Override
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			switch (checkedId) {
 				case R.id.musiconRadio:

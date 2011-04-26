@@ -11,7 +11,11 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
+/**
+ * Displays the High Scores
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 public class ScreenHighScores extends ListActivity{
 	SharedPreferences prefs;
 	/** Called when the activity is first created. */

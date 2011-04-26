@@ -37,7 +37,6 @@ public class DialogBuyTower extends DialogTower implements OnClickListener{
 		ButtonCancel.setOnClickListener(this);
 	}
 
-	@Override
 	public void onClick(View v) {
 		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();
 		int usermoney = user.getMoney();

@@ -182,18 +182,15 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		canvas.drawRect(0,0,getWidth(),getHeight()/ysize, text_background);
 		canvas.drawText("  Wave = "+wave+" Score = "+userscore+" Money = "+money+" Lives = "+lives,0, getHeight()/ysize-15,text);
 	}
-	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		_thread.setRunning(true);
 		_thread.start();
 	}
 
-	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		// simply copied from sample application LunarLander:
 		// we have to tell thread to shut down & wait for it to finish, or else
