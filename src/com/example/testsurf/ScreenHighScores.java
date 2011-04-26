@@ -35,14 +35,15 @@ public class ScreenHighScores extends ListActivity{
 			names[0] = "No Scores Yet";
 		}
 		else{
-			names = new String[num_scores];
+			names = new String[num_scores+1];
+			names[0] = "HIGH SCORES";
 		}
-		for(int i=0; i<num_scores;++i){
+		for(int i=1; i<num_scores+1;++i){
 			String key = "ScoreString"+Integer.toString(i);
 			String score = prefs.getString(key, "0");
 			key = "NameString"+Integer.toString(i);
 			String name = prefs.getString(key, "None");
-			names[i] = "Username: "+name+"\n"+"Score: "+score;
+			names[i] = Integer.toString(i)+"\nUsername: "+name+"\n"+"Score: "+score;
 		} 
 		// Use your own layout and point the adapter to the UI elements which
 		// contains the label
