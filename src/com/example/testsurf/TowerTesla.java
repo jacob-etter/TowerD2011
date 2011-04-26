@@ -2,8 +2,6 @@ package com.example.testsurf;
 
 import java.util.ArrayList;
 
-import android.content.Context;
-
 public class TowerTesla extends Tower 
 {
 	public ArrayList<Creep> targets;
