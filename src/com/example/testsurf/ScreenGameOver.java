@@ -1,11 +1,11 @@
 package com.example.testsurf;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.InputFilter;
 import android.view.View;
 import android.view.Window;
@@ -37,7 +37,7 @@ public class ScreenGameOver extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gameover);
-		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs = getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 		score = prefs.getInt("Score",1);
 		num_scores = prefs.getInt("NumOfScores", 0);
 		wave = prefs.getInt("RoundsCompleted",1); 

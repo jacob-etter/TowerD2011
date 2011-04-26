@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,8 +23,8 @@ import android.content.SharedPreferences.Editor;
  */
 public class ScreenOptions extends ScreenMainMenu {
 
-	private SharedPreferences prefs;
-	private SharedPreferences prefsall;
+	private SharedPreferences prefsOptions;
+	private SharedPreferences prefsScores;
 	private int whatdiffpref;
 	private int whatsoundpref;
 	private int whatmusicpref;
@@ -46,8 +45,8 @@ public class ScreenOptions extends ScreenMainMenu {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.options);
 		//Retrieve and set preferences
-		prefs = getSharedPreferences("Options", Context.MODE_PRIVATE);
-		prefsall = PreferenceManager.getDefaultSharedPreferences(this);
+		prefsOptions = getSharedPreferences("Options", Context.MODE_PRIVATE);
+		prefsScores = getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 		retrievePreferences();
 
 		//Define preference objects
@@ -70,7 +69,7 @@ public class ScreenOptions extends ScreenMainMenu {
 					difficultyInt=3;
 					break;
 				}//switch
-				Editor editor = prefs.edit();
+				Editor editor = prefsOptions.edit();
 				editor.putInt("Difficulty", difficultyInt);
 				editor.commit();
 			}//onCheckedChanged();
@@ -88,7 +87,7 @@ public class ScreenOptions extends ScreenMainMenu {
 					soundInt=0;
 					break;
 				}//switch
-				Editor editor = prefs.edit();
+				Editor editor = prefsOptions.edit();
 				editor.putInt("Sound", soundInt);
 				editor.commit();
 			}//onCheckedChanged();
@@ -106,7 +105,7 @@ public class ScreenOptions extends ScreenMainMenu {
 					musicInt=0;
 					break;
 				}//switch
-				Editor editor = prefs.edit();
+				Editor editor = prefsOptions.edit();
 				editor.putInt("Music", musicInt);
 				editor.commit();
 			}//onCheckedChanged();
@@ -140,7 +139,7 @@ public class ScreenOptions extends ScreenMainMenu {
 		       .setCancelable(false)
 		       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-						Editor editor = prefs.edit();
+						Editor editor = prefsOptions.edit();
 						editor.clear();
 						editor.commit();
 						retrievePreferences();
@@ -162,7 +161,7 @@ public class ScreenOptions extends ScreenMainMenu {
 		       .setCancelable(false)
 		       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-						Editor editor = prefsall.edit();
+						Editor editor = prefsScores.edit();
 						editor.clear();
 						editor.commit();
 						retrievePreferences();
@@ -192,9 +191,9 @@ public class ScreenOptions extends ScreenMainMenu {
 		RadioButton musicOn = (RadioButton)findViewById(R.id.musiconRadio);
 		RadioButton musicOff = (RadioButton)findViewById(R.id.musicoffRadio);
 
-		whatdiffpref=prefs.getInt("Difficulty",1);
-		whatsoundpref=prefs.getInt("Sound",1);
-		whatmusicpref=prefs.getInt("Music",1);
+		whatdiffpref=prefsOptions.getInt("Difficulty",1);
+		whatsoundpref=prefsOptions.getInt("Sound",1);
+		whatmusicpref=prefsOptions.getInt("Music",1);
 
 		/** Retrieve Difficulty Preferences **/
 		switch(whatdiffpref){
@@ -214,7 +213,7 @@ public class ScreenOptions extends ScreenMainMenu {
 		case 0: 
 			soundOff.setChecked(true);
 			break;
-		case 1: 
+		case 1:
 			soundOn.setChecked(true);
 			break;
 

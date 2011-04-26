@@ -1,10 +1,10 @@
 package com.example.testsurf;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,7 +27,7 @@ public class ScreenHighScores extends ListActivity{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//Remove notification bar
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs = getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 		int num_scores = prefs.getInt("NumOfScores", 0);
 		String[] names = new String[10];
 		if(num_scores == 0){

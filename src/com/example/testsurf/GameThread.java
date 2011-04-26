@@ -1,9 +1,9 @@
 package com.example.testsurf;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
-import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -21,12 +21,12 @@ class GameThread extends Thread {
 	protected int xpress;
 	protected int ypress;
 	protected long click_time;
-	protected long creep_timer=0;
-	protected int spawn_count = 0;
-	protected int old_spawn_count = 5;
-	protected long spawn_timer = 3000;
-	protected int wave = 0;
-	protected double difficulty = 1;
+	protected long creep_timer;
+	protected int spawn_count;
+	protected int old_spawn_count;
+	protected long spawn_timer;
+	protected int wave;
+	protected double difficulty;
 	protected boolean gameover = false;
 	/**
 	 * Constructor for GameThread
@@ -43,6 +43,11 @@ class GameThread extends Thread {
 		case 2:difficulty = 1.5;break;
 		case 3:difficulty = 2;break;
 		}
+		creep_timer = 0;
+		spawn_count = 0;
+		old_spawn_count = 5;
+		spawn_timer = 3000;
+		wave = 0;
 	}
 	/**
 	 * Start the game
@@ -79,7 +84,7 @@ class GameThread extends Thread {
 		spawnCreeps(current_time);
 		if(_view.getUser().getLives() <= 0){
 			_run = false;
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getContext());
+			SharedPreferences prefs = _view.getContext().getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putInt("Score", _view.getUser().getScore());
 			editor.putInt("RoundsCompleted", wave);

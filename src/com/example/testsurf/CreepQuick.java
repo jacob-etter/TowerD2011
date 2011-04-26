@@ -23,7 +23,7 @@ public class CreepQuick extends Creep {
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);
 		creepicon = context.getResources().getDrawable(R.drawable.creep_eye);
-		moneyval = (int) (.25*health*difficulty);
+		moneyval = (int) (.25*health);
 	}
 
 }

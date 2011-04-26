@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -52,7 +51,6 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	public GameView(Context context) {
 		super(context); 
 		getHolder().addCallback(this);
-		_thread = new GameThread(getHolder(), this);
 		setFocusable(true);
 		user = new User(500, 0, 10, "Sean");
 		text = new Paint();
@@ -62,7 +60,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text_background = new Paint();
 		text_background.setARGB(100, 0, 0, 0);
 		text.setARGB(255, 255, 255, 255);
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		SharedPreferences prefs = context.getSharedPreferences("Options", Context.MODE_PRIVATE);
 		theme = prefs.getInt("theme",1); 
 		level = prefs.getInt("level",1); 
 		sound = prefs.getInt("Sound",0);
@@ -74,6 +72,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 			paths = paths_level_2;
 		else if(level == 3)
 			paths = paths_level_3;
+		_thread = new GameThread(getHolder(), this);
 	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
