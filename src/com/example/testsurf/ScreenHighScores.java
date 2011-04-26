@@ -36,13 +36,13 @@ public class ScreenHighScores extends ListActivity{
 		}
 		else{
 			names = new String[num_scores+1];
-			names[0] = "HIGH SCORES";
+			names[0] = "\nHIGH SCORES";
 		}
 		for(int i=1; i<num_scores+1;++i){
-			String key = "ScoreString"+Integer.toString(i);
-			String score = prefs.getString(key, "0");
-			key = "NameString"+Integer.toString(i);
-			String name = prefs.getString(key, "None");
+			String key = "ScoreString"+Integer.toString(i-1);
+			String score = prefs.getString(key, "00");
+			key = "NameString"+Integer.toString(i-1);
+			String name = prefs.getString(key, "ErrorScreenHighScore");
 			names[i] = Integer.toString(i)+"\nUsername: "+name+"\n"+"Score: "+score;
 		} 
 		// Use your own layout and point the adapter to the UI elements which

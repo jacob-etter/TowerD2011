@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.InputFilter;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +25,7 @@ public class ScreenGameOver extends Activity {
 	int score;
 	int wave;
 	int num_scores;
+	EditText name;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		//force landscape
@@ -39,6 +41,10 @@ public class ScreenGameOver extends Activity {
 		score = prefs.getInt("Score",1);
 		num_scores = prefs.getInt("NumOfScores", 0);
 		wave = prefs.getInt("RoundsCompleted",1); 
+		name = (EditText) findViewById(R.id.EditTextName);
+		InputFilter[] FilterArray = new InputFilter[1];
+		FilterArray[0] = new InputFilter.LengthFilter(18);
+		name.setFilters(FilterArray);
 		String final_score = Integer.toString(score);
 		String rounds = Integer.toString(wave);
 		TextView txscore = (TextView) findViewById(R.id.TextViewScore);
@@ -52,10 +58,9 @@ public class ScreenGameOver extends Activity {
 				SharedPreferences.Editor editor = prefs.edit();
 				editor.putInt("NumOfScores", num_scores);
 				editor.commit();
-				EditText name = (EditText) findViewById(R.id.EditTextName);
 				String username = name.getText().toString();
 				for(int i = 0; i<num_scores;++i){
-					String temp_score = prefs.getString("ScoreString"+Integer.toString(i), "0");
+					String temp_score = prefs.getString("ScoreString"+Integer.toString(i), "000");
 					if(Integer.parseInt(temp_score)<= score){
 						insertScore(i,Integer.toString(score),username);
 						break;
@@ -76,8 +81,8 @@ public class ScreenGameOver extends Activity {
 		for(int i=index;i<num_scores;++i){
 			name_string2 = name_string1;
 			score_string2 = score_string1;
-			name_string1 = prefs.getString("NameString"+Integer.toString(i), "None");
-			score_string1 = prefs.getString("ScoreString"+Integer.toString(i), "0");
+			name_string1 = prefs.getString("NameString"+Integer.toString(i), "ErrorScreenGameOver");
+			score_string1 = prefs.getString("ScoreString"+Integer.toString(i), "000000");
 			editor.putString("ScoreString"+Integer.toString(i), score_string2);
 			editor.putString("NameString"+Integer.toString(i), name_string2);
 			editor.commit();
