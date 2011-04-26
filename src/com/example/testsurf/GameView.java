@@ -78,12 +78,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		boolean touch = false;
-		try {
-			Thread.sleep(16);
-			touch = _thread.doTouchEvent(event);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		touch = _thread.doTouchEvent(event);
 		return touch;
 	}
 

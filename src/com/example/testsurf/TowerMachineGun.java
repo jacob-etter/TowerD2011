@@ -20,4 +20,8 @@ public class TowerMachineGun extends Tower
 		price = context.getResources().getInteger(R.integer.pricetowermachinegun);
 		saleprice = (int) (price*.6);
 	}
+	@Override
+	protected Bullet newBullet(int pox_x,int pox_y,Creep cur_target,GameView view,int dmg){
+		return new BulletSimple(pos_x, pos_y, cur_target,view, dmg);
+	}
 }

@@ -97,7 +97,7 @@ class GameThread extends Thread {
 		boolean handled = false;
 		int old_xpress;
 		int old_ypress;
-		synchronized (_surfaceHolder) {
+		//synchronized (_surfaceHolder) {
 			if (event.getAction() == MotionEvent.ACTION_DOWN){
 				ypress  = (int) event.getY();
 				xpress = (int) event.getX();
@@ -139,11 +139,11 @@ class GameThread extends Thread {
 					else if((_view.tiles.getGridZone(xpress,ypress).getID()==0)&&(in_round == false)){
 						startround();
 					}
-				}
+			}
 				handled = true;
 			}
 			return handled;
-		}
+		//}
 	}
 	/**
 	 * Main run program
@@ -152,15 +152,6 @@ class GameThread extends Thread {
 	public void run() {
 		Canvas c;
 		while (_run) {
-			/**
-			 * sleep thread making it easier for toucheventhandler
-			 * to grab _surfaceholder
-			 */
-			try {
-				sleep(2);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			c = null;
 			try {
 				c = _surfaceHolder.lockCanvas(null);

@@ -130,7 +130,7 @@ public class Tower extends Zone{
 		}
 		if((cur_target != null)&&(cur_target.getAlive2())){
 			if(((currenttime-last_fire))>=cooldown*1000){
-				bulletlist.add(new BulletCannon(pos_x, pos_y, cur_target,view, dmg));
+				bulletlist.add(newBullet(pos_x, pos_y, cur_target,view, dmg));
 				cur_target.decHealth2(dmg);
 				last_fire = currenttime;
 			}
@@ -138,6 +138,9 @@ public class Tower extends Zone{
 		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
 			cur_target = null;
 		}
+	}
+	protected Bullet newBullet(int pox_x,int pox_y,Creep cur_target,GameView view,int dmg){
+		return new BulletCannon(pos_x, pos_y, cur_target,view, dmg);
 	}
 	public int getSalePrice(){
 		return saleprice;

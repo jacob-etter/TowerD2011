@@ -18,9 +18,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 /**
- * Displays the startup menu
- * @author Marina
- *
+ * Displays the Select Level Screen
+ * @author Marina Nunamaker and Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Marina Nunamaker and Sean Wiese
  */
 public class ScreenOptions extends ScreenMainMenu {
 
