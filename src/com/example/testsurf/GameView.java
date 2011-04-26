@@ -19,8 +19,11 @@ import android.view.SurfaceView;
  * Copyright (c) 2011 Sean Wiese
  */
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
-	protected int theme = 1;
-	protected int level = 1;
+	protected int theme;
+	protected int level;
+	protected int sound;
+	protected int difficulty;
+	protected int music;
 	protected GameThread _thread;
 	protected Paint text_background;
 	protected Paint text;
@@ -62,6 +65,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		theme = prefs.getInt("theme",1); 
 		level = prefs.getInt("level",1); 
+		sound = prefs.getInt("Sound",0);
+		music = prefs.getInt("Music",0);
+		difficulty = prefs.getInt("Difficulty",1);
 		if(level == 1)
 			paths = paths_level_1;
 		else if(level == 2)

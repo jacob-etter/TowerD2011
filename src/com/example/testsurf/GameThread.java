@@ -69,15 +69,7 @@ class GameThread extends Thread {
 		for(int i=0;i<_view.towerlist.size();++i){
 			_view.getTowerlist().get(i).fire(_view);
 		}
-		if((current_time - creep_timer)>spawn_timer){
-			if((_view.getPathlist().size()>0)&&(spawn_count > 0)){
-				int x = _view.getPathlist().get(0).getSides()[0];
-				int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
-				_view.getCreeplist().add(new CreepQuick(x, y,_view));
-				creep_timer = current_time; 
-				spawn_count -= 1;
-			}
-		}
+		spawnCreeps(current_time);
 		if(_view.getUser().getLives() <= 0){
 			_run = false;
 			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_view.getContext());
@@ -191,6 +183,39 @@ class GameThread extends Thread {
 		old_spawn_count = 2*old_spawn_count;
 		spawn_timer = spawn_timer/2;
 		wave += 1;
+	}
+	protected void spawnCreeps(long current_time){
+		if((current_time - creep_timer)>spawn_timer){
+			if((_view.getPathlist().size()>0)&&(spawn_count > 0)){
+				int x = _view.getPathlist().get(0).getSides()[0];
+				int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
+				int round = wave % 4;
+				switch(round){
+				case 0: roundZero(x,y); break;
+				case 1: roundOne(x,y); break;
+				case 2: roundTwo(x,y); break;
+				case 3: roundThree(x,y); break;
+				}
+				creep_timer = current_time; 
+				spawn_count -= 1;
+			}
+		}
+	}
+	protected void roundZero(int x, int y){
+		_view.getCreeplist().add(new CreepSimple(x, y,_view));
+	}
+	protected void roundOne(int x, int y){
+		_view.getCreeplist().add(new CreepQuick(x, y,_view));
+	}
+	protected void roundTwo(int x, int y){
+		_view.getCreeplist().add(new CreepTough(x, y,_view));
+	}
+	protected void roundThree(int x, int y){
+		switch(spawn_count%3){
+		case 0: _view.getCreeplist().add(new CreepSimple(x, y,_view)); break;
+		case 1: _view.getCreeplist().add(new CreepTough(x, y,_view)); break;
+		case 2: _view.getCreeplist().add(new CreepQuick(x, y,_view)); break;
+		}
 	}
 	/**
 	 * return the current wave that game is on
