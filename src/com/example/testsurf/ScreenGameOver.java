@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+ 
 /**
  * Displays the Game Over Sreen
  * @author Sean Wiese sean.wiese@colorado.edu
