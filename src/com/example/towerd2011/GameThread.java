@@ -142,7 +142,7 @@ class GameThread extends Thread {
 					DialogBuyTower customDialog = new DialogBuyTower(_view,xpress, ypress);
 					customDialog.show();
 				}
-				else if(_view.tiles.getGridZone(xpress,ypress).getID()>3){
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()>4){
 					gamePause();
 					DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 					dialogselltower.show();
@@ -150,10 +150,15 @@ class GameThread extends Thread {
 				else if((_view.tiles.getGridZone(xpress,ypress).getID()==0)&&(in_round == false)){
 					startround();
 				}
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()==4){
+					gamePause();
+					DialogCreepList dialogcreeplist = new DialogCreepList(_view,xpress, ypress);
+					dialogcreeplist.show();
+				}
 			}
 			if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
 				gamePause();
-				DialogCreeps dialogcreeps = new DialogCreeps(_view,xpress, ypress);
+				DialogCreepZone dialogcreeps = new DialogCreepZone(_view,xpress, ypress);
 				dialogcreeps.show();
 			}
 			handled = true;

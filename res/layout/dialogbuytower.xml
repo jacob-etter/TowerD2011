@@ -8,7 +8,7 @@
 		android:textColor="#fff" android:textStyle="bold"
 		android:layout_width="wrap_content" android:text="Choose Your Tower" android:textSize="20dip"></TextView>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow3">
-		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Rifle tower, firing high calibur projectiles at a decent range. This is a good all around tower. Cost: 300"></TextView>
+		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Rifle tower, firing high calibur projectiles at a decent range. This is a good all around tower.Cost: 300"></TextView>
 		<TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Machinegun tower. It fires quickly but does less damage than the rifle tower. Cost: 400"></TextView>
 		<TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Tesla tower, it can fire at multiple targets simultaneously. Cost: 500"></TextView>
 	</TableRow>

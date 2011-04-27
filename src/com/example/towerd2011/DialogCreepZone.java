@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class DialogCreeps extends DialogCustom implements OnClickListener{
+public class DialogCreepZone extends DialogCustom implements OnClickListener{
 	Button Close;
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class DialogCreeps extends DialogCustom implements OnClickListener{
 	 * @param xloc
 	 * @param yloc
 	 */
-	public DialogCreeps(GameView gameview, int xloc, int yloc){
+	public DialogCreepZone(GameView gameview, int xloc, int yloc){
 		super(gameview,xloc,yloc);
 		setContentView(R.layout.dialogcreeps);
 		ListView lv = (ListView) findViewById(R.id.ListView);
@@ -39,7 +39,7 @@ public class DialogCreeps extends DialogCustom implements OnClickListener{
 		}
 		String[] names = new String[creepsfound.size()+1];
 		if(creepsfound.size() == 0){
-			names[0] = "No Creeps In this Zone";
+			names[0] = "No Creeps on the map";
 		}
 		else{
 			names[0] = "\nCreeps\n";

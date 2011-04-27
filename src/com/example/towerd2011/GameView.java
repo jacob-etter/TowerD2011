@@ -129,6 +129,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		}
 		sides = tiles.getGridZone(0,1).getSides();
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],this));
+		sides = tiles.getGridZone(xsize-1,1).getSides();
+		tiles.setGridZone(xsize-1, 1, new ZoneCreepButton(sides[0],sides[1],sides[2],sides[3],this));
 		initiate = 1;
 	}
 	/**

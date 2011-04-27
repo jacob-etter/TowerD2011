@@ -9,6 +9,7 @@ package com.example.towerd2011;
 import java.util.ArrayList;
 
 import android.app.Dialog;
+import android.view.KeyEvent;
 import android.view.Window;
 
 public class DialogCustom extends Dialog{
@@ -37,6 +38,13 @@ public class DialogCustom extends Dialog{
 	protected void exitDialog(){
 		view.getThread().gameResume();
 		dismiss();
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	        view.getThread().gameResume();
+	    }
+	    return super.onKeyDown(keyCode, event);
 	}
 }
 
