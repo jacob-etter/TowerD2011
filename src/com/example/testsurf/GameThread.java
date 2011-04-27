@@ -45,11 +45,13 @@ class GameThread extends Thread {
 		case 2:difficulty = 1.5;break;
 		case 3:difficulty = 2;break;
 		}
+		SharedPreferences prefs = _view.getContext().getSharedPreferences("DiffAdjust", Context.MODE_PRIVATE);
+		spawn_timer = prefs.getInt("SpawnTimer", 3000);
+		old_spawn_count = prefs.getInt("SpawnCount", 5);
+		difficulty += prefs.getInt("DifficultyOffset", 0);
+		wave = 0;
 		creep_timer = 0;
 		spawn_count = 0;
-		old_spawn_count = 5;
-		spawn_timer = 3000;
-		wave = 0;
 	}
 	/**
 	 * Start the game
