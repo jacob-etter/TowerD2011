@@ -5,6 +5,6 @@
 		android:layout_height="215dip"></ListView>
 	<Button android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/ButtonClose"
-		android:text="Close"></Button>
+		android:text="Close" android:background="@drawable/rectbutton" android:textColor="#ffffff"></Button>
 </LinearLayout>
  
