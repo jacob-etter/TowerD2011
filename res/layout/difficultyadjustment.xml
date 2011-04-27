@@ -15,7 +15,7 @@
 		<EditText android:inputType="number" android:layout_height="wrap_content"
 			android:id="@+id/EditTextTimer" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:text="Set"
-			android:layout_width="50dip" android:id="@+id/ButtonTimer" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:layout_width="50dip" android:id="@+id/ButtonTimer" android:textColor="#ffffff"></Button>
 	</TableRow>
 	<TableRow android:id="@+id/TableRow02" android:layout_width="match_parent"
 		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
@@ -26,7 +26,7 @@
 		<EditText android:inputType="number" android:layout_height="wrap_content"
 			android:id="@+id/EditTextDifficulty" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonDifficulty"
-			android:text="Set" android:layout_width="50dip" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:text="Set" android:layout_width="50dip" android:textColor="#ffffff"></Button>
 	</TableRow>
 	<TableRow android:id="@+id/tableRow1" android:layout_width="match_parent"
 		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
@@ -38,7 +38,7 @@
 			android:id="@+id/EditTextCount" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonCount"
 			android:layout_gravity="center" android:text="Set"
-			android:layout_width="50dip" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:layout_width="50dip" android:textColor="#ffffff"></Button>
 	</TableRow>
 	<TableRow android:id="@+id/TableRow03" android:layout_width="match_parent"
 		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
@@ -49,7 +49,7 @@
 		<EditText android:inputType="number"
 			android:layout_height="wrap_content" android:id="@+id/EditTextMoney" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_width="50dip" android:layout_gravity="center"
-			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonMoney" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonMoney" android:textColor="#ffffff"></Button>
 	</TableRow>
 	<TableRow android:id="@+id/TableRow04" android:layout_width="match_parent"
 		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
@@ -60,13 +60,13 @@
 		<EditText android:inputType="number"
 			android:layout_height="wrap_content" android:id="@+id/EditTextLives" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_width="50dip" android:layout_gravity="center"
-			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonLives" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonLives" android:textColor="#ffffff"></Button>
 	</TableRow>
 	<LinearLayout android:layout_width="match_parent"
 		android:id="@+id/linearLayout1" android:layout_height="wrap_content"
 		android:orientation="vertical">
 		<Button android:layout_gravity="center_horizontal"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:id="@+id/ButtonClear" android:text="Reset All" android:textColor="#ffffff" android:background="@drawable/rectbutton"></Button>
+			android:id="@+id/ButtonClear" android:text="Reset All" android:textColor="#ffffff"></Button>
 	</LinearLayout>
 </LinearLayout>

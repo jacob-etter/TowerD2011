@@ -27,7 +27,7 @@ public class DialogCustom extends Dialog{
 	 * @param yloc
 	 */
 	public DialogCustom(GameView gameview, int xloc, int yloc){
-		super(gameview.getContext());
+		super(gameview.getContext(), com.example.towerd2011.R.style.CustomDialog);
 		context = gameview.getContext();
 		towerlist = gameview.getTowerlist();
 		user = gameview.getUser();

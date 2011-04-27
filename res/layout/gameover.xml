@@ -41,5 +41,5 @@
 		android1:text="Enter Name" android1:id="@+id/EditTextName" android1:layout_width="150dip"></EditText>
 	<Button android1:layout_gravity="center_horizontal"
 		android1:layout_height="wrap_content" android1:layout_width="wrap_content"
-		android1:text="Main Menu" android1:id="@+id/ButtonMainMenu" android1:background="@drawable/rectbutton" android1:textColor="#ffffff" android1:layout_margin="10dip"></Button>
+		android1:text="Main Menu" android1:id="@+id/ButtonMainMenu" android1:textColor="#ffffff" android1:layout_margin="10dip"></Button>
 </LinearLayout>
