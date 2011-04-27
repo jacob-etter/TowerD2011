@@ -130,11 +130,11 @@ class GameThread extends Thread {
 		}
 		else if (event.getAction() == MotionEvent.ACTION_UP){
 			_view.tiles.getGridZone(xpress,ypress).removeHighlight();
+			ypress  = (int) event.getY();
+			xpress = (int) event.getX();
+			xpress = xpress/(_view.getWidth()/_view.xsize);
+			ypress = ypress/(_view.getHeight()/_view.ysize);
 			if((System.currentTimeMillis()-click_time )> 250){
-				ypress  = (int) event.getY();
-				xpress = (int) event.getX();
-				xpress = xpress/(_view.getWidth()/_view.xsize);
-				ypress = ypress/(_view.getHeight()/_view.ysize);
 				if(_view.tiles.getGridZone(xpress,ypress).getID()==2){
 					gamePause();
 					DialogBuyTower customDialog = new DialogBuyTower(_view,xpress, ypress);
@@ -145,14 +145,14 @@ class GameThread extends Thread {
 					DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 					dialogselltower.show();
 				}
-				else if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
-					gamePause();
-					DialogCreeps dialogcreeps = new DialogCreeps(_view,xpress, ypress);
-					dialogcreeps.show();
-				}
 				else if((_view.tiles.getGridZone(xpress,ypress).getID()==0)&&(in_round == false)){
 					startround();
 				}
+			}
+			if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
+				gamePause();
+				DialogCreeps dialogcreeps = new DialogCreeps(_view,xpress, ypress);
+				dialogcreeps.show();
 			}
 			handled = true;
 		}
