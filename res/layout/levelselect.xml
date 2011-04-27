@@ -19,7 +19,7 @@
 			android:orientation="horizontal"
 			android:id="@+id/RadioGroupLevel" android:layout_width="wrap_content">
 			<RadioButton android:layout_height="wrap_content"
-				android:layout_width="wrap_content" android:text="One" android:id="@+id/RadioOne"></RadioButton>
+				android:layout_width="wrap_content" android:id="@+id/RadioOne" android:text="One    "></RadioButton>
 			<RadioButton android:layout_height="wrap_content"
 				android:layout_width="wrap_content" android:text="Two" android:id="@+id/RadioTwo"></RadioButton>
 			<RadioButton android:layout_height="wrap_content"
