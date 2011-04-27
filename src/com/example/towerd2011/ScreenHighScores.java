@@ -5,19 +5,17 @@
  */
 package com.example.towerd2011;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class ScreenHighScores extends ListActivity{
+public class ScreenHighScores extends Activity{
 	SharedPreferences prefs;
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle icicle) {
@@ -28,6 +26,8 @@ public class ScreenHighScores extends ListActivity{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//Remove notification bar
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		setContentView(R.layout.highscores);
+		ListView lv = (ListView) findViewById(R.id.ListViewScores);
 		prefs = getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 		int num_scores = prefs.getInt("NumOfScores", 0);
 		String[] names = new String[10];
@@ -48,17 +48,6 @@ public class ScreenHighScores extends ListActivity{
 		} 
 		// Use your own layout and point the adapter to the UI elements which
 		// contains the label
-		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.rowlayout,
-				R.id.ScoreString, names));
-	}
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
-		// Get the item that was clicked
-		Object o = this.getListAdapter().getItem(position);
-		String keyword = o.toString();
-		Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_LONG)
-		.show();
-
+		lv.setAdapter(new ArrayAdapter<String>(this, R.layout.rowhighscores,R.id.ScoreString, names));
 	}
 }
