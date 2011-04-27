@@ -11,7 +11,7 @@ import android.widget.Button;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogBuyTower extends DialogTower implements OnClickListener{
+public class DialogBuyTower extends DialogCustom implements OnClickListener{
 	private Button ButtonRed;
 	private Button ButtonBlue;
 	private Button ButtonGreen;
@@ -48,24 +48,24 @@ public class DialogBuyTower extends DialogTower implements OnClickListener{
 			tower = new TowerRifle(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);
-			dismiss();
+			exitDialog();
 		}
 		else if ((v == ButtonBlue)&&(usermoney >= res.getInteger(R.integer.pricetowermachinegun))){
 			user.decMoney(res.getInteger(R.integer.pricetowermachinegun));
 			tower = new TowerMachineGun(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);
-			dismiss();
+			exitDialog();
 		}
 		else if ((v == ButtonGreen)&&(usermoney >= res.getInteger(R.integer.pricetowertesla))){
 			user.decMoney(res.getInteger(R.integer.pricetowertesla));
 			tower = new TowerTesla(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
 			view.tiles.setGridZone(x_pos,y_pos,tower);
-			dismiss();
+			exitDialog();
 		}
 		else if (v == ButtonCancel){
-			dismiss();
+			exitDialog();
 		}
 	}
 }

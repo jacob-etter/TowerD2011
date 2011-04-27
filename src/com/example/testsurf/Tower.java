@@ -156,19 +156,19 @@ public class Tower extends Zone{
 	}
 	public int getCooldownPrice(){
 		if(cd_price == 0){
-			cd_price = (int) (saleprice*.5);
+			cd_price = (int) (saleprice/.6*.5);
 		}
 		return cd_price;
 	}
 	public int getDamagePrice(){
 		if(dmg_price == 0){
-			dmg_price = (int) (saleprice*.5);
+			dmg_price = (int) (saleprice/.6*.5);
 		}
 		return dmg_price;
 	}
 	public int getRangePrice(){
 		if(rng_price == 0){
-			rng_price = (int) (saleprice*.5);
+			rng_price = (int) (saleprice/.6*.5);
 		}
 		return rng_price;
 	}
@@ -186,5 +186,8 @@ public class Tower extends Zone{
 		rng *= 1.5;
 		saleprice += .6*rng_price;
 		rng_price *= 1.5;
+	}
+	public void incLastFire(long value){
+		last_fire += value;
 	}
 }

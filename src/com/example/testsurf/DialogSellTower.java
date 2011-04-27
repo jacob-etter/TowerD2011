@@ -11,7 +11,7 @@ import android.widget.TextView;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogSellTower extends DialogTower implements OnClickListener{
+public class DialogSellTower extends DialogCustom implements OnClickListener{
 	private Button ButtonSell;
 	private Button ButtonCancel;
 	private Button ButtonUpDmg ;
@@ -69,7 +69,7 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 			saleprice = tower.getSalePrice();
 			user.incMoney(saleprice);
 			view.tiles.setGridZone(x_pos,y_pos,empty);
-			dismiss();
+			exitDialog();
 			for(int i=0;i<towerlist.size();++i){
 				if(sides == towerlist.get(i).getSides()){
 					towerlist.remove(i);
@@ -79,20 +79,20 @@ public class DialogSellTower extends DialogTower implements OnClickListener{
 		else if ((v == ButtonUpDmg)&&(usermoney >= tower.getDamagePrice())){
 			user.decMoney(tower.getDamagePrice());
 			tower.upDamage();
-			dismiss();
+			exitDialog();
 		}
 		else if ((v == ButtonUpRange)&&(usermoney >= tower.getRangePrice())){
 			user.decMoney(tower.getRangePrice());
 			tower.upRange();
-			dismiss();
+			exitDialog();
 		}
 		else if ((v == ButtonUpCooldown)&&(usermoney >= tower.getCooldownPrice())){
 			user.decMoney(tower.getCooldownPrice());
 			tower.upCooldown();
-			dismiss();
+			exitDialog();
 		}
 		else if (v == ButtonCancel){
-			dismiss();
+			exitDialog();
 		}
 	}
 }

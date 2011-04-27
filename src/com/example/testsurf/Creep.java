@@ -164,4 +164,7 @@ public class Creep {
 	protected int getHealthOriginal(){
 		return original_health;
 	}
+	public void incOldTime(long value){
+		old_time += value;
+	}
 }

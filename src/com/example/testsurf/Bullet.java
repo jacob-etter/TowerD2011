@@ -160,5 +160,8 @@ public class Bullet {
 	public boolean getAlive(){
 		return alive;
 	}
+	public void incOldTime(long value){
+		old_time += value;
+	}
 
 }

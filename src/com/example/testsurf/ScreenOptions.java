@@ -130,6 +130,13 @@ public class ScreenOptions extends ScreenMainMenu {
 					alertDialog2();
 			}
 		});
+		Button devoptions = (Button) findViewById(R.id.ButtonDevOptions);
+		devoptions.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent myIntent = new Intent(view.getContext(), ScreenDificultyAdjust.class);
+				startActivityForResult(myIntent, 0);
+			}
+		});
 
 	}//OnCreate();
 	
