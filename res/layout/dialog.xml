@@ -1,7 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="200dip" android:layout_height="fill_parent" android:gravity="center">
-    <ListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/ListView"></ListView>
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/ButtonClose" android:text="Close"></Button>   
-       
+	android:orientation="vertical" android:layout_width="200dip"
+	android:layout_height="fill_parent" android:gravity="center">
+	<ListView android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/ListView"></ListView>
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/ButtonClose"
+		android:text="Close"></Button>
+
 </LinearLayout>
