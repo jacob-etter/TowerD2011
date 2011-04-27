@@ -4,4 +4,5 @@
     <string name="app_name">TowerD2011</string>
     <string name="FinalScore">FinalScore</string>
     <string name="RoundsComp">RoundsComp</string>
+    <string name="credit">By \n Sean Wiese, Jacob Etter, Marina Nunamaker, and Cody Sanford</string>
 </resources>

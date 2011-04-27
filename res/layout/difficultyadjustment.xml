@@ -11,7 +11,7 @@
 		<TextView android:layout_width="fill_parent"
 			android:layout_weight="1" android:id="@+id/TextView01"
 			android:textColor="#ffffff" android:layout_height="wrap_content"
-			android:text="InitialSpawnTimer" android:textSize="23dip"></TextView>
+			android:textSize="23dip" android:text="Initial Spawn Timer"></TextView>
 		<EditText android:inputType="number" android:layout_height="wrap_content"
 			android:id="@+id/EditTextTimer" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:text="Set"
@@ -22,7 +22,7 @@
 		<TextView android:layout_width="fill_parent" 
 			android:layout_weight="1" android:id="@+id/TextView02"
 			android:textColor="#ffffff" android:layout_height="wrap_content"
-			android:text="DifficultyIncrease" android:textSize="23dip"></TextView>
+			android:textSize="23dip" android:text="Difficulty Increase"></TextView>
 		<EditText android:inputType="number" android:layout_height="wrap_content"
 			android:id="@+id/EditTextDifficulty" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonDifficulty"
@@ -33,7 +33,7 @@
 		<TextView android:layout_width="fill_parent"
 			android:layout_weight="1" android:id="@+id/textView2"
 			android:layout_height="wrap_content" android:textColor="#ffffff"
-			android:text="InitialSpawnCount" android:textSize="23dip"></TextView>
+			android:textSize="23dip" android:text="Initial Spawn Count"></TextView>
 		<EditText android:inputType="number" android:layout_height="wrap_content"
 			android:id="@+id/EditTextCount" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonCount"
@@ -45,7 +45,7 @@
 		<TextView android:layout_width="fill_parent"
 			android:layout_weight="1" android:id="@+id/TextView03"
 			android:textColor="#ffffff" android:layout_height="wrap_content"
-			android:text="InitalMoneyValue" android:textSize="23dip"></TextView>
+			android:textSize="23dip" android:text="Inital Money Value"></TextView>
 		<EditText android:inputType="number"
 			android:layout_height="wrap_content" android:id="@+id/EditTextMoney" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_width="50dip" android:layout_gravity="center"
@@ -56,7 +56,7 @@
 		<TextView android:layout_width="fill_parent"
 			android:layout_weight="1" android:id="@+id/TextView04"
 			android:textColor="#ffffff" android:layout_height="wrap_content"
-			android:text="InitialLivesCount" android:textSize="23dip"></TextView>
+			android:textSize="23dip" android:text="Initial Lives Count"></TextView>
 		<EditText android:inputType="number"
 			android:layout_height="wrap_content" android:id="@+id/EditTextLives" android:layout_width="150dip" android:textSize="13dip"></EditText>
 		<Button android:layout_width="50dip" android:layout_gravity="center"
