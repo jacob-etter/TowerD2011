@@ -1,6 +1,8 @@
 package com.example.testsurf;
 
 import java.util.ArrayList;
+
+import android.media.MediaPlayer;
 /**
  * A tower that can shoot at 3 different targets
  * @author Jacob
@@ -25,6 +27,7 @@ public class TowerTesla extends Tower
 		saleprice = (int) (price*.6);
 		targets = new ArrayList<Creep>();
 		targets.ensureCapacity(3);
+		mp = MediaPlayer.create(context,R.raw.zzap);
 	}
 	
 	/**
@@ -87,6 +90,9 @@ public class TowerTesla extends Tower
 				{
 					bulletlist.add(new BulletTesla(pos_x, pos_y, targets.get(i), view, dmg));
 					targets.get(i).decHealth2(dmg);
+					//if(sound){
+						mp.start();	
+					//}
 				}
 				if(targets.get(i) != null && !targets.get(i).getAlive2())
 				{
