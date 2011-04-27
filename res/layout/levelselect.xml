@@ -13,8 +13,8 @@
 		android:layout_width="match_parent" android:gravity="center"
 		android:id="@+id/TableRowLevel" android:layout_marginRight="50dip" android:layout_marginLeft="50dip">
 		<TextView android:textStyle="bold" android:textColor="#FFFFFF"
-			android:gravity="left" android:text="Level"
-			android:id="@+id/TextViewLevel" android:textSize="25dip" android:layout_marginLeft="50dip"></TextView>
+			android:text="Level"
+			android:id="@+id/TextViewLevel" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:orientation="horizontal"
 			android:id="@+id/RadioGroupLevel" android:layout_width="wrap_content">
@@ -31,7 +31,7 @@
 		android:id="@+id/TableRowTheme" android:layout_marginRight="50dip" android:layout_marginLeft="50dip">
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textStyle="bold"
-			android:gravity="left" android:textColor="#FFFFFF" android:text="Theme" android:id="@+id/TextViewTheme" android:textSize="25dip" android:layout_marginLeft="50dip"></TextView>
+			android:textColor="#FFFFFF" android:text="Theme" android:id="@+id/TextViewTheme" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:orientation="horizontal"
 			android:id="@+id/RadioGroupTheme">
