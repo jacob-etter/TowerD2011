@@ -1,5 +1,6 @@
 package com.example.testsurf;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -140,6 +141,10 @@ class GameThread extends Thread {
 					else if(_view.tiles.getGridZone(xpress,ypress).getID()>3){
 						DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 						dialogselltower.show();
+					}
+					else if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
+						DialogCreeps dialogcreeps = new DialogCreeps(_view,xpress, ypress);
+						dialogcreeps.show();
 					}
 					else if((_view.tiles.getGridZone(xpress,ypress).getID()==0)&&(in_round == false)){
 						startround();

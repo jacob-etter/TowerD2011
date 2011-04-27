@@ -17,12 +17,14 @@ public class CreepSimple extends Creep{
 		super(xloc, yloc, view, difficulty);
 		health = (int) (75*difficulty);
 		health2 = health;
+		original_health = health;
 		speed = 30;
 		size = 2;
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);
 		creepicon = context.getResources().getDrawable(R.drawable.creep_ghost);
 		moneyval = (int) (.25*health);
+		type = "Simple";
 	}
 
 }

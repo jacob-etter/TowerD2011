@@ -28,8 +28,10 @@ public class Creep {
 	protected boolean alive2 = true;
 	protected int health;
 	protected int health2;
+	protected int original_health;
 	protected GameView gameview;
 	protected int moneyval;
+	protected String type;
 	/**
 	 * Constructor for Creep
 	 * 
@@ -48,6 +50,7 @@ public class Creep {
 		pos_y = yloc;
 		user = view.getUser();
 		old_time = System.currentTimeMillis();
+		type = "Creep";
 	}
 	/**
 	 * updates the position of the creep
@@ -151,5 +154,14 @@ public class Creep {
 	}
 	protected boolean getAlive2(){
 		return alive2;
+	}
+	protected String getType(){
+		return type;
+	}
+	protected int getHealth(){
+		return health;
+	}
+	protected int getHealthOriginal(){
+		return original_health;
 	}
 }
