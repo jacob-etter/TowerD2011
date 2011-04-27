@@ -6,12 +6,12 @@
 	<TextView android:textStyle="bold"
 		android:layout_width="match_parent" android:text="Choose Level"
 		android:layout_height="wrap_content" android:textColor="#FFFFFF"
-		android:typeface="serif" android:gravity="center" android:id="@+id/TextTitle" android:textSize="35dip" android:layout_marginTop="50dip"></TextView>
+		android:typeface="serif" android:gravity="center" android:id="@+id/TextTitle" android:textSize="35dip" android:layout_marginTop="33dip"></TextView>
 	>
 
 	<TableRow android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:gravity="center"
-		android:id="@+id/TableRowLevel" android:layout_marginRight="50dip" android:layout_marginLeft="50dip">
+		android:id="@+id/TableRowLevel" android:layout_marginTop="10dip" android:layout_marginRight="33dip" android:layout_marginLeft="33dip">
 		<TextView android:textStyle="bold" android:textColor="#FFFFFF"
 			android:text="Level"
 			android:id="@+id/TextViewLevel" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
@@ -28,7 +28,7 @@
 	</TableRow>
 	<TableRow android:layout_height="wrap_content" 
 		android:layout_width="match_parent" android:gravity="center"
-		android:id="@+id/TableRowTheme" android:layout_marginRight="50dip" android:layout_marginLeft="50dip">
+		android:id="@+id/TableRowTheme" android:layout_marginLeft="33dip" android:layout_marginRight="33dip">
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textStyle="bold"
 			android:textColor="#FFFFFF" android:text="Theme" android:id="@+id/TextViewTheme" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
@@ -50,6 +50,6 @@
 		<Button android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
 			android:textColor="#ffffff"
-			android:text="Start" android:id="@+id/ButtonStart"></Button>
+			android:text="Start" android:id="@+id/ButtonStart" android:layout_marginTop="10dip"></Button>
 	</LinearLayout>
 </TableLayout>  

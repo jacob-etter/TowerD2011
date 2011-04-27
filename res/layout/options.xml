@@ -69,15 +69,15 @@
 		android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="35dip" android:layout_marginLeft="35dip" android:layout_marginTop="5dip">
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonHighScores" android:text="High Scores"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonClearOptions" android:text="Clear Options"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonClearScores" android:text="Clear Scores"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:layout_width="fill_parent" android:layout_weight="1"
-			android:text="DevOptions" android:id="@+id/ButtonDevOptions" android:textColor="#ffffff"></Button>
+			android:text="DevOptions" android:id="@+id/ButtonDevOptions" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
 	</LinearLayout>
 </TableLayout>  
