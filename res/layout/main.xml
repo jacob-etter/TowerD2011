@@ -23,4 +23,4 @@
 			android:layout_marginRight="25dip" android:layout_marginLeft="150dip"
 			android:textSize="18dip"></Button>
 	</TableRow>
-</LinearLayout>
+</LinearLayout> 

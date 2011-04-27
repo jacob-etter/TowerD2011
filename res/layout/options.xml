@@ -31,7 +31,7 @@
 				android:text="Hard"></RadioButton>
 		</RadioGroup>
 	</TableRow>
-	<TableRow android:id="@+id/musicRadioRow"
+	<TableRow android:id="@+id/musicRadioRow" 
 		android:layout_height="wrap_content" android:layout_width="match_parent"
 		android:gravity="center">
 		<TextView android:text="Music" android:layout_height="wrap_content"

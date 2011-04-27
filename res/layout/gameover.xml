@@ -23,7 +23,7 @@
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow1">
 		<TextView android:layout_height="wrap_content"
-			android:textColor="#ffffff" android:textStyle="bold"
+			android:textColor="#ffffff" android:textStyle="bold" 
 			android:textSize="20dip" android1:text="Rounds Completed = "
 			android1:id="@+id/TextViewRCompText" android1:layout_width="fill_parent"
 			android1:layout_weight="1" android1:gravity="right"></TextView>

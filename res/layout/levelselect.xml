@@ -26,7 +26,7 @@
 				android:layout_width="wrap_content" android:text="Three" android:id="@+id/RadioThree"></RadioButton>
 		</RadioGroup>
 	</TableRow>
-	<TableRow android:layout_height="wrap_content"
+	<TableRow android:layout_height="wrap_content" 
 		android:layout_width="match_parent" android:gravity="center"
 		android:id="@+id/TableRowTheme">
 		<TextView android:layout_height="wrap_content"

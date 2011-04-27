@@ -6,4 +6,4 @@
 		android:text="@+id/TextView01" android:id="@+id/ScoreString"
 		android:gravity="center_horizontal" android:layout_margin="8dip"
 		android:textSize="15dip"></TextView>
-</LinearLayout>
+</LinearLayout> 

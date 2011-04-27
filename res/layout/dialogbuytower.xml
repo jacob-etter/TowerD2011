@@ -30,7 +30,7 @@
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonRed"
 			android:text="Rifle" android:layout_weight="1" android:layout_width="100dip"></Button>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonBlue"
-			android:text="MachineGun" android:layout_weight="1"
+			android:text="MachineGun" android:layout_weight="1" 
 			android:layout_width="100dip"></Button>
 		<Button android:layout_height="wrap_content" android:id="@+id/ButtonGreen"
 			android:text="Tesla" android:layout_weight="1" android:layout_width="100dip"></Button>
