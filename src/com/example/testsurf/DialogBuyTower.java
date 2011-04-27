@@ -11,7 +11,7 @@ import android.widget.Button;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogBuyTower extends DialogTower implements OnClickListener{
+public class DialogBuyTower extends DialogCustom implements OnClickListener{
 	private Button ButtonRed;
 	private Button ButtonBlue;
 	private Button ButtonGreen;

@@ -11,7 +11,7 @@ import android.widget.TextView;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogSellTower extends DialogTower implements OnClickListener{
+public class DialogSellTower extends DialogCustom implements OnClickListener{
 	private Button ButtonSell;
 	private Button ButtonCancel;
 	private Button ButtonUpDmg ;

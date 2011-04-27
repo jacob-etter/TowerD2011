@@ -14,7 +14,7 @@ import android.widget.ListView;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogCreeps extends DialogTower implements OnClickListener{
+public class DialogCreeps extends DialogCustom implements OnClickListener{
 	Button Close;
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class DialogCreeps extends DialogTower implements OnClickListener{
 	 */
 	public DialogCreeps(GameView gameview, int xloc, int yloc){
 		super(gameview,xloc,yloc);
-		setContentView(R.layout.dialog);
+		setContentView(R.layout.dialogcreeps);
 		ListView lv = (ListView) findViewById(R.id.ListView);
 		ArrayList<Creep> creeplist = view.getCreeplist();
 		ArrayList<Creep> creepsfound = new ArrayList<Creep>();
