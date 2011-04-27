@@ -33,5 +33,9 @@ public class DialogTower extends Dialog{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		/** Design the dialog in main.xml file */
 	}
+	protected void exitDialog(){
+		view.getThread().gameResume();
+		dismiss();
+	}
 }
 

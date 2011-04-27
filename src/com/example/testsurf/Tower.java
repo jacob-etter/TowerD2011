@@ -178,4 +178,7 @@ public class Tower extends Zone{
 		saleprice += .6*rng_price;
 		rng_price *= 1.5;
 	}
+	public void incLastFire(long value){
+		last_fire += value;
+	}
 }

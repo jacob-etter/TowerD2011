@@ -2,7 +2,10 @@ package com.example.testsurf;
 
 import java.util.ArrayList;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 /**
@@ -11,7 +14,8 @@ import android.widget.ListView;
  * @author Sean Wiese sean.wiese@colorado.edu
  * Copyright (c) 2011 Sean Wiese
  */
-public class DialogCreeps extends DialogTower {
+public class DialogCreeps extends DialogTower implements OnClickListener{
+	Button Close;
 	/**
 	 * 
 	 * @param gameview
@@ -50,5 +54,12 @@ public class DialogCreeps extends DialogTower {
 			names[i] = Integer.toString(i)+"\nType = "+type+"\nHealth = "+health_percent;
 		}
 		lv.setAdapter(new ArrayAdapter<String>(view.getContext(), R.layout.dialoglistrow,R.id.ScoreString, names));
+		Close = (Button) findViewById(R.id.ButtonClose);
+		Close.setOnClickListener(this);
+	}
+	public void onClick(View v) {
+		if (v == Close){
+			exitDialog();
+		}
 	}
 }
