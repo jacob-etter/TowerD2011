@@ -9,6 +9,7 @@ package com.example.towerd2011;
 import java.util.ArrayList;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.view.KeyEvent;
 import android.view.Window;
 
@@ -18,6 +19,7 @@ public class DialogCustom extends Dialog{
 	protected int y_pos;
 	protected User user;
 	protected ArrayList<Tower> towerlist;
+	protected Context context;
 	/**
 	 * 
 	 * @param gameview
@@ -26,6 +28,7 @@ public class DialogCustom extends Dialog{
 	 */
 	public DialogCustom(GameView gameview, int xloc, int yloc){
 		super(gameview.getContext());
+		context = gameview.getContext();
 		towerlist = gameview.getTowerlist();
 		user = gameview.getUser();
 		x_pos = xloc;

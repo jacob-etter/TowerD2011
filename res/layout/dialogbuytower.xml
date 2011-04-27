@@ -8,9 +8,24 @@
 		android:textColor="#fff" android:textStyle="bold"
 		android:layout_width="wrap_content" android:text="Choose Your Tower" android:textSize="20dip"></TextView>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow3">
-		<TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Rifle tower, firing high calibur projectiles at a decent range. This is a good all around tower.Cost: 300"></TextView>
-		<TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Machinegun tower. It fires quickly but does less damage than the rifle tower. Cost: 400"></TextView>
-		<TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="10dip" android:textColor="#fff" android:gravity="center_vertical|center_horizontal" android:layout_width="100dip" android:text="This is the Tesla tower, it can fire at multiple targets simultaneously. Cost: 500"></TextView>
+		<TableLayout android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/tableLayoutRifle" android:layout_height="wrap_content">
+			<TextView android:layout_width="100dip" android:text="Damage" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:gravity="left|center_vertical" android:id="@+id/TextRifleDamage" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:id="@+id/TextRifleRange" android:textColor="#fff" android:layout_height="wrap_content" android:text="Range" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:id="@+id/TextRifleCooldown" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cooldown" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:id="@+id/TextRifleCost" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cost" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+		</TableLayout>
+		<TableLayout android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/TableLayout02" android:layout_height="wrap_content">
+			<TextView android:layout_width="100dip" android:text="Damage" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:id="@+id/TextMachineDamage" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Range" android:id="@+id/TextMachineRange" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cooldown" android:id="@+id/TextMachineCooldown" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cost" android:id="@+id/TextMachineCost" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+		</TableLayout>
+		<TableLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1" android:id="@+id/TableLayout01">
+			<TextView android:layout_width="100dip" android:text="Damage" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:id="@+id/TextTeslaDamage" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Range" android:id="@+id/TextTeslaRange" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cooldown" android:id="@+id/TextTeslaCooldown" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+			<TextView android:layout_width="100dip" android:layout_weight="1" android:textColor="#fff" android:layout_height="wrap_content" android:text="Cost" android:id="@+id/TextTeslaCost" android:gravity="left|center_vertical" android:textSize="13dip"></TextView>
+		</TableLayout>
 	</TableRow>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow1">
@@ -27,5 +42,5 @@
 		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView2" android:layout_weight="1" android:src="@drawable/machinegunfull" android:layout_width="fill_parent"></ImageView>
 		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView3" android:layout_weight="1" android:src="@drawable/teslafull" android:layout_width="fill_parent"></ImageView>
 	</TableRow>
-	<Button android:gravity="center_horizontal" android:layout_height="wrap_content" android:text="Cancel" android:id="@+id/ButtonCancel" android:layout_width="100dip" android:background="@drawable/rectbutton" android:textColor="#ffffff"></Button>
+	<Button android:layout_height="wrap_content" android:text="Cancel" android:id="@+id/ButtonCancel" android:layout_width="100dip" android:background="@drawable/rectbutton" android:textColor="#ffffff" android:gravity="center"></Button>
 </LinearLayout>
