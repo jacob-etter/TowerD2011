@@ -7,12 +7,22 @@ package com.example.towerd2011;
 
 public class TowerRifle extends Tower 
 {
+	/**
+	 * cunstructor for tower rifle
+	 * @param left
+	 * @param top
+	 * @param right
+	 * @param bottom
+	 * @param gameview
+	 */
 	public TowerRifle(int left, int top, int right, int bottom,	GameView gameview) 
 	{
 		super(left, top, right, bottom, gameview);
-		rng = context.getResources().getInteger(R.integer.towerriflerange);
+		/** get tower attributes */
+		range = context.getResources().getInteger(R.integer.towerriflerange);
 		cooldown = context.getResources().getInteger(R.integer.towerriflecooldown)/1000.0;
-		dmg = context.getResources().getInteger(R.integer.towerrifledamage); 
+		damage = context.getResources().getInteger(R.integer.towerrifledamage); 
+		/** get the right tower images based on the theme */
 		if(gameview.getTheme() == 1)
 		{
 			base = context.getResources().getDrawable(R.drawable.cannonbase);

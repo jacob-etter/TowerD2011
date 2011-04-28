@@ -12,14 +12,22 @@ import android.media.MediaPlayer;
 public class TowerTesla extends Tower 
 {
 	public ArrayList<Creep> targets;
-
+	/**
+	 * contructor for tesla tower
+	 * @param left
+	 * @param top
+	 * @param right
+	 * @param bottom
+	 * @param view
+	 */
 	public TowerTesla(int left, int top, int right, int bottom,	GameView view) 
 	{
 		super(left, top, right, bottom, view);
-		rng = context.getResources().getInteger(R.integer.towerteslarange);
+		/** get tower specs */
+		range = context.getResources().getInteger(R.integer.towerteslarange);
 		cooldown = context.getResources().getInteger(R.integer.towerteslacooldown)/1000.0;
-		dmg = context.getResources().getInteger(R.integer.towertesladamage); 
-		angle = 0;
+		damage = context.getResources().getInteger(R.integer.towertesladamage); 
+		/** get the towers images */
 		base = context.getResources().getDrawable(R.drawable.teslabase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = context.getResources().getDrawable(R.drawable.teslabarrel);
@@ -56,7 +64,7 @@ public class TowerTesla extends Tower
 				dx = (pos_x - creep_x);
 				dy = (pos_y - creep_y);
 				dist = Math.sqrt( (dx*dx) + (dy*dy) );
-				if (dist < rng) 
+				if (dist < range) 
 				{
 					if(!targets.contains(creep))
 					{
@@ -91,8 +99,8 @@ public class TowerTesla extends Tower
 			{
 				if(targets.get(i) != null && targets.get(i).getAlive2())
 				{
-					bulletlist.add(new BulletTesla(pos_x, pos_y, targets.get(i), view, dmg));
-					targets.get(i).decHealth2(dmg);
+					bulletlist.add(new BulletTesla(pos_x, pos_y, targets.get(i), view, damage));
+					targets.get(i).decHealth2(damage);
 					if(sound == 1) {
 						mp.start();
 					}
