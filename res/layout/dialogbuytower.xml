@@ -37,9 +37,9 @@
 			android:text="Tesla" android:layout_weight="1" android:layout_width="100dip" android:textColor="#ffffff" android:textSize="13dip"></Button>
 	</TableRow>
 	<TableRow android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/tableRow2">
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView1" android:layout_weight="1" android:src="@drawable/riflefull" android:layout_width="fill_parent"></ImageView>
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView2" android:layout_weight="1" android:src="@drawable/machinegunfull" android:layout_width="fill_parent"></ImageView>
-		<ImageView android:layout_height="wrap_content" android:id="@+id/imageView3" android:layout_weight="1" android:src="@drawable/teslafull" android:layout_width="fill_parent"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:layout_weight="1" android:src="@drawable/riflefull" android:layout_width="fill_parent" android:id="@+id/ImageViewRifle"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:layout_weight="1" android:src="@drawable/machinegunfull" android:layout_width="fill_parent" android:id="@+id/ImageViewMachine"></ImageView>
+		<ImageView android:layout_height="wrap_content" android:layout_weight="1" android:src="@drawable/teslafull" android:layout_width="fill_parent" android:id="@+id/ImageViewTesla"></ImageView>
 	</TableRow>
 	<Button android:layout_height="wrap_content" android:text="Cancel" android:id="@+id/ButtonCancel" android:layout_width="100dip" android:textColor="#ffffff" android:gravity="center"></Button>
 </LinearLayout>

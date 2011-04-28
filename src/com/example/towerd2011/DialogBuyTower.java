@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DialogBuyTower extends DialogCustom implements OnClickListener{
@@ -36,7 +37,19 @@ public class DialogBuyTower extends DialogCustom implements OnClickListener{
 		ButtonGreen.setOnClickListener(this);
 		ButtonCancel = (Button) findViewById(R.id.ButtonCancel);
 		ButtonCancel.setOnClickListener(this);
-		
+		ImageView towerrifle = (ImageView) findViewById(R.id.ImageViewRifle);
+		ImageView towermachine = (ImageView) findViewById(R.id.ImageViewMachine);
+		ImageView towertesla = (ImageView) findViewById(R.id.ImageViewTesla);
+		if(view.getTheme() == 2){
+			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.machinegunfull));
+			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.riflefull));
+			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.teslafull));
+		}
+		else{
+			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.cannon));
+			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.classicmachinegun));
+			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.teslafull));
+		}
 		TextView damage_rifle = (TextView) findViewById(R.id.TextRifleDamage);
 		damage_rifle.setText("damage = "+Integer.toString(context.getResources().getInteger(R.integer.towerrifledamage)));
 		TextView damage_machine = (TextView) findViewById(R.id.TextMachineDamage);
