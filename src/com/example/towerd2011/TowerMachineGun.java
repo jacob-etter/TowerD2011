@@ -25,13 +25,13 @@ public class TowerMachineGun extends Tower
 		/** set the right images based on the theme */
 		if(gameview.getTheme() == 1)
 		{
-			base = context.getResources().getDrawable(R.drawable.classicmachinegunbase);
-			barrel = context.getResources().getDrawable(R.drawable.classicmachinegunbarrel);
+			base = context.getResources().getDrawable(R.drawable.towerclassicmachinegunbase);
+			barrel = context.getResources().getDrawable(R.drawable.towerclassicmachinegunbarrel);
 		}
 		else
 		{
-			base = context.getResources().getDrawable(R.drawable.machinegunbase);
-			barrel = context.getResources().getDrawable(R.drawable.machinegunbarrel);
+			base = context.getResources().getDrawable(R.drawable.towermachinegunbase);
+			barrel = context.getResources().getDrawable(R.drawable.towermachinegunbarrel);
 		}
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);

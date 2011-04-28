@@ -2,7 +2,7 @@
 <LinearLayout android:id="@+id/LinearLayout01"
 	android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:gravity="center"
-	android:background="@drawable/buybackgroundbkp" android:layout_width="300dip">
+	android:background="@drawable/buybackground" android:layout_width="300dip">
 	<TextView android:id="@+id/TextView01" android:layout_height="wrap_content"
 		android:textColor="#fff" android:textStyle="bold"
 		android:layout_width="wrap_content" android:text="Choose Your Tower"
@@ -92,13 +92,13 @@
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow2">
 		<ImageView android:layout_height="wrap_content"
-			android:layout_weight="1" android:src="@drawable/riflefull"
+			android:layout_weight="1" android:src="@drawable/towerriflefull"
 			android:layout_width="fill_parent" android:id="@+id/ImageViewRifle"></ImageView>
 		<ImageView android:layout_height="wrap_content"
-			android:layout_weight="1" android:src="@drawable/machinegunfull"
+			android:layout_weight="1" android:src="@drawable/towermachinegunfull"
 			android:layout_width="fill_parent" android:id="@+id/ImageViewMachine"></ImageView>
 		<ImageView android:layout_height="wrap_content"
-			android:layout_weight="1" android:src="@drawable/teslafull"
+			android:layout_weight="1" android:src="@drawable/towerteslafull"
 			android:layout_width="fill_parent" android:id="@+id/ImageViewTesla"></ImageView>
 	</TableRow>
 	<Button android:layout_height="wrap_content" android:text="Cancel"

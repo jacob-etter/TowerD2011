@@ -25,13 +25,13 @@ public class TowerRifle extends Tower
 		/** get the right tower images based on the theme */
 		if(gameview.getTheme() == 1)
 		{
-			base = context.getResources().getDrawable(R.drawable.cannonbase);
-			barrel = context.getResources().getDrawable(R.drawable.cannonhead);
+			base = context.getResources().getDrawable(R.drawable.towercannonbase);
+			barrel = context.getResources().getDrawable(R.drawable.towercannonbarrel);
 		}
 		else
 		{
-			base = context.getResources().getDrawable(R.drawable.riflebase);
-			barrel = context.getResources().getDrawable(R.drawable.riflebarrel);
+			base = context.getResources().getDrawable(R.drawable.towerriflebase);
+			barrel = context.getResources().getDrawable(R.drawable.towerriflebarrel);
 		}		
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);

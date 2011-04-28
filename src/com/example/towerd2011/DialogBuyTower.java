@@ -44,14 +44,14 @@ public class DialogBuyTower extends DialogCustom implements OnClickListener{
 		ImageView towermachine = (ImageView) findViewById(R.id.ImageViewMachine);
 		ImageView towertesla = (ImageView) findViewById(R.id.ImageViewTesla);
 		if(view.getTheme() == 2){
-			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.machinegunfull));
-			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.riflefull));
-			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.teslafull));
+			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.towermachinegunfull));
+			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.towerriflefull));
+			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.towerteslafull));
 		}
 		else{
-			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.cannon));
-			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.classicmachinegun));
-			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.teslafull));
+			towerrifle.setImageDrawable(context.getResources().getDrawable(R.drawable.towercannonfull));
+			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.towerclassicmachinegunfull));
+			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.towerteslafull));
 		}
 		/** grab the tower specs from the resource file and load the appropriate
 		 * textviews in the layout with the specs
