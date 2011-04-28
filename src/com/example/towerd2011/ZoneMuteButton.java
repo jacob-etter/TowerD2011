@@ -7,7 +7,7 @@ package com.example.towerd2011;
 
 public class ZoneMuteButton extends Zone{
 	/**
-	 * custrcutor cor the music button 
+	 * constructor for the music button 
 	 * @param left
 	 * @param top
 	 * @param right
