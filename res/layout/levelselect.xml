@@ -3,35 +3,42 @@
 	android:id="@+id/optionsTableLayout" android:layout_width="match_parent"
 	android:layout_height="match_parent" android:shrinkColumns="*"
 	android:stretchColumns="*" android:background="@drawable/menubackground3">
-	<TextView android:textStyle="bold"
-		android:layout_width="match_parent" android:text="Choose Level"
-		android:layout_height="wrap_content" android:textColor="#FFFFFF"
-		android:typeface="serif" android:gravity="center" android:id="@+id/TextTitle" android:textSize="35dip" android:layout_marginTop="33dip"></TextView>
+	<TextView android:textStyle="bold" android:layout_width="match_parent"
+		android:text="Choose Level" android:layout_height="wrap_content"
+		android:textColor="#FFFFFF" android:typeface="serif" android:gravity="center"
+		android:id="@+id/TextTitle" android:textSize="35dip"
+		android:layout_marginTop="33dip"></TextView>
 	>
 
 	<TableRow android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:gravity="center"
-		android:id="@+id/TableRowLevel" android:layout_marginTop="10dip" android:layout_marginRight="33dip" android:layout_marginLeft="33dip">
+		android:id="@+id/TableRowLevel" android:layout_marginTop="10dip"
+		android:layout_marginRight="33dip" android:layout_marginLeft="33dip">
 		<TextView android:textStyle="bold" android:textColor="#FFFFFF"
-			android:text="Level"
-			android:id="@+id/TextViewLevel" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
+			android:text="Level" android:id="@+id/TextViewLevel"
+			android:textSize="25dip" android:layout_marginLeft="50dip"
+			android:gravity="center"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:id="@+id/RadioGroupLevel" android:layout_width="wrap_content">
+			android:orientation="horizontal" android:id="@+id/RadioGroupLevel"
+			android:layout_width="wrap_content">
 			<RadioButton android:layout_height="wrap_content"
-				android:layout_width="wrap_content" android:id="@+id/RadioOne" android:text="One    "></RadioButton>
+				android:layout_width="wrap_content" android:id="@+id/RadioOne"
+				android:text="One    "></RadioButton>
 			<RadioButton android:layout_height="wrap_content"
 				android:layout_width="wrap_content" android:text="Two" android:id="@+id/RadioTwo"></RadioButton>
 			<RadioButton android:layout_height="wrap_content"
 				android:layout_width="wrap_content" android:text="Three" android:id="@+id/RadioThree"></RadioButton>
 		</RadioGroup>
 	</TableRow>
-	<TableRow android:layout_height="wrap_content" 
+	<TableRow android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:gravity="center"
-		android:id="@+id/TableRowTheme" android:layout_marginLeft="33dip" android:layout_marginRight="33dip">
+		android:id="@+id/TableRowTheme" android:layout_marginLeft="33dip"
+		android:layout_marginRight="33dip">
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textStyle="bold"
-			android:textColor="#FFFFFF" android:text="Theme" android:id="@+id/TextViewTheme" android:textSize="25dip" android:layout_marginLeft="50dip" android:gravity="center"></TextView>
+			android:textColor="#FFFFFF" android:text="Theme" android:id="@+id/TextViewTheme"
+			android:textSize="25dip" android:layout_marginLeft="50dip"
+			android:gravity="center"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:orientation="horizontal"
 			android:id="@+id/RadioGroupTheme">
@@ -49,7 +56,7 @@
 		android:id="@+id/linearLayout1">
 		<Button android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
-			android:textColor="#ffffff"
-			android:text="Start" android:id="@+id/ButtonStart" android:layout_marginTop="10dip"></Button>
+			android:textColor="#ffffff" android:text="Start" android:id="@+id/ButtonStart"
+			android:layout_marginTop="10dip"></Button>
 	</LinearLayout>
 </TableLayout>  

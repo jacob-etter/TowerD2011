@@ -13,13 +13,13 @@
 		android:layout_gravity="center_vertical|center_horizontal"
 		android:layout_height="fill_parent" android:layout_weight="1">
 		<Button android:layout_marginLeft="50dip" android:text="Play"
-			android:layout_marginRight="150dip" android:layout_height="wrap_content" android:layout_weight="1"
-			android:textColor="#ffffff" android:id="@+id/playButton"
+			android:layout_marginRight="150dip" android:layout_height="wrap_content"
+			android:layout_weight="1" android:textColor="#ffffff" android:id="@+id/playButton"
 			android:gravity="center_vertical|center_horizontal" android:textSize="18dip"
 			android:layout_gravity="left|center_vertical" android:layout_width="50dip"></Button>
 		<Button android:layout_marginLeft="25dip" android:text="Options"
-			android:layout_marginRight="50dip" android:layout_height="wrap_content" android:layout_weight="1"
-			android:textColor="#ffffff" android:id="@+id/optionsButton"
+			android:layout_marginRight="50dip" android:layout_height="wrap_content"
+			android:layout_weight="1" android:textColor="#ffffff" android:id="@+id/optionsButton"
 			android:gravity="center_vertical|center_horizontal" android:textSize="18dip"
 			android:layout_gravity="left|center_vertical" android:layout_width="50dip"></Button>
 	</TableRow>
