@@ -30,6 +30,8 @@ class GameThread extends Thread {
 	protected int wave;
 	protected double difficulty;
 	protected boolean gameover = false;
+
+	protected CreepFactory factory;
 	/**
 	 * Constructor for GameThread
 	 * 
@@ -52,6 +54,8 @@ class GameThread extends Thread {
 		wave = 0;
 		creep_timer = 0;
 		spawn_count = 0;
+
+		factory = new CreepFactory(_view);
 	}
 	/**
 	 * Start the game
@@ -211,30 +215,19 @@ class GameThread extends Thread {
 				int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
 				int round = wave % 4;
 				switch(round){
-				case 0: roundZero(x,y); break;
-				case 1: roundOne(x,y); break;
-				case 2: roundTwo(x,y); break;
-				case 3: roundThree(x,y); break;
+				case 1:factory.addCreep(0, (float)x, (float)y, difficulty);break;
+				case 2:factory.addCreep(1, (float)x, (float)y, difficulty);break;
+				case 3:factory.addCreep(2, (float)x, (float)y, difficulty);break;
+				case 0:
+					switch(spawn_count%3){
+					case 0:factory.addCreep(0, (float)x, (float)y, difficulty);break;
+					case 1:factory.addCreep(1, (float)x, (float)y, difficulty);break;
+					case 2:factory.addCreep(2, (float)x, (float)y, difficulty);break;
+					}break;
 				}
 				creep_timer = current_time; 
 				spawn_count -= 1;
 			}
-		}
-	}
-	protected void roundZero(int x, int y){
-		_view.getCreeplist().add(new CreepSimple(x, y,_view, difficulty));
-	}
-	protected void roundOne(int x, int y){
-		_view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty));
-	}
-	protected void roundTwo(int x, int y){
-		_view.getCreeplist().add(new CreepTough(x, y,_view,difficulty));
-	}
-	protected void roundThree(int x, int y){
-		switch(spawn_count%3){
-		case 0: _view.getCreeplist().add(new CreepSimple(x, y,_view,difficulty)); break;
-		case 1: _view.getCreeplist().add(new CreepTough(x, y,_view,difficulty)); break;
-		case 2: _view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty)); break;
 		}
 	}
 	public void gamePause(){

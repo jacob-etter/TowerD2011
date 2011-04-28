@@ -39,7 +39,7 @@ public class DialogCreepZone extends DialogCustom implements OnClickListener{
 		}
 		String[] names = new String[creepsfound.size()+1];
 		if(creepsfound.size() == 0){
-			names[0] = "No Creeps on the map";
+			names[0] = "No Creeps in this zone";
 		}
 		else{
 			names[0] = "\nCreeps\n";

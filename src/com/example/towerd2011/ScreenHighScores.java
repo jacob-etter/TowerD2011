@@ -36,15 +36,14 @@ public class ScreenHighScores extends Activity{
 			names[0] = "No Scores Yet";
 		}
 		else{
-			names = new String[num_scores+1];
-			names[0] = "\nHIGH SCORES";
+			names = new String[num_scores];
 		}
-		for(int i=1; i<num_scores+1;++i){
-			String key = "ScoreString"+Integer.toString(i-1);
+		for(int i=0; i<num_scores;++i){
+			String key = "ScoreString"+Integer.toString(i);
 			String score = prefs.getString(key, "00");
-			key = "NameString"+Integer.toString(i-1);
+			key = "NameString"+Integer.toString(i);
 			String name = prefs.getString(key, "ErrorScreenHighScore");
-			names[i] = Integer.toString(i)+"\nUsername: "+name+"\n"+"Score: "+score;
+			names[i] = Integer.toString(i+1)+"\nUsername: "+name+"\n"+"Score: "+score;
 		} 
 		// Use your own layout and point the adapter to the UI elements which
 		// contains the label
