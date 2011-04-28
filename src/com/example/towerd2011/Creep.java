@@ -7,31 +7,50 @@
  */
 package com.example.towerd2011;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 public class Creep {
+	/** the current postion of the creep */
 	protected double pos_x;
 	protected double pos_y;
+	/** the size of the surface view */
 	protected int xsize;
 	protected int ysize;
+	/** a scaling factor used in the game */
 	protected double xscale;
 	protected double yscale;
-	protected int direction;
+	/** speed of the creep */
 	protected double speed;
+	/** the last time move was called. Used for calcuating movement */
 	protected long old_time;
+	/** Size of the creep */
 	protected double size;
-	protected Context context;
+	/** The gameview */
+	protected GameView view;
+	/** main creep icon */
 	protected Drawable creepicon;
-	protected User user;
+	/** 
+	 * a boolean to keep track if the creep is alive
+	 * The second alive is the anticipated state of the creep
+	 * after all bullets that are targeting the creep have hit it 
+	 */
 	protected boolean alive = true;
 	protected boolean alive2 = true;
+	/**
+	 * Similar to health with two health where one is the 
+	 * anticipated health after a bullet hits the creep
+	 */
 	protected int health;
 	protected int health2;
+	/** 
+	 * the starting health of the creep used in the creeplist and creep dialog
+	 * to show a percent health
+	 */
 	protected int original_health;
-	protected GameView gameview;
+	/** the value of the creep to the player if it is killed */
 	protected int moneyval;
+	/** the type of creep */
 	protected String type;
 	/**
 	 * Constructor for Creep
@@ -41,15 +60,12 @@ public class Creep {
 	 * @param view the gameview that created the creep
 	 */
 	public Creep(float xloc, float yloc, GameView view, double difficulty){
-		gameview= view;
-		context = view.getContext();
+		this.view = view;
 		xsize = view.getWidth();
 		ysize = view.getHeight();
-		direction = 1;
 		alive = true;
 		pos_x = xloc;
 		pos_y = yloc;
-		user = view.getUser();
 		old_time = System.currentTimeMillis();
 		type = "Creep";
 	}
@@ -60,15 +76,15 @@ public class Creep {
 	 */
 	public void move(long current_time){
 		if(alive){
-			int x= (int) (pos_x/(xsize/gameview.getGridSize()[0]));
-			int y = (int) (pos_y/(ysize/gameview.getGridSize()[1]));
-			if(x > gameview.xsize){
+			int x= (int) (pos_x/(xsize/view.getGridSize()[0]));
+			int y = (int) (pos_y/(ysize/view.getGridSize()[1]));
+			if(x > view.x_grid_size){
 				alive = false;
 				if(alive2 )
-					user.decLives(1);
+					view.getUser().decLives(1);
 				return;
 			}
-			ZonePath path = (ZonePath) gameview.getGrid().getGridZone(x, y);
+			ZonePath path = (ZonePath) view.getGrid().getGridZone(x, y);
 			if(path.getID()!=1){
 				alive = false;
 				return;
@@ -83,7 +99,7 @@ public class Creep {
 			pos_y += pos_y1;
 			if(pos_x > xsize){
 				alive = false;
-				user.decLives(1);
+				view.getUser().decLives(1);
 				return;
 			}
 			old_time = current_time;
@@ -103,7 +119,7 @@ public class Creep {
 			if(left > xsize){
 				alive = false;
 				if(alive2)
-					user.decLives(1);
+					view.getUser().decLives(1);
 				return;
 			}
 			creepicon.setBounds(left, top, right, bottom);
@@ -119,8 +135,8 @@ public class Creep {
 		health -= value;
 		if((health <= 0)&&(alive)){
 			alive = false;
-			user.incMoney(moneyval);
-			user.incScore(1);
+			view.getUser().incMoney(moneyval);
+			view.getUser().incScore(1);
 		}
 	}
 	public void decHealth2(int value){

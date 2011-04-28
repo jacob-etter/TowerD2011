@@ -23,7 +23,7 @@ public class CreepSimple extends Creep{
 		size = 2;
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);
-		creepicon = context.getResources().getDrawable(R.drawable.creep_ghost);
+		creepicon = view.getContext().getResources().getDrawable(R.drawable.creep_ghost);
 		moneyval = (int) (.25*health);
 		type = "Simple";
 	}

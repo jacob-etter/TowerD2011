@@ -8,6 +8,7 @@ package com.example.towerd2011;
 public class Grid {
 	private Zone[][] grid;
 	public Grid(int xnum,int ynum,int xsize, int ysize,GameView gameview){
+		/** loop and generate empty zones for the size of the grid */
 		grid = new Zone[xnum][ynum];
 		for(double i = 0; i < xnum;++i){
 			for(double j = 0; j < ynum; ++j){
@@ -28,9 +29,21 @@ public class Grid {
 		}
 		return;
 	}
+	/**
+	 * set the grid zone
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public Zone getGridZone(int x, int y){
 		return grid[x][y];
 	}
+	/**
+	 * get the grid zone
+	 * @param x
+	 * @param y
+	 * @param object
+	 */
 	public void setGridZone(int x, int y, Zone object){
 		grid[x][y] = object;
 	}

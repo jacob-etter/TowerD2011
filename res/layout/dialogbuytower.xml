@@ -81,16 +81,13 @@
 	</TableRow>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow1">
-		<Button android:layout_height="wrap_content" android:id="@+id/ButtonRed"
-			android:text="Rifle" android:layout_weight="1" android:layout_width="100dip"
-			android:textColor="#ffffff" android:textSize="13dip"></Button>
-		<Button android:layout_height="wrap_content" android:id="@+id/ButtonBlue"
-			android:text="MachineGun" android:layout_weight="1"
+		<Button android:layout_height="wrap_content" android:text="Rifle" android:layout_weight="1" android:layout_width="100dip"
+			android:textColor="#ffffff" android:textSize="13dip" android:id="@+id/ButtonTowerOne"></Button>
+		<Button android:layout_height="wrap_content" android:text="MachineGun" android:layout_weight="1"
 			android:layout_width="100dip" android:textColor="#ffffff"
-			android:textSize="13dip"></Button>
-		<Button android:layout_height="wrap_content" android:id="@+id/ButtonGreen"
-			android:text="Tesla" android:layout_weight="1" android:layout_width="100dip"
-			android:textColor="#ffffff" android:textSize="13dip"></Button>
+			android:textSize="13dip" android:id="@+id/ButtonTowerTwo"></Button>
+		<Button android:layout_height="wrap_content" android:text="Tesla" android:layout_weight="1" android:layout_width="100dip"
+			android:textColor="#ffffff" android:textSize="13dip" android:id="@+id/ButtonTowerThree"></Button>
 	</TableRow>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow2">

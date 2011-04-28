@@ -18,14 +18,20 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 class GameView extends SurfaceView implements SurfaceHolder.Callback {
+	/** stores the current theme type */
 	protected int theme;
+	/** stores the current level type */
 	protected int level;
+	/** stores options for the game */
 	protected int sound;
 	protected int difficulty;
 	protected int music;
-	protected GameThread _thread;
+	/** stores the gamethread that updates the game */
+	protected GameThread thread;
+	/** the text background */
 	protected Paint text_background;
 	protected Paint text;
+	/** the diffent paths fore each level */
 	protected int[][] paths;
 	protected int[][] paths_level_1= {{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15},{5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5}};
 	protected int[][] paths_level_2= {{0,1,2,3,3,3,4,5,5,5,6,7,7,7,7,7,8,9,9,9,9,9,9,9,10,11,12,12,12,12,12,12,12,13,14,15}
@@ -34,11 +40,16 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		12,11,10,9,8,7,6,5,4,3,2,1,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,14,14,14,14,14,14,13,12,12,12,13,14,15}
 	,{9,9,9,9,9,9,9,9,9,9,9,8,7,7,7,7,7,7,7,7,7,7,7,6,5,5,5,5,5,5,5,5,5,5,5,5,5,4,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,1,1,1,
 		1,1,1,1,1,1,1,1,2,3,4,5,6,7,7,7,8,9,9,9,9}};
-	protected int xsize = 16;//size of grid in x
-	protected int ysize= 10;//size of grid in y
-	protected Grid tiles; //grid of zones
+	/** the size of the grid used to store the zones */
+	protected int x_grid_size = 16;
+	protected int y_grid_Size= 10;
+	/** the grid used to store the zones */
+	protected Grid tiles;
+	/** keeps track if we need to initialize the grid for the first draw */
 	private int initiate=0;
+	/** stores the current user */
 	protected User user;
+	/** stores lists for the important objects */
 	protected ArrayList<Creep> creeplist = new ArrayList<Creep>();
 	protected ArrayList<Tower> towerlist = new ArrayList<Tower>();
 	protected ArrayList<ZonePath> pathlist = new ArrayList<ZonePath>();
@@ -52,8 +63,11 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		super(context); 
 		getHolder().addCallback(this);
 		setFocusable(true);
+		/** get the dev preferences */
 		SharedPreferences prefsdiff = context.getSharedPreferences("DiffAdjust", Context.MODE_PRIVATE);
+		/** create the user with the deve preferences or default values */
 		user = new User(prefsdiff.getInt("Money", 500), 0, prefsdiff.getInt("Lives", 10), "Sean");
+		/** set the text and text background settings */
 		text = new Paint();
 		text.setARGB(255, 0, 0, 0);
 		text.setTextSize(30);
@@ -61,6 +75,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		text_background = new Paint();
 		text_background.setARGB(100, 0, 0, 0);
 		text.setARGB(255, 255, 255, 255);
+		/** load the options for the user */
 		SharedPreferences prefs = context.getSharedPreferences("Options", Context.MODE_PRIVATE);
 		theme = prefs.getInt("theme",1); 
 		level = prefs.getInt("level",1); 
@@ -73,24 +88,33 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 			paths = paths_level_2;
 		else if(level == 3)
 			paths = paths_level_3;
-		_thread = new GameThread(getHolder(), this);
+		/** create the new game thread */
+		thread = new GameThread(getHolder(), this);
 	}
+	/**
+	 * on a touch event call the gamethread touch event handler
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		boolean touch = false;
-		touch = _thread.doTouchEvent(event);
+		touch = thread.doTouchEvent(event);
 		return touch;
 	}
-
+	/**
+	 * drawn the canvas 
+	 */
 	@Override
 	public void onDraw(Canvas canvas) {
+		/** if this is the first drawn initiate certain values */
 		if(initiate == 0){
 			initilize();
 		}
+		/**draw the background */
 		Drawable background;
 		background = getContext().getResources().getDrawable(R.drawable.simplebackground);
 		background.setBounds(0, 0, getWidth(), getHeight());
 		background.draw(canvas);
+		/** draw the other elements */
 		drawZones(canvas);
 		drawBullets(canvas);
 		drawCreeps(canvas);
@@ -100,7 +124,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	 * on the first draw we setup our grid
 	 */
 	protected void initilize(){
-		tiles = new Grid(xsize,ysize,getWidth(),getHeight(),this);
+		tiles = new Grid(x_grid_size,y_grid_Size,getWidth(),getHeight(),this);
 		int[] sides;
 		for(int i=0;i<paths[0].length;++i){
 			sides = tiles.getGridZone(paths[0][i], paths[1][i]).getSides();
@@ -123,16 +147,16 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 		}
 
-		for(int i = 0; i<xsize; ++i){
+		for(int i = 0; i<x_grid_size; ++i){
 			sides = tiles.getGridZone(i,0).getSides();
 			tiles.setGridZone(i, 0, new ZoneNull(sides[0],sides[1],sides[2],sides[3],this));
 		}
 		sides = tiles.getGridZone(0,1).getSides();
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],this));
-		sides = tiles.getGridZone(xsize-1,1).getSides();
-		tiles.setGridZone(xsize-1, 1, new ZoneCreepButton(sides[0],sides[1],sides[2],sides[3],this));
-		sides = tiles.getGridZone(xsize-1,2).getSides();
-		tiles.setGridZone(xsize-1, 2, new ZoneMuteButton(sides[0],sides[1],sides[2],sides[3],this));
+		sides = tiles.getGridZone(x_grid_size-1,1).getSides();
+		tiles.setGridZone(x_grid_size-1, 1, new ZoneCreepButton(sides[0],sides[1],sides[2],sides[3],this));
+		sides = tiles.getGridZone(x_grid_size-1,2).getSides();
+		tiles.setGridZone(x_grid_size-1, 2, new ZoneMuteButton(sides[0],sides[1],sides[2],sides[3],this));
 		initiate = 1;
 	}
 	/**
@@ -140,8 +164,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	 * @param canvas
 	 */
 	protected void drawZones(Canvas canvas){
-		for(int i = 0;i<xsize;++i){ 
-			for(int j=0;j<ysize;++j){
+		for(int i = 0;i<x_grid_size;++i){ 
+			for(int j=0;j<y_grid_Size;++j){
 				tiles.getGridZone(i,j).drawSelf(canvas);
 			}
 		}
@@ -155,6 +179,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		for(int i =0; i<creeplist.size();++i){
 			creeplist.get(i).drawSelf(canvas);
 		}
+		/** remove dead creeps */
 		for(int i = 0;i<creeplist.size();++i){
 			if(creeplist.get(i).getAlive()==false){
 				creeplist.remove(i);
@@ -169,6 +194,7 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		for(int i=0; i<bulletlist.size();++i){
 			bulletlist.get(i).drawSelf(canvas);
 		}
+		/** remove dead bullets */
 		for(int i=0; i<bulletlist.size();++i){
 			if(bulletlist.get(i).getAlive()==false){
 				bulletlist.remove(i);
@@ -183,78 +209,141 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		String userscore = Integer.toString(user.getScore());
 		String money = Integer.toString(user.getMoney());
 		String lives = Integer.toString(user.getLives());
-		String wave = Integer.toString(_thread.getWave());
-		canvas.drawRect(0,0,getWidth(),getHeight()/ysize, text_background);
-		canvas.drawText("  Wave = "+wave+" Score = "+userscore+" Money = "+money+" Lives = "+lives,0, getHeight()/ysize-15,text);
+		String wave = Integer.toString(thread.getWave());
+		canvas.drawRect(0,0,getWidth(),getHeight()/y_grid_Size, text_background);
+		canvas.drawText("  Wave = "+wave+" Score = "+userscore+" Money = "+money+" Lives = "+lives,0, getHeight()/y_grid_Size-15,text);
 	}
+	/**
+	 * @see android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder, int, int, int)
+	 */
 	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		// TODO Auto-generated method stub
 	}
-
+	/**
+	 * @see android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder)
+	 */
 	public void surfaceCreated(SurfaceHolder holder) {
-		_thread.setRunning(true);
-		_thread.start();
+		thread.setRunning(true);
+		thread.start();
 	}
-
+	/**
+	 * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.SurfaceHolder)
+	 */
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		// simply copied from sample application LunarLander:
 		// we have to tell thread to shut down & wait for it to finish, or else
 		// it might touch the Surface after we return and explode
-		if(_thread.mp.isPlaying()) {
-			_thread.mp.stop();
+		/** stop the mussic */
+		if(thread.mp.isPlaying()) {
+			thread.mp.stop();
 		}
 		boolean retry = true;
-		_thread.setRunning(false);
+		thread.setRunning(false);
 		while (retry) {
 			try {
-				_thread.join();
+				thread.join();
 				retry = false;
 			} catch (InterruptedException e) {
 				// we will try it again and again...
 			}
 		}
 	}
-
+	/**
+	 * return game thread
+	 * @return
+	 */
 	public GameThread getThread(){
-		return _thread;
+		return thread;
 	}
+	/**
+	 * return the grid
+	 * @return
+	 */
 	public Grid getGrid(){
 		return tiles;
 	}
+	/**
+	 * return the grid sizes 
+	 * @return
+	 */
 	public int[] getGridSize(){
-		int[] size = {xsize,ysize};
+		int[] size = {x_grid_size,y_grid_Size};
 		return size;
 	}
+	/** 
+	 * return the user
+	 * @return
+	 */
 	public User getUser(){
 		return user;
 	}
+	/**
+	 * return the tower list
+	 * @return
+	 */
 	public ArrayList<Tower> getTowerlist(){
 		return towerlist;
 	}
+	/**
+	 * return the bullet list
+	 * @return
+	 */
 	public ArrayList<Bullet> getBulletlist(){
 		return bulletlist;
 	}
+	/** 
+	 * return the creep list
+	 * @return
+	 */
 	public ArrayList<Creep> getCreeplist(){
 		return creeplist;
 	}
+	/**
+	 * return the path list
+	 * @return
+	 */
 	public ArrayList<ZonePath> getPathlist(){
 		return pathlist;
 	}
+	/**
+	 * return the theme
+	 * @return
+	 */
 	public int getTheme(){
 		return theme;
 	}
+	/**
+	 * return the sound
+	 * @return
+	 */
 	public int getSound(){
 		return sound;
 	}
+	/**
+	 * return the music
+	 * @return
+	 */
 	public int getMusic(){
 		return music;
 	}
+	/**
+	 * return the difficulty
+	 * @return
+	 */
 	public int getDifficulty(){
 		return difficulty;
 	}
+	/** 
+	 * set the sound
+	 * @param value
+	 */
 	public void setSound(int value){
 		sound = value;
 	}
+	/**
+	 * set the music varriable
+	 * @param value
+	 */
 	public void setMusic(int value){
 		music = value;
 	}

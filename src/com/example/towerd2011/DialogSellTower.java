@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class DialogSellTower extends DialogCustom implements OnClickListener{
+	/** get the buttons and text views */
 	private Button ButtonSell;
 	private Button ButtonCancel;
 	private Button ButtonUpDmg ;
@@ -30,7 +31,9 @@ public class DialogSellTower extends DialogCustom implements OnClickListener{
 	 */
 	public DialogSellTower(GameView gameview, int xloc, int yloc){
 		super(gameview,xloc,yloc);
+		/** set the layout */
 		setContentView(R.layout.dialogselltower);
+		/** load all the buttons and set their onclicklisteners */
 		ButtonSell = (Button) findViewById(R.id.ButtonSell);
 		ButtonSell.setOnClickListener(this);
 		ButtonCancel = (Button) findViewById(R.id.ButtonCancel);
@@ -41,15 +44,18 @@ public class DialogSellTower extends DialogCustom implements OnClickListener{
 		ButtonUpCooldown.setOnClickListener(this);
 		ButtonUpRange = (Button) findViewById(R.id.ButtonUpRng);
 		ButtonUpRange.setOnClickListener(this);
-		tower = (Tower) view.tiles.getGridZone(x_pos,y_pos);
+		/** find the tower that was selected and get its stats */
+		tower = (Tower) view.tiles.getGridZone(x_index,y_index);
 		int sale_price = tower.getSalePrice();
 		int cd_price = tower.getCooldownPrice();
 		int dmg_price = tower.getDamagePrice();
 		int rng_price = tower.getRangePrice();
+		/** put the prices into strings to be displayed on the dialog */
 		String s_price = Integer.toString(sale_price);
 		String c_price = Integer.toString(cd_price);
 		String d_price = Integer.toString(dmg_price);
 		String r_price = Integer.toString(rng_price);
+		/** get all the text views and set the prices for upgrades and saleprice */
 		sell_value = (TextView) findViewById(R.id.saleprice);
 		up_range = (TextView) findViewById(R.id.RngCost);
 		up_dmg = (TextView) findViewById(R.id.DmgCost);
@@ -60,37 +66,43 @@ public class DialogSellTower extends DialogCustom implements OnClickListener{
 		up_cooldown.setText(c_price);
 	}
 	public void onClick(View v) {
-		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();
+		int [] sides = view.tiles.getGridZone(x_index,y_index).getSides();
 		Zone empty;
 		int saleprice;
 		int usermoney = user.getMoney();
+		/** sell the tower */
 		if (v == ButtonSell){
 			empty = new ZoneEmpty(sides[0],sides[1],sides[2],sides[3],view);
 			saleprice = tower.getSalePrice();
 			user.incMoney(saleprice);
-			view.tiles.setGridZone(x_pos,y_pos,empty);
+			view.tiles.setGridZone(x_index,y_index,empty);
 			exitDialog();
+			/** remove the tower from the tower list */
 			for(int i=0;i<towerlist.size();++i){
 				if(sides == towerlist.get(i).getSides()){
 					towerlist.remove(i);
 				}
 			}
 		}
+		/** upgrade the tower damage */
 		else if ((v == ButtonUpDmg)&&(usermoney >= tower.getDamagePrice())){
 			user.decMoney(tower.getDamagePrice());
 			tower.upDamage();
 			exitDialog();
 		}
+		/** upgrade the towers range */
 		else if ((v == ButtonUpRange)&&(usermoney >= tower.getRangePrice())){
 			user.decMoney(tower.getRangePrice());
 			tower.upRange();
 			exitDialog();
 		}
+		/** upgrade the towers cooldown */
 		else if ((v == ButtonUpCooldown)&&(usermoney >= tower.getCooldownPrice())){
 			user.decMoney(tower.getCooldownPrice());
 			tower.upCooldown();
 			exitDialog();
 		}
+		/** close the screen */
 		else if (v == ButtonCancel){
 			exitDialog();
 		}

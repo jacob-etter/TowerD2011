@@ -14,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DialogBuyTower extends DialogCustom implements OnClickListener{
-	private Button ButtonRed;
-	private Button ButtonBlue;
-	private Button ButtonGreen;
-	private Button ButtonCancel;
+	/** the buttons used by the Buy tower Dialog */
+	private Button buttonTowerOne;
+	private Button buttonTowerTwo;
+	private Button buttonTowerThree;
+	private Button buttonClose;
 	/**
 	 * Constructor for the DialogBuyTower
 	 * 
@@ -27,16 +28,18 @@ public class DialogBuyTower extends DialogCustom implements OnClickListener{
 	 */
 	public DialogBuyTower(GameView gameview, int xloc, int yloc){
 		super(gameview,xloc,yloc);
-		/** Design the dialog in main.xml file */
+		/** set the dialog layout */
 		setContentView(R.layout.dialogbuytower);
-		ButtonRed = (Button) findViewById(R.id.ButtonRed);
-		ButtonRed.setOnClickListener(this);
-		ButtonBlue = (Button) findViewById(R.id.ButtonBlue);
-		ButtonBlue.setOnClickListener(this);
-		ButtonGreen = (Button) findViewById(R.id.ButtonGreen);
-		ButtonGreen.setOnClickListener(this);
-		ButtonCancel = (Button) findViewById(R.id.ButtonCancel);
-		ButtonCancel.setOnClickListener(this);
+		/** get the buttons and set an onclick listener */
+		buttonTowerOne = (Button) findViewById(R.id.ButtonTowerOne);
+		buttonTowerOne.setOnClickListener(this);
+		buttonTowerTwo = (Button) findViewById(R.id.ButtonTowerTwo);
+		buttonTowerTwo.setOnClickListener(this);
+		buttonTowerThree = (Button) findViewById(R.id.ButtonTowerThree);
+		buttonTowerThree.setOnClickListener(this);
+		buttonClose = (Button) findViewById(R.id.ButtonCancel);
+		buttonClose.setOnClickListener(this);
+		/**grab the images and set them based on the current theme */
 		ImageView towerrifle = (ImageView) findViewById(R.id.ImageViewRifle);
 		ImageView towermachine = (ImageView) findViewById(R.id.ImageViewMachine);
 		ImageView towertesla = (ImageView) findViewById(R.id.ImageViewTesla);
@@ -50,6 +53,9 @@ public class DialogBuyTower extends DialogCustom implements OnClickListener{
 			towermachine.setImageDrawable(context.getResources().getDrawable(R.drawable.classicmachinegun));
 			towertesla.setImageDrawable(context.getResources().getDrawable(R.drawable.teslafull));
 		}
+		/** grab the tower specs from the resource file and load the appropriate
+		 * textviews in the layout with the specs
+		 */
 		TextView damage_rifle = (TextView) findViewById(R.id.TextRifleDamage);
 		damage_rifle.setText("damage = "+Integer.toString(context.getResources().getInteger(R.integer.towerrifledamage)));
 		TextView damage_machine = (TextView) findViewById(R.id.TextMachineDamage);
@@ -77,33 +83,36 @@ public class DialogBuyTower extends DialogCustom implements OnClickListener{
 	}
 
 	public void onClick(View v) {
-		int [] sides = view.tiles.getGridZone(x_pos,y_pos).getSides();
+		int [] sides = view.tiles.getGridZone(x_index,y_index).getSides();
 		int usermoney = user.getMoney();
 		Resources res = context.getResources();
 		Tower tower;
-		/** When OK Button is clicked, dismiss the dialog */
-		if ((v == ButtonRed)&&(usermoney >= res.getInteger(R.integer.pricetowerrifle))){
+		/** buy a rifle tower */
+		if ((v == buttonTowerOne)&&(usermoney >= res.getInteger(R.integer.pricetowerrifle))){
 			user.decMoney(res.getInteger(R.integer.pricetowerrifle));
 			tower = new TowerRifle(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
-			view.tiles.setGridZone(x_pos,y_pos,tower);
+			view.tiles.setGridZone(x_index,y_index,tower);
 			exitDialog();
 		}
-		else if ((v == ButtonBlue)&&(usermoney >= res.getInteger(R.integer.pricetowermachinegun))){
+		/** buy a machine gun tower */
+		else if ((v == buttonTowerTwo)&&(usermoney >= res.getInteger(R.integer.pricetowermachinegun))){
 			user.decMoney(res.getInteger(R.integer.pricetowermachinegun));
 			tower = new TowerMachineGun(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
-			view.tiles.setGridZone(x_pos,y_pos,tower);
+			view.tiles.setGridZone(x_index,y_index,tower);
 			exitDialog();
 		}
-		else if ((v == ButtonGreen)&&(usermoney >= res.getInteger(R.integer.pricetowertesla))){
+		/** buy a tesla tower */
+		else if ((v == buttonTowerThree)&&(usermoney >= res.getInteger(R.integer.pricetowertesla))){
 			user.decMoney(res.getInteger(R.integer.pricetowertesla));
 			tower = new TowerTesla(sides[0],sides[1],sides[2],sides[3],view);
 			towerlist.add((Tower) tower);
-			view.tiles.setGridZone(x_pos,y_pos,tower);
+			view.tiles.setGridZone(x_index,y_index,tower);
 			exitDialog();
 		}
-		else if (v == ButtonCancel){
+		/** don't buy any tower */
+		else if (v == buttonClose){
 			exitDialog();
 		}
 	}
