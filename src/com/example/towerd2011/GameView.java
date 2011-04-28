@@ -64,8 +64,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		SharedPreferences prefs = context.getSharedPreferences("Options", Context.MODE_PRIVATE);
 		theme = prefs.getInt("theme",1); 
 		level = prefs.getInt("level",1); 
-		sound = prefs.getInt("Sound",0);
-		music = prefs.getInt("Music",0);
+		sound = prefs.getInt("Sound",1);
+		music = prefs.getInt("Music",1);
 		difficulty = prefs.getInt("Difficulty",1);
 		if(level == 1)
 			paths = paths_level_1;
@@ -131,6 +131,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],this));
 		sides = tiles.getGridZone(xsize-1,1).getSides();
 		tiles.setGridZone(xsize-1, 1, new ZoneCreepButton(sides[0],sides[1],sides[2],sides[3],this));
+		sides = tiles.getGridZone(xsize-1,2).getSides();
+		tiles.setGridZone(xsize-1, 2, new ZoneMuteButton(sides[0],sides[1],sides[2],sides[3],this));
 		initiate = 1;
 	}
 	/**
@@ -198,6 +200,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		// simply copied from sample application LunarLander:
 		// we have to tell thread to shut down & wait for it to finish, or else
 		// it might touch the Surface after we return and explode
+		if(_thread.mp.isPlaying()) {
+			_thread.mp.stop();
+		}
 		boolean retry = true;
 		_thread.setRunning(false);
 		while (retry) {
@@ -246,6 +251,12 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	public int getDifficulty(){
 		return difficulty;
+	}
+	public void setSound(int value){
+		sound = value;
+	}
+	public void setMusic(int value){
+		music = value;
 	}
 }
 

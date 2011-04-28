@@ -3,6 +3,6 @@
 	android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 	<TextView android:textColor="#ffffff" android:layout_height="wrap_content"
 		android:layout_width="fill_parent" android:layout_weight="1"
-		android:text="@+id/TextView01" android:textSize="30dip" android:id="@+id/ScoreString"
-		android:gravity="center_horizontal" android:layout_margin="8dip"></TextView>
+		android:text="@+id/TextView01" android:id="@+id/ScoreString"
+		android:gravity="center_horizontal" android:layout_margin="8dip" android:textSize="16dip"></TextView>
 </LinearLayout> 

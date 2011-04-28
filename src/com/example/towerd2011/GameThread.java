@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -30,6 +31,11 @@ class GameThread extends Thread {
 	protected int wave;
 	protected double difficulty;
 	protected boolean gameover = false;
+	protected int music = 1;
+
+	protected CreepFactory factory;
+
+	protected MediaPlayer mp;
 	/**
 	 * Constructor for GameThread
 	 * 
@@ -52,6 +58,16 @@ class GameThread extends Thread {
 		wave = 0;
 		creep_timer = 0;
 		spawn_count = 0;
+
+		factory = new CreepFactory(_view);
+
+		music = panel.getMusic();
+		mp = MediaPlayer.create(panel.getContext(), R.raw.music);
+		mp.setLooping(true);
+		mp.setVolume((float)0.3, (float)0.3);
+		if(music == 1){
+			mp.start();
+		}
 	}
 	/**
 	 * Start the game
@@ -87,15 +103,18 @@ class GameThread extends Thread {
 		}
 		spawnCreeps(current_time);
 		if(_view.getUser().getLives() <= 0){
-			_run = false;
-			SharedPreferences prefs = _view.getContext().getSharedPreferences("HighScores", Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = prefs.edit();
-			editor.putInt("Score", _view.getUser().getScore());
-			editor.putInt("RoundsCompleted", wave);
-			editor.commit();
-			Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
-			_view.getContext().startActivity(myIntent);
+			gameOver();
 		}
+	}
+	public void gameOver(){
+		_run = false;
+		SharedPreferences prefs = _view.getContext().getSharedPreferences("HighScores", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putInt("Score", _view.getUser().getScore());
+		editor.putInt("RoundsCompleted", wave);
+		editor.commit();
+		Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
+		_view.getContext().startActivity(myIntent);
 	}
 	/**
 	 * Execute a touch event
@@ -142,7 +161,7 @@ class GameThread extends Thread {
 					DialogBuyTower customDialog = new DialogBuyTower(_view,xpress, ypress);
 					customDialog.show();
 				}
-				else if(_view.tiles.getGridZone(xpress,ypress).getID()>4){
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()>5){
 					gamePause();
 					DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 					dialogselltower.show();
@@ -155,6 +174,30 @@ class GameThread extends Thread {
 					DialogCreepList dialogcreeplist = new DialogCreepList(_view,xpress, ypress);
 					dialogcreeplist.show();
 				}
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()==5){
+					SharedPreferences prefs = _view.getContext().getSharedPreferences("Options", Context.MODE_PRIVATE);
+					int music = prefs.getInt("Music",0);
+					int sound = prefs.getInt("Sound", 0);
+					music = 1-music;
+					sound = 1-sound;
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putInt("Music", music);
+					editor.putInt("Sound", sound);
+					editor.commit();
+					_view.setSound(sound);
+					_view.setMusic(music);
+					for(int i=0;i<_view.getTowerlist().size();++i){
+						Tower tower = _view.getTowerlist().get(i);
+						tower.setSound(sound);
+					}
+					if(music == 0){
+						mp.pause();
+					}
+					else if(music == 1){
+						mp.seekTo(0);
+						mp.start();
+					}
+				}
 			}
 			if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
 				gamePause();
@@ -164,7 +207,6 @@ class GameThread extends Thread {
 			handled = true;
 		}
 		return handled;
-		//}
 	}
 	/**
 	 * Main run program
@@ -211,30 +253,19 @@ class GameThread extends Thread {
 				int y = (_view.getPathlist().get(0).getSides()[1]+_view.getPathlist().get(0).getSides()[3])/2;
 				int round = wave % 4;
 				switch(round){
-				case 0: roundZero(x,y); break;
-				case 1: roundOne(x,y); break;
-				case 2: roundTwo(x,y); break;
-				case 3: roundThree(x,y); break;
+				case 1:factory.addCreep(0, (float)x, (float)y, difficulty);break;
+				case 2:factory.addCreep(1, (float)x, (float)y, difficulty);break;
+				case 3:factory.addCreep(2, (float)x, (float)y, difficulty);break;
+				case 0:
+					switch(spawn_count%3){
+					case 0:factory.addCreep(0, (float)x, (float)y, difficulty);break;
+					case 1:factory.addCreep(1, (float)x, (float)y, difficulty);break;
+					case 2:factory.addCreep(2, (float)x, (float)y, difficulty);break;
+					}break;
 				}
 				creep_timer = current_time; 
 				spawn_count -= 1;
 			}
-		}
-	}
-	protected void roundZero(int x, int y){
-		_view.getCreeplist().add(new CreepSimple(x, y,_view, difficulty));
-	}
-	protected void roundOne(int x, int y){
-		_view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty));
-	}
-	protected void roundTwo(int x, int y){
-		_view.getCreeplist().add(new CreepTough(x, y,_view,difficulty));
-	}
-	protected void roundThree(int x, int y){
-		switch(spawn_count%3){
-		case 0: _view.getCreeplist().add(new CreepSimple(x, y,_view,difficulty)); break;
-		case 1: _view.getCreeplist().add(new CreepTough(x, y,_view,difficulty)); break;
-		case 2: _view.getCreeplist().add(new CreepQuick(x, y,_view,difficulty)); break;
 		}
 	}
 	public void gamePause(){

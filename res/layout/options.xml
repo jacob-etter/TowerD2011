@@ -51,9 +51,8 @@
 	<TableRow android:id="@+id/soundRadioRow"
 		android:layout_height="wrap_content" android:layout_width="match_parent"
 		android:gravity="center">
-		<TextView android:id="@+id/soundText" android:text="Sound"
-			android:textStyle="bold" android:textColor="#FFFFFF"
-			android:gravity="left" android:textSize="25dip"></TextView>
+		<TextView android:id="@+id/soundText" android:textStyle="bold" android:textColor="#FFFFFF"
+			android:gravity="left" android:textSize="25dip" android:text="Sound Effects"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:id="@+id/soundRadioGroup" android:layout_width="match_parent"
 			android:orientation="horizontal">

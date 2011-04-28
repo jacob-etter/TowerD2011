@@ -8,6 +8,7 @@ package com.example.towerd2011;
 import java.util.ArrayList;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 
 public class Tower extends Zone{
 	/*price*/
@@ -29,11 +30,14 @@ public class Tower extends Zone{
 	protected int cd_price = 0;
 	protected int rng_price = 0;
 	protected int dmg_price = 0;
+	/* Audio */
+	protected MediaPlayer mp;
+	protected int sound = 1;
 
 	public Tower(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);
 		saleprice = 0;
-		ID = 5; //tell gameview that this zone is a tower
+		ID = 6; //tell gameview that this zone is a tower
 		angle = 0;
 		pos_x = (sides[0] + sides[2])/2;
 		pos_y = (sides[1] + sides[3])/2;
@@ -46,6 +50,9 @@ public class Tower extends Zone{
 		}
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = null;
+		mp = MediaPlayer.create(context, R.raw.pewpew);
+		mp.setVolume((float) 1.3, (float) 1.3);
+		sound = gameview.getSound();
 	}
 	@Override
 	public void drawSelf(Canvas canvas)
@@ -134,6 +141,9 @@ public class Tower extends Zone{
 				bulletlist.add(newBullet(pos_x, pos_y, cur_target,view, dmg));
 				cur_target.decHealth2(dmg);
 				last_fire = currenttime;
+				if(sound == 1) {
+					mp.start();
+				}
 			}
 		}
 		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
@@ -181,5 +191,8 @@ public class Tower extends Zone{
 	}
 	public void incLastFire(long value){
 		last_fire += value;
+	}
+	public void setSound(int value){
+		sound = value;
 	}
 }

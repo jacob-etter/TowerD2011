@@ -29,7 +29,7 @@ public class DialogCreepList extends DialogCustom implements OnClickListener{
 		ArrayList<Creep> creeplist = view.getCreeplist();
 		String[] names = new String[creeplist.size()+1];
 		if(creeplist.size() == 0){
-			names[0] = "No Creeps In this Zone";
+			names[0] = "No Creeps on the map";
 		}
 		else{
 			names[0] = "\nCreeps\n";
