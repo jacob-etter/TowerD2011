@@ -91,15 +91,18 @@ class GameThread extends Thread {
 		}
 		spawnCreeps(current_time);
 		if(_view.getUser().getLives() <= 0){
-			_run = false;
-			SharedPreferences prefs = _view.getContext().getSharedPreferences("HighScores", Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = prefs.edit();
-			editor.putInt("Score", _view.getUser().getScore());
-			editor.putInt("RoundsCompleted", wave);
-			editor.commit();
-			Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
-			_view.getContext().startActivity(myIntent);
+			gameOver();
 		}
+	}
+	public void gameOver(){
+		_run = false;
+		SharedPreferences prefs = _view.getContext().getSharedPreferences("HighScores", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putInt("Score", _view.getUser().getScore());
+		editor.putInt("RoundsCompleted", wave);
+		editor.commit();
+		Intent myIntent = new Intent(_view.getContext(), ScreenGameOver.class);
+		_view.getContext().startActivity(myIntent);
 	}
 	/**
 	 * Execute a touch event
