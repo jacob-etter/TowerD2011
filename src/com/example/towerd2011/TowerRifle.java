@@ -20,8 +20,8 @@ public class TowerRifle extends Tower
 		}
 		else
 		{
-			base = context.getResources().getDrawable(R.drawable.machinegunbase);
-			barrel = context.getResources().getDrawable(R.drawable.machinegunbarrel);
+			base = context.getResources().getDrawable(R.drawable.riflebase);
+			barrel = context.getResources().getDrawable(R.drawable.riflebarrel);
 		}		
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);
