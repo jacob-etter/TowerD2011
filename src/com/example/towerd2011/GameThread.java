@@ -34,7 +34,7 @@ class GameThread extends Thread {
 	protected int music = 1;
 
 	protected CreepFactory factory;
-	
+
 	protected MediaPlayer mp;
 	/**
 	 * Constructor for GameThread
@@ -60,7 +60,7 @@ class GameThread extends Thread {
 		spawn_count = 0;
 
 		factory = new CreepFactory(_view);
-		
+
 		music = panel.getMusic();
 		mp = MediaPlayer.create(panel.getContext(), R.raw.music);
 		mp.setLooping(true);
@@ -161,7 +161,7 @@ class GameThread extends Thread {
 					DialogBuyTower customDialog = new DialogBuyTower(_view,xpress, ypress);
 					customDialog.show();
 				}
-				else if(_view.tiles.getGridZone(xpress,ypress).getID()>4){
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()>5){
 					gamePause();
 					DialogSellTower dialogselltower = new DialogSellTower(_view,xpress, ypress);
 					dialogselltower.show();
@@ -174,6 +174,30 @@ class GameThread extends Thread {
 					DialogCreepList dialogcreeplist = new DialogCreepList(_view,xpress, ypress);
 					dialogcreeplist.show();
 				}
+				else if(_view.tiles.getGridZone(xpress,ypress).getID()==5){
+					SharedPreferences prefs = _view.getContext().getSharedPreferences("Options", Context.MODE_PRIVATE);
+					int music = prefs.getInt("Music",0);
+					int sound = prefs.getInt("Sound", 0);
+					music = 1-music;
+					sound = 1-sound;
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putInt("Music", music);
+					editor.putInt("Sound", sound);
+					editor.commit();
+					_view.setSound(sound);
+					_view.setMusic(music);
+					for(int i=0;i<_view.getTowerlist().size();++i){
+						Tower tower = _view.getTowerlist().get(i);
+						tower.setSound(sound);
+					}
+					if(music == 0){
+						mp.pause();
+					}
+					else if(music == 1){
+						mp.seekTo(0);
+						mp.start();
+					}
+				}
 			}
 			if(_view.tiles.getGridZone(xpress,ypress).getID()==1){
 				gamePause();
@@ -183,7 +207,6 @@ class GameThread extends Thread {
 			handled = true;
 		}
 		return handled;
-		//}
 	}
 	/**
 	 * Main run program

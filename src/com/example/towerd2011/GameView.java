@@ -131,6 +131,8 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		tiles.setGridZone(0, 1, new ZoneStartButton(sides[0],sides[1],sides[2],sides[3],this));
 		sides = tiles.getGridZone(xsize-1,1).getSides();
 		tiles.setGridZone(xsize-1, 1, new ZoneCreepButton(sides[0],sides[1],sides[2],sides[3],this));
+		sides = tiles.getGridZone(xsize-1,2).getSides();
+		tiles.setGridZone(xsize-1, 2, new ZoneMuteButton(sides[0],sides[1],sides[2],sides[3],this));
 		initiate = 1;
 	}
 	/**
@@ -249,6 +251,12 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	public int getDifficulty(){
 		return difficulty;
+	}
+	public void setSound(int value){
+		sound = value;
+	}
+	public void setMusic(int value){
+		music = value;
 	}
 }
 

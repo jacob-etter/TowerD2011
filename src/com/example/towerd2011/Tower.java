@@ -37,7 +37,7 @@ public class Tower extends Zone{
 	public Tower(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);
 		saleprice = 0;
-		ID = 5; //tell gameview that this zone is a tower
+		ID = 6; //tell gameview that this zone is a tower
 		angle = 0;
 		pos_x = (sides[0] + sides[2])/2;
 		pos_y = (sides[1] + sides[3])/2;
@@ -191,5 +191,8 @@ public class Tower extends Zone{
 	}
 	public void incLastFire(long value){
 		last_fire += value;
+	}
+	public void setSound(int value){
+		sound = value;
 	}
 }
