@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -30,8 +31,11 @@ class GameThread extends Thread {
 	protected int wave;
 	protected double difficulty;
 	protected boolean gameover = false;
+	protected int music = 1;
 
 	protected CreepFactory factory;
+	
+	protected MediaPlayer mp;
 	/**
 	 * Constructor for GameThread
 	 * 
@@ -56,6 +60,13 @@ class GameThread extends Thread {
 		spawn_count = 0;
 
 		factory = new CreepFactory(_view);
+		
+		music = panel.getMusic();
+		mp = MediaPlayer.create(panel.getContext(), R.raw.music);
+		mp.setLooping(true);
+		if(music == 1){
+			mp.start();
+		}
 	}
 	/**
 	 * Start the game

@@ -198,6 +198,9 @@ class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		// simply copied from sample application LunarLander:
 		// we have to tell thread to shut down & wait for it to finish, or else
 		// it might touch the Surface after we return and explode
+		if(_thread.mp.isPlaying()) {
+			_thread.mp.stop();
+		}
 		boolean retry = true;
 		_thread.setRunning(false);
 		while (retry) {
