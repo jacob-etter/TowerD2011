@@ -30,7 +30,7 @@ class GameThread extends Thread {
 	protected int wave;
 	protected double difficulty;
 	protected boolean gameover = false;
-	
+
 	protected CreepFactory factory;
 	/**
 	 * Constructor for GameThread
@@ -54,7 +54,7 @@ class GameThread extends Thread {
 		wave = 0;
 		creep_timer = 0;
 		spawn_count = 0;
-		
+
 		factory = new CreepFactory(_view);
 	}
 	/**
@@ -220,21 +220,24 @@ class GameThread extends Thread {
 				case 2: roundTwo(x,y); break;
 				case 3: roundThree(x,y); break;
 				}*/
-				
+
 				switch(round){
-				case 0:
-					factory.addCreep(0, (float)x, (float)y, difficulty);
-					break;
 				case 1:
-					factory.addCreep(1, (float)x, (float)y, difficulty);
+					factory.addCreep(0, (float)x, (float)y, difficulty);
 					break;
 				case 2:
-					factory.addCreep(2, (float)x, (float)y, difficulty);
+					factory.addCreep(1, (float)x, (float)y, difficulty);
 					break;
 				case 3:
-					factory.addCreep(0, (float)x, (float)y, difficulty);
-					factory.addCreep(1, (float)x, (float)y, difficulty);
 					factory.addCreep(2, (float)x, (float)y, difficulty);
+					break;
+				case 0:
+					switch(spawn_count%3){
+					case 0:factory.addCreep(0, (float)x, (float)y, difficulty);
+					case 1:factory.addCreep(1, (float)x, (float)y, difficulty);
+					case 2:factory.addCreep(2, (float)x, (float)y, difficulty);
+					}
+					break;
 				}
 				creep_timer = current_time; 
 				spawn_count -= 1;
