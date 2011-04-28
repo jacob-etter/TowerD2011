@@ -29,7 +29,7 @@ public class TowerTesla extends Tower
 		targets = new ArrayList<Creep>();
 		targets.ensureCapacity(3);
 		mp = MediaPlayer.create(context, R.raw.zzap);
-		//mp.reset();
+		sound = view.getSound();
 	}
 
 	/**
@@ -92,7 +92,9 @@ public class TowerTesla extends Tower
 				{
 					bulletlist.add(new BulletTesla(pos_x, pos_y, targets.get(i), view, dmg));
 					targets.get(i).decHealth2(dmg);
-					mp.start();
+					if(sound == 1) {
+						mp.start();
+					}
 				}
 				if(targets.get(i) != null && !targets.get(i).getAlive2())
 				{

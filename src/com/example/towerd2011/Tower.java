@@ -32,6 +32,7 @@ public class Tower extends Zone{
 	protected int dmg_price = 0;
 	/* Audio */
 	protected MediaPlayer mp;
+	protected int sound = 1;
 
 	public Tower(int left, int top, int right, int bottom, GameView gameview) {
 		super(left, top, right, bottom, gameview);
@@ -50,7 +51,7 @@ public class Tower extends Zone{
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = null;
 		mp = MediaPlayer.create(context, R.raw.pewpew);
-		//mp.reset();
+		sound = gameview.getSound();
 	}
 	@Override
 	public void drawSelf(Canvas canvas)
@@ -139,7 +140,9 @@ public class Tower extends Zone{
 				bulletlist.add(newBullet(pos_x, pos_y, cur_target,view, dmg));
 				cur_target.decHealth2(dmg);
 				last_fire = currenttime;
-				mp.start();
+				if(sound == 1) {
+					mp.start();
+				}
 			}
 		}
 		else if((cur_target != null)&&(cur_target.getAlive2() == false)){
