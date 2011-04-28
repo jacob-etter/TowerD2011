@@ -8,14 +8,16 @@
 		android:layout_width="match_parent" android:gravity="center_horizontal">
 		<TextView android:id="@+id/optionsText" android:textColor="#FFFFFF"
 			android:layout_width="match_parent" android:layout_height="wrap_content"
-			android:textStyle="bold" android:typeface="serif" android:text="Options" android:gravity="center" android:layout_span="6" android:textSize="35dip" android:layout_marginTop="35dip"></TextView>
+			android:textStyle="bold" android:typeface="serif" android:text="Options"
+			android:gravity="center" android:layout_span="6" android:textSize="35dip"
+			android:layout_marginTop="35dip"></TextView>
 	</TableRow>
 	<TableRow android:id="@+id/musicRadioRow"
 		android:layout_height="wrap_content" android:layout_width="match_parent"
 		android:gravity="center">
 		<TextView android:text="Difficulty" android:id="@+id/difficultyText"
-			android:textStyle="bold" android:textColor="#FFFFFF"
-			android:gravity="left" android:textSize="25dip"></TextView>
+			android:textStyle="bold" android:textColor="#FFFFFF" android:gravity="left"
+			android:textSize="25dip"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:id="@+id/difficultyRadioGroup" android:layout_width="match_parent"
 			android:orientation="horizontal">
@@ -30,12 +32,13 @@
 				android:text="Hard"></RadioButton>
 		</RadioGroup>
 	</TableRow>
-	<TableRow android:id="@+id/musicRadioRow" 
+	<TableRow android:id="@+id/musicRadioRow"
 		android:layout_height="wrap_content" android:layout_width="match_parent"
 		android:gravity="center">
 		<TextView android:text="Music" android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textStyle="bold"
-			android:gravity="left" android:textColor="#FFFFFF" android:id="@+id/musicText" android:textSize="25dip"></TextView>
+			android:gravity="left" android:textColor="#FFFFFF" android:id="@+id/musicText"
+			android:textSize="25dip"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:id="@+id/musicRadioGroup" android:layout_width="match_parent"
 			android:orientation="horizontal">
@@ -51,9 +54,9 @@
 	<TableRow android:id="@+id/soundRadioRow"
 		android:layout_height="wrap_content" android:layout_width="match_parent"
 		android:gravity="center">
-		<TextView android:id="@+id/soundText" android:text="Sound"
-			android:textStyle="bold" android:textColor="#FFFFFF"
-			android:gravity="left" android:textSize="25dip"></TextView>
+		<TextView android:id="@+id/soundText" android:textStyle="bold"
+			android:textColor="#FFFFFF" android:gravity="left" android:textSize="25dip"
+			android:text="Sound Effects"></TextView>
 		<RadioGroup android:layout_height="wrap_content"
 			android:id="@+id/soundRadioGroup" android:layout_width="match_parent"
 			android:orientation="horizontal">
@@ -66,18 +69,28 @@
 		</RadioGroup>
 	</TableRow>
 	<LinearLayout android:id="@+id/linearLayout2"
-		android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="35dip" android:layout_marginLeft="35dip" android:layout_marginTop="5dip">
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_marginRight="35dip" android:layout_marginLeft="35dip"
+		android:layout_marginTop="5dip">
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonHighScores" android:text="High Scores"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1"
+			android:textColor="#ffffff" android:textSize="13dip"
+			android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonClearOptions" android:text="Clear Options"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1"
+			android:textColor="#ffffff" android:textSize="13dip"
+			android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:id="@+id/ButtonClearScores" android:text="Clear Scores"
-			android:layout_width="fill_parent" android:layout_weight="1" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
+			android:layout_width="fill_parent" android:layout_weight="1"
+			android:textColor="#ffffff" android:textSize="13dip"
+			android:textStyle="bold"></Button>
 		<Button android:layout_gravity="center" android:layout_height="wrap_content"
 			android:layout_width="fill_parent" android:layout_weight="1"
-			android:text="DevOptions" android:id="@+id/ButtonDevOptions" android:textColor="#ffffff" android:textSize="13dip" android:textStyle="bold"></Button>
+			android:text="DevOptions" android:id="@+id/ButtonDevOptions"
+			android:textColor="#ffffff" android:textSize="13dip"
+			android:textStyle="bold"></Button>
 	</LinearLayout>
 </TableLayout>  

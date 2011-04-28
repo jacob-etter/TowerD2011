@@ -11,7 +11,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
-public class Bullet {
+public class Bullet { 
 	protected Creep target;
 	protected boolean t_alive;
 	protected double dead_x;
