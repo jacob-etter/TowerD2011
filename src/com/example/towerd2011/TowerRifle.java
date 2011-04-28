@@ -13,9 +13,17 @@ public class TowerRifle extends Tower
 		rng = context.getResources().getInteger(R.integer.towerriflerange);
 		cooldown = context.getResources().getInteger(R.integer.towerriflecooldown)/1000.0;
 		dmg = context.getResources().getInteger(R.integer.towerrifledamage); 
-		base = context.getResources().getDrawable(R.drawable.riflebase);
+		if(gameview.getTheme() == 1)
+		{
+			base = context.getResources().getDrawable(R.drawable.cannonbase);
+			barrel = context.getResources().getDrawable(R.drawable.cannonhead);
+		}
+		else
+		{
+			base = context.getResources().getDrawable(R.drawable.machinegunbase);
+			barrel = context.getResources().getDrawable(R.drawable.machinegunbarrel);
+		}		
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
-		barrel = context.getResources().getDrawable(R.drawable.riflebarrel);
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		price = context.getResources().getInteger(R.integer.pricetowerrifle);
 		saleprice = (int) (price*.6);
