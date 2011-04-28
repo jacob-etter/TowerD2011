@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ScreenDificultyAdjust extends Activity {
-	/** Called when the activity is first created. */
+	/** create the variables to store the buttons, prefs, and edittext fields */
 	SharedPreferences prefs;
 	Button ButtonTimer;
 	Button ButtonDifficulty;
@@ -35,16 +35,18 @@ public class ScreenDificultyAdjust extends Activity {
 	EditText lives;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		//force landscape
+		/**force landscape*/
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		//Remove title bar
+		/**Remove title bar*/
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		//Remove notification bar
+		/**Remove notification bar*/
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 		super.onCreate(savedInstanceState);
+		/** set the layout */
 		setContentView(R.layout.difficultyadjustment);
+		/** load the prefs */
 		prefs = getSharedPreferences("DiffAdjust", Context.MODE_PRIVATE);
+		/** load the edittext fields and set their values */
 		timer = (EditText)findViewById(R.id.EditTextTimer);
 		timer.setText(Integer.toString(prefs.getInt("SpawnTimer", 3000)));
 		Difficulty = (EditText)findViewById(R.id.EditTextDifficulty);
@@ -55,7 +57,7 @@ public class ScreenDificultyAdjust extends Activity {
 		money.setText(Integer.toString(prefs.getInt("Money", 500)));
 		lives = (EditText)findViewById(R.id.EditTextLives);
 		lives.setText(Integer.toString(prefs.getInt("Lives", 10)));
-
+		/** sets the timer field */
 		ButtonTimer = (Button) findViewById(R.id.ButtonTimer);
 		ButtonTimer.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -65,6 +67,7 @@ public class ScreenDificultyAdjust extends Activity {
 				editor.commit();
 			}
 		});
+		/** sets the difficulty field */
 		ButtonDifficulty = (Button) findViewById(R.id.ButtonDifficulty);
 		ButtonDifficulty.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -74,6 +77,7 @@ public class ScreenDificultyAdjust extends Activity {
 				editor.commit();
 			}
 		});
+		/** sets the count field */
 		ButtonCount = (Button) findViewById(R.id.ButtonCount);
 		ButtonCount.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -83,6 +87,7 @@ public class ScreenDificultyAdjust extends Activity {
 				editor.commit();
 			}
 		});
+		/** sets the money field */
 		ButtonMoney = (Button) findViewById(R.id.ButtonMoney);
 		ButtonMoney.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -92,6 +97,7 @@ public class ScreenDificultyAdjust extends Activity {
 				editor.commit();
 			}
 		});
+		/** sets the lives field */
 		ButtonLives = (Button) findViewById(R.id.ButtonLives);
 		ButtonLives.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -101,6 +107,7 @@ public class ScreenDificultyAdjust extends Activity {
 				editor.commit();
 			}
 		});
+		/** clears the data for DiffAdjust */
 		ButtonClear = (Button) findViewById(R.id.ButtonClear);
 		ButtonClear.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -108,6 +115,9 @@ public class ScreenDificultyAdjust extends Activity {
 			}
 		});
 	}
+	/**
+	 * an alert dialog to make sure you want to clear this data
+	 */
 	public void alertDialog(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear options?")

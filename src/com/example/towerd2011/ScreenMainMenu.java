@@ -15,19 +15,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class ScreenMainMenu extends Activity {
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		//force landscape
+		/**force landscape*/
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		//Remove title bar
+		/**Remove title bar*/
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		//Remove notification bar
+		/**Remove notification bar*/
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 		super.onCreate(savedInstanceState);
+		/** set the layout */
 		setContentView(R.layout.main);
-
+		/** set up the option button */
 		Button options = (Button) findViewById(R.id.optionsButton);
 		options.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -35,7 +34,7 @@ public class ScreenMainMenu extends Activity {
 				startActivityForResult(myIntent, 0);
 			}
 		});
-
+		/** setup the play button */
 		Button play = (Button) findViewById(R.id.playButton);
 		play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {

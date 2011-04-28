@@ -5,6 +5,7 @@
  */
 package com.example.towerd2011;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,61 +22,55 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-public class ScreenOptions extends ScreenMainMenu {
-
+public class ScreenOptions extends Activity {
+	/** preferences that can be changed in this screen */
 	private SharedPreferences prefsOptions;
 	private SharedPreferences prefsScores;
+	/** preferences for difficulty */
 	private int whatdiffpref;
+	/** preference for sound */
 	private int whatsoundpref;
+	/** preference for music */
 	private int whatmusicpref;
+	/** default values for preferences */
 	int difficultyInt = 1; 
 	int musicInt = 1;
 	int soundInt = 1;
-
-	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
-
-		/** onCreate stuffs **/
-		//force landscape
+		/**force landscape*/
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		//Remove title bar
+		/**Remove title bar*/
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		//Remove notification bar
+		/**Remove notification bar*/
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.options);
-		//Retrieve and set preferences
+		/** Retrieve and set preferences */
 		prefsOptions = getSharedPreferences("Options", Context.MODE_PRIVATE);
 		prefsScores = getSharedPreferences("HighScores", Context.MODE_PRIVATE);
 		retrievePreferences();
 
-		//Define preference objects
+		/**Define preference objects */
 		RadioGroup difficulty = (RadioGroup) findViewById(R.id.difficultyRadioGroup);
 		RadioGroup music = (RadioGroup) findViewById(R.id.musicRadioGroup);
 		RadioGroup sound = (RadioGroup) findViewById(R.id.soundRadioGroup);
 
-		//Save difficulty preferences
+		/**Save difficulty preferences */
 		difficulty.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
-				case R.id.easyRadio:
-					difficultyInt=1;
-					break;
-				case R.id.mediumRadio:
-					difficultyInt=2;
-					break;
-				case R.id.hardRadio:
-					difficultyInt=3;
-					break;
-				}//switch
+				case R.id.easyRadio:difficultyInt=1;break;
+				case R.id.mediumRadio:difficultyInt=2;break;
+				case R.id.hardRadio:difficultyInt=3;break;
+				}
 				Editor editor = prefsOptions.edit();
 				editor.putInt("Difficulty", difficultyInt);
 				editor.commit();
-			}//onCheckedChanged();
+			}
 		});
 
-		//Save sound preferences
+		/**Save sound preferences */
 		sound.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -86,14 +81,14 @@ public class ScreenOptions extends ScreenMainMenu {
 				case R.id.soundoffRadio:
 					soundInt=0;
 					break;
-				}//switch
+				}
 				Editor editor = prefsOptions.edit();
 				editor.putInt("Sound", soundInt);
 				editor.commit();
-			}//onCheckedChanged();
+			}
 		});
 
-		//Save music preferences
+		/** Save music preferences */
 		music.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -104,13 +99,13 @@ public class ScreenOptions extends ScreenMainMenu {
 				case R.id.musicoffRadio:
 					musicInt=0;
 					break;
-				}//switch
+				}
 				Editor editor = prefsOptions.edit();
 				editor.putInt("Music", musicInt);
 				editor.commit();
-			}//onCheckedChanged();
+			}
 		});
-
+		/** button to go to high scores screen */
 		Button highScores = (Button) findViewById(R.id.ButtonHighScores);
 		highScores.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -118,14 +113,16 @@ public class ScreenOptions extends ScreenMainMenu {
 				startActivityForResult(myIntent, 0);
 			}
 		});
+		/** button to clear all options and set them to default values */
 		Button clearoptions = (Button) findViewById(R.id.ButtonClearOptions);
 		clearoptions.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				alertDialog1();
 			}
 		});
-		Button clearall = (Button) findViewById(R.id.ButtonClearScores);
-		clearall.setOnClickListener(new View.OnClickListener() {
+		/** but to clear high scores */
+		Button clearscores = (Button) findViewById(R.id.ButtonClearScores);
+		clearscores.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				alertDialog2();
 			}
@@ -138,8 +135,8 @@ public class ScreenOptions extends ScreenMainMenu {
 			}
 		});
 
-	}//OnCreate();
-
+	}
+	/** and alert dialog to warn user before clearing options */
 	public void alertDialog1(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear options?")
@@ -161,7 +158,7 @@ public class ScreenOptions extends ScreenMainMenu {
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
-
+	/** an alert dialog to warn the user before clearing high scores */
 	public void alertDialog2(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear high scores?")
@@ -184,17 +181,17 @@ public class ScreenOptions extends ScreenMainMenu {
 		alert.show();
 	}
 
-	/* Retrieve Default/Previous Preferences */
+	/** Retrieve Default/Previous Preferences */
 	public void retrievePreferences()
 	{    	
-		/* Difficulty Radio Buttons */
+		/** Difficulty Radio Buttons */
 		RadioButton difficultyEasy = (RadioButton)findViewById(R.id.easyRadio) ;
 		RadioButton difficultyMedium = (RadioButton)findViewById(R.id.mediumRadio) ;
 		RadioButton difficultyHard = (RadioButton)findViewById(R.id.hardRadio);
-		/* Sound Radio Buttons */
+		/** Sound Radio Buttons */
 		RadioButton soundOn = (RadioButton)findViewById(R.id.soundonRadio);
 		RadioButton soundOff = (RadioButton)findViewById(R.id.soundoffRadio);
-		/* Music Radio Buttons */
+		/** Music Radio Buttons */
 		RadioButton musicOn = (RadioButton)findViewById(R.id.musiconRadio);
 		RadioButton musicOff = (RadioButton)findViewById(R.id.musicoffRadio);
 
@@ -204,37 +201,22 @@ public class ScreenOptions extends ScreenMainMenu {
 
 		/** Retrieve Difficulty Preferences **/
 		switch(whatdiffpref){
-		case 1: 
-			difficultyEasy.setChecked(true);
-			break;
-		case 2: 
-			difficultyMedium.setChecked(true);
-			break;   	
-		case 3:
-			difficultyHard.setChecked(true);
-			break;
+		case 1: difficultyEasy.setChecked(true);break;
+		case 2: difficultyMedium.setChecked(true);break;   	
+		case 3:difficultyHard.setChecked(true);break;
 		}
 
 		/** Retrieve Sound Preferences **/
 		switch(whatsoundpref){
-		case 0: 
-			soundOff.setChecked(true);
-			break;
-		case 1:
-			soundOn.setChecked(true);
-			break;
-
+		case 0: soundOff.setChecked(true);break;
+		case 1:soundOn.setChecked(true);break;
 		}
 		/** Retrieve Music Preferences **/
 		switch(whatmusicpref){
-		case 0: 
-			musicOff.setChecked(true);
-			break; 
-		case 1: 
-			musicOn.setChecked(true);
-			break;  
+		case 0: musicOff.setChecked(true);break; 
+		case 1: musicOn.setChecked(true);break;  
 		}
 
-	}//retrievePreferences();
+	}
 
-}//Main
+}
