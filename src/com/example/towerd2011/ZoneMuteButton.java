@@ -1,3 +1,8 @@
+/**
+ * This is the button that toggles music and sound settings
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 package com.example.towerd2011;
 
 public class ZoneMuteButton extends Zone{

@@ -1,3 +1,9 @@
+/**
+ * This is a creepfactory used to make creeps for the gamethread
+ * 
+ * @author Jacob
+ * 
+ */
 package com.example.towerd2011;
 
 

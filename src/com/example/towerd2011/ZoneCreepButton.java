@@ -1,3 +1,8 @@
+/**
+ * This is the button that lists the creeps on the map
+ * @author Sean Wiese sean.wiese@colorado.edu
+ * Copyright (c) 2011 Sean Wiese
+ */
 package com.example.towerd2011;
 
 public class ZoneCreepButton extends Zone{

@@ -12,7 +12,7 @@ public class BulletCannon extends Bullet{
 		super(x, y, creep_target, view, dmg);
 		speed = 200;
 		size = 4;
-		bullet = context.getResources().getDrawable(R.drawable.bulletcannon);
+		bullet = view.getContext().getResources().getDrawable(R.drawable.bulletcannon);
 		xscale = (float) (xsize/800.0*size);
 		yscale = (float) (ysize/480.0*size);
 	}
