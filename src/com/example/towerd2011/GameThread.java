@@ -64,7 +64,7 @@ class GameThread extends Thread {
 		music = panel.getMusic();
 		mp = MediaPlayer.create(panel.getContext(), R.raw.music);
 		mp.setLooping(true);
-		mp.setVolume((float)0.5, (float)0.5);
+		mp.setVolume((float)0.3, (float)0.3);
 		if(music == 1){
 			mp.start();
 		}
