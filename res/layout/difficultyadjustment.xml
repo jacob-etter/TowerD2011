@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical" android:background="@drawable/menubackground3">
+	<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:textColor="#ffffff"
+		android:text="Difficulty Adjustments" android:layout_gravity="center_horizontal"
+		android:layout_marginTop="35dip" android:textSize="25dip" android:textStyle="bold"></TextView>
+	<TableRow android:layout_marginRight="50dip" android:layout_height="34dip" android:layout_marginLeft="50dip" android:layout_width="match_parent" android:id="@+id/TableRow02">
+		<TextView android:layout_height="wrap_content" android:textSize="23dip" android:layout_width="fill_parent" android:textStyle="bold" android:textColor="#ffffff" android:text="Difficulty Increase" android:id="@+id/TextView02" android:layout_weight="1"></TextView>
+		<EditText android:layout_height="wrap_content" android:layout_width="150dip" android:inputType="number" android:id="@+id/EditTextDifficulty" android:textSize="13dip"></EditText>
+		<Button android:textColor="#ffffff" android:layout_height="wrap_content" android:textStyle="bold" android:text="Set" android:layout_width="50dip" android:id="@+id/ButtonDifficulty"></Button>
+	</TableRow>
+	<TableRow android:id="@+id/TableRow01" android:layout_width="match_parent"
+		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_weight="1" android:id="@+id/TextView01"
+			android:textColor="#ffffff" android:layout_height="wrap_content"
+			android:textSize="23dip" android:text="Initial Spawn Timer" android:textStyle="bold"></TextView>
+		<EditText android:inputType="number" android:layout_height="wrap_content"
+			android:id="@+id/EditTextTimer" android:layout_width="150dip" android:textSize="13dip"></EditText>
+		<Button android:layout_height="wrap_content" android:text="Set"
+			android:layout_width="50dip" android:id="@+id/ButtonTimer" android:textColor="#ffffff" android:textStyle="bold"></Button>
+	</TableRow>
+	<TableRow android:id="@+id/tableRow1" android:layout_width="match_parent"
+		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_weight="1" android:id="@+id/textView2"
+			android:layout_height="wrap_content" android:textColor="#ffffff"
+			android:textSize="23dip" android:text="Initial Spawn Count" android:textStyle="bold"></TextView>
+		<EditText android:inputType="number" android:layout_height="wrap_content"
+			android:id="@+id/EditTextCount" android:layout_width="150dip" android:textSize="13dip"></EditText>
+		<Button android:layout_height="wrap_content" android:id="@+id/ButtonCount"
+			android:layout_gravity="center" android:text="Set"
+			android:layout_width="50dip" android:textColor="#ffffff" android:textStyle="bold"></Button>
+	</TableRow>
+	<TableRow android:id="@+id/TableRow03" android:layout_width="match_parent"
+		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_weight="1" android:id="@+id/TextView03"
+			android:textColor="#ffffff" android:layout_height="wrap_content"
+			android:textSize="23dip" android:textStyle="bold" android:text="Initial Money Value"></TextView>
+		<EditText android:inputType="number"
+			android:layout_height="wrap_content" android:id="@+id/EditTextMoney" android:layout_width="150dip" android:textSize="13dip"></EditText>
+		<Button android:layout_width="50dip" android:layout_gravity="center"
+			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonMoney" android:textColor="#ffffff" android:textStyle="bold"></Button>
+	</TableRow>
+	<TableRow android:id="@+id/TableRow04" android:layout_width="match_parent"
+		android:layout_marginRight="50dip" android:layout_marginLeft="50dip" android:layout_height="34dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_weight="1" android:id="@+id/TextView04"
+			android:textColor="#ffffff" android:layout_height="wrap_content"
+			android:textSize="23dip" android:text="Initial Lives Count" android:textStyle="bold"></TextView>
+		<EditText android:inputType="number"
+			android:layout_height="wrap_content" android:id="@+id/EditTextLives" android:layout_width="150dip" android:textSize="13dip"></EditText>
+		<Button android:layout_width="50dip" android:layout_gravity="center"
+			android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonLives" android:textColor="#ffffff" android:textStyle="bold"></Button>
+	</TableRow>
+	<LinearLayout android:layout_width="match_parent"
+		android:id="@+id/linearLayout1" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<Button android:layout_gravity="center_horizontal"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/ButtonClear" android:text="Reset All" android:textColor="#ffffff" android:textStyle="bold"></Button>
+	</LinearLayout>
+</LinearLayout>

@@ -2,31 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent" android:layout_height="match_parent"
 	android:orientation="vertical" xmlns:android1="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/menuwallpaper">
-    <TextView android1:text="Game Over" android1:padding="15dip" android1:layout_height="wrap_content" android1:layout_gravity="center_horizontal" android1:layout_width="wrap_content" android1:id="@+id/TextView01" android1:textColor="#ffffff" android1:textStyle="bold" android1:gravity="center_horizontal" android1:textSize="30dip"></TextView>
+	android:background="@drawable/menubackground3">
+	<TextView android1:text="Game Over" android1:layout_height="wrap_content" android1:layout_gravity="center_horizontal"
+		android1:layout_width="wrap_content" android1:id="@+id/TextView01"
+		android1:textColor="#ffffff" android1:textStyle="bold"
+		android1:gravity="center_horizontal" android1:textSize="30dip" android1:layout_marginTop="35dip" android1:layout_marginBottom="10dip"></TextView>
 	<TableRow android1:layout_height="wrap_content"
 		android1:layout_width="match_parent" android1:id="@+id/TableRow01">
 		<TextView android1:text="Score = " android1:layout_height="wrap_content"
-			android1:textColor="#ffffff"
-			android1:textStyle="bold" android1:gravity="right" android1:textSize="20dip"
-			android1:id="@+id/TextViewScoreText" android1:layout_width="fill_parent" android1:layout_weight="1"></TextView>
+			android1:textColor="#ffffff" android1:textStyle="bold"
+			android1:gravity="right" android1:textSize="20dip" android1:id="@+id/TextViewScoreText"
+			android1:layout_width="fill_parent" android1:layout_weight="1"></TextView>
 		<TextView android1:text="$Score" android1:layout_height="wrap_content"
-			android1:textColor="#ffffff"
-			android1:textStyle="bold" android1:textSize="20dip" android1:gravity="left" android1:layout_width="fill_parent" android1:layout_weight="1" android1:id="@+id/TextViewScore"></TextView>
+			android1:textColor="#ffffff" android1:textStyle="bold"
+			android1:textSize="20dip" android1:gravity="left"
+			android1:layout_width="fill_parent" android1:layout_weight="1"
+			android1:id="@+id/TextViewScore"></TextView>
 	</TableRow>
 	<TableRow android:layout_width="match_parent"
 		android:layout_height="wrap_content" android:id="@+id/tableRow1">
 		<TextView android:layout_height="wrap_content"
-			android:textColor="#ffffff" android:textStyle="bold"
-			android:textSize="20dip" android1:text="Rounds Completed = " android1:id="@+id/TextViewRCompText" android1:layout_width="fill_parent" android1:layout_weight="1" android1:gravity="right"></TextView>
-		<TextView android:textColor="#ffffff" android:textStyle="bold" android:textSize="20dip" android1:text="$Rouncds" android1:layout_height="wrap_content" android1:layout_width="fill_parent" android1:layout_weight="1" android1:gravity="left" android1:id="@+id/TextViewRComp"></TextView>
+			android:textColor="#ffffff" android:textStyle="bold" 
+			android:textSize="20dip" android1:text="Rounds Completed = "
+			android1:id="@+id/TextViewRCompText" android1:layout_width="fill_parent"
+			android1:layout_weight="1" android1:gravity="right"></TextView>
+		<TextView android:textColor="#ffffff" android:textStyle="bold"
+			android:textSize="20dip" android1:text="$Rouncds"
+			android1:layout_height="wrap_content" android1:layout_width="fill_parent"
+			android1:layout_weight="1" android1:gravity="left" android1:id="@+id/TextViewRComp"></TextView>
 	</TableRow>
 	<TextView android:text="Please Enter You Name"
-		android:layout_height="wrap_content" android:textColor="#ffffff" android:textStyle="bold" android:gravity="center_horizontal"
-		android:textSize="20dip" android1:id="@+id/TextViewEnterName" android1:padding="15dip" android1:layout_width="match_parent"></TextView>
+		android:layout_height="wrap_content" android:textColor="#ffffff"
+		android:textStyle="bold" android:gravity="center_horizontal"
+		android:textSize="20dip" android1:id="@+id/TextViewEnterName"
+		android1:layout_width="match_parent" android1:layout_margin="10dip"></TextView>
 	<EditText android:layout_height="wrap_content"
-		android:layout_width="match_parent" android:layout_gravity="center_horizontal" android:layout_marginLeft="100dip"
-		android:layout_marginRight="100dip" android:layout_marginBottom="25dip"
-		android:layout_marginTop="25dip" android1:text="Enter Name" android1:id="@+id/EditTextName"></EditText>
-	<Button android1:layout_gravity="center_horizontal" android1:layout_height="wrap_content" android1:layout_width="wrap_content" android1:text="Main Menu" android1:id="@+id/ButtonMainMenu"></Button>
+		android:layout_gravity="center_horizontal"
+		android1:text="Enter Name" android1:id="@+id/EditTextName" android1:layout_width="150dip"></EditText>
+	<Button android1:layout_gravity="center_horizontal"
+		android1:layout_height="wrap_content" android1:layout_width="wrap_content"
+		android1:text="Main Menu" android1:id="@+id/ButtonMainMenu" android1:textColor="#ffffff" android1:layout_margin="10dip"></Button>
 </LinearLayout>

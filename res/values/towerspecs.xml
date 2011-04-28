@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="integer" format="integer" name="towerriflecooldown">1500</item><item type="integer" format="integer" name="towermachinecooldown">200</item><item type="integer" format="integer" name="towerteslacooldown">2000</item><item format="integer" type="integer" name="towermachinerange">125</item><item format="integer" type="integer" name="towerriflerange">225</item><item format="integer" type="integer" name="towerteslarange">125</item><item format="integer" type="integer" name="towerrifledamage">35</item><item format="integer" type="integer" name="towermachinedamage">6</item><item format="integer" type="integer" name="towertesladamage">35</item>
+</resources>
