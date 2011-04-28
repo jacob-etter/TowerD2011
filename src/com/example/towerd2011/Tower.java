@@ -51,6 +51,7 @@ public class Tower extends Zone{
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel = null;
 		mp = MediaPlayer.create(context, R.raw.pewpew);
+		mp.setVolume((float) 1.3, (float) 1.3);
 		sound = gameview.getSound();
 	}
 	@Override

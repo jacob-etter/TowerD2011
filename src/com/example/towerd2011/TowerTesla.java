@@ -29,7 +29,7 @@ public class TowerTesla extends Tower
 		targets = new ArrayList<Creep>();
 		targets.ensureCapacity(3);
 		mp = MediaPlayer.create(context, R.raw.zzap);
-		mp.setVolume((float)1.1, (float)1.1);
+		mp.setVolume((float)2.0, (float)2.0);
 		sound = view.getSound();
 	}
 
