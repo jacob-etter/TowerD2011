@@ -31,7 +31,7 @@ public class TowerMachineGun extends Tower
 		else
 		{
 			base = context.getResources().getDrawable(R.drawable.towermachinegunbase);
-			barrel = context.getResources().getDrawable(R.drawable.towermachinegunbarrel);
+			barrel = context.getResources().getDrawable(R.drawable.towermachinegunbarrel); 
 		}
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);

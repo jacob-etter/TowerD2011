@@ -22,7 +22,7 @@ public class ZoneMuteButton extends Zone{
 			background = context.getResources().getDrawable(R.drawable.soundclassic);
 		}
 		else if(theme == 2){
-			background = context.getResources().getDrawable(R.drawable.soundmodern);
+			background = context.getResources().getDrawable(R.drawable.soundmodern); 
 		}
 	}
 

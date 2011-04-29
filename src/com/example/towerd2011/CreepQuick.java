@@ -18,7 +18,7 @@ public class CreepQuick extends Creep {
 		health = (int) (50*difficulty);
 		health2 = health;
 		original_health = health;
-		speed = 45;
+		speed = 40;
 		size = 1.8;
 		xscale = (float) (xsize/800.0 * size);
 		yscale = (float) (ysize/480.0 * size);

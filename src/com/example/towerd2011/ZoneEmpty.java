@@ -22,7 +22,7 @@ public class ZoneEmpty extends Zone{
 			background = context.getResources().getDrawable(R.drawable.grass);
 		}
 		else if(theme == 2){
-			background = context.getResources().getDrawable(R.drawable.emptyzone);
+			background = context.getResources().getDrawable(R.drawable.emptyzone); 
 		}
 	}
 }

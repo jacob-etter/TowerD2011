@@ -30,7 +30,7 @@ public class TowerTesla extends Tower
 		/** get the towers images */
 		base = context.getResources().getDrawable(R.drawable.towerteslabase);
 		base.setBounds(sides[0], sides[1], sides[2], sides[3]);
-		barrel = context.getResources().getDrawable(R.drawable.towerteslabarrel);
+		barrel = context.getResources().getDrawable(R.drawable.towerteslabarrel); 
 		barrel.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		price = context.getResources().getInteger(R.integer.pricetowertesla);
 		saleprice = (int) (price*.6);

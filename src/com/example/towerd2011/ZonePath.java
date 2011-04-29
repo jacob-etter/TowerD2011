@@ -79,7 +79,7 @@ public class ZonePath extends Zone{
 			d_next[1] = (sides[1]+sides[3])/2;
 		}
 		/** top middle */
-		else if(sides[1] == next.getSides()[3]){
+		else if(sides[1] == next.getSides()[3]){ 
 			d_next[0] = (sides[0]+sides[2])/2;
 			d_next[1] = sides[1];
 		}

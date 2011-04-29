@@ -69,7 +69,7 @@ public class Zone {
 		background.setBounds(sides[0], sides[1], sides[2], sides[3]);
 		background.draw(canvas);
 		if(highlighted == true){
-			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],paint_highlighed);
+			canvas.drawRect(sides[0],sides[1],sides[2],sides[3],paint_highlighed); 
 		}
 	}
 	/**

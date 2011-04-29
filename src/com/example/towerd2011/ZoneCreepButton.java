@@ -22,7 +22,7 @@ public class ZoneCreepButton extends Zone{
 			background = context.getResources().getDrawable(R.drawable.listiconclassic);
 		}
 		else if(theme == 2){
-			background = context.getResources().getDrawable(R.drawable.listiconmodern);
+			background = context.getResources().getDrawable(R.drawable.listiconmodern); 
 		}
 	}
 

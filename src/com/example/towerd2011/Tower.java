@@ -239,7 +239,7 @@ public class Tower extends Zone{
 	 */
 	public void upDamage(){
 		damage *= 1.5;
-		saleprice += .6*damage_price;
+		saleprice += .6*damage_price; 
 		damage_price *= 1.5;
 	}
 	/**

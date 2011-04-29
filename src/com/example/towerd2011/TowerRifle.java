@@ -26,7 +26,7 @@ public class TowerRifle extends Tower
 		if(gameview.getTheme() == 1)
 		{
 			base = context.getResources().getDrawable(R.drawable.towercannonbase);
-			barrel = context.getResources().getDrawable(R.drawable.towercannonbarrel);
+			barrel = context.getResources().getDrawable(R.drawable.towercannonbarrel); 
 		}
 		else
 		{
