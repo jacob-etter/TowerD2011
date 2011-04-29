@@ -118,7 +118,7 @@ public class ScreenDificultyAdjust extends Activity {
 	/**
 	 * an alert dialog to make sure you want to clear this data
 	 */
-	public void alertDialog(){
+	protected void alertDialog(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear options?")
 		.setCancelable(false)

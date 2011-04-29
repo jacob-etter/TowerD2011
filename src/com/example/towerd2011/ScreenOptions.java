@@ -137,7 +137,7 @@ public class ScreenOptions extends Activity {
 
 	}
 	/** and alert dialog to warn user before clearing options */
-	public void alertDialog1(){
+	protected void alertDialog1(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear options?")
 		.setCancelable(false)
@@ -159,7 +159,7 @@ public class ScreenOptions extends Activity {
 		alert.show();
 	}
 	/** an alert dialog to warn the user before clearing high scores */
-	public void alertDialog2(){
+	protected void alertDialog2(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("Are you sure you want to clear high scores?")
 		.setCancelable(false)
@@ -182,7 +182,7 @@ public class ScreenOptions extends Activity {
 	}
 
 	/** Retrieve Default/Previous Preferences */
-	public void retrievePreferences()
+	protected void retrievePreferences()
 	{    	
 		/** Difficulty Radio Buttons */
 		RadioButton difficultyEasy = (RadioButton)findViewById(R.id.easyRadio) ;

@@ -89,7 +89,7 @@ public class ScreenGameOver extends Activity {
 	 * @param score_string
 	 * @param username
 	 */
-	public void insertScore(int index, String score_string, String username){
+	protected void insertScore(int index, String score_string, String username){
 		SharedPreferences.Editor editor = prefs.edit();
 		String score_string2;
 		String score_string1 = score_string;
